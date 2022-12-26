@@ -1,25 +1,25 @@
-# Todo List API
+# Plantes vertes API
 
-- [Buber Breakfast API](#buber-breakfast-api)
-  - [Create Breakfast](#create-breakfast)
-    - [Create Breakfast Request](#create-breakfast-request)
-    - [Create Breakfast Response](#create-breakfast-response)
-  - [Get Breakfast](#get-breakfast)
-    - [Get Breakfast Request](#get-breakfast-request)
-    - [Get Breakfast Response](#get-breakfast-response)
-  - [Update Breakfast](#update-breakfast)
-    - [Update Breakfast Request](#update-breakfast-request)
-    - [Update Breakfast Response](#update-breakfast-response)
-  - [Delete Breakfast](#delete-breakfast)
-    - [Delete Breakfast Request](#delete-breakfast-request)
-    - [Delete Breakfast Response](#delete-breakfast-response)
+- [Plantes vertes API](#buber-plants-api)
+  - [Create plants](#create-plants)
+    - [Create plants Request](#create-plants-request)
+    - [Create plants Response](#create-plants-response)
+  - [Get plants](#get-plants)
+    - [Get plants Request](#get-plants-request)
+    - [Get plants Response](#get-plants-response)
+  - [Update plants](#update-plants)
+    - [Update plants Request](#update-plants-request)
+    - [Update plants Response](#update-plants-response)
+  - [Delete plants](#delete-plants)
+    - [Delete plants Request](#delete-plants-request)
+    - [Delete plants Response](#delete-plants-response)
 
-## Create Breakfast
+## Create plants
 
-### Create Breakfast Request
+### Create plants Request
 
 ```js
-POST /todo
+POST /plants
 ```
 
 ```json
@@ -31,14 +31,14 @@ POST /todo
 }
 ```
 
-### Create Breakfast Response
+### Create plants Response
 
 ```js
 201 Created
 ```
 
 ```yml
-Location: {{host}}/todo/{{id}}
+Location: {{host}}/plants/{{id}}
 ```
 
 ```json
@@ -52,15 +52,15 @@ Location: {{host}}/todo/{{id}}
 }
 ```
 
-## Get Breakfast
+## Get plants
 
-### Get Breakfast Request
+### Get plants Request
 
 ```js
-GET /todo/{{id}}
+GET /plants/{{id}}
 ```
 
-### Get Breakfast Response
+### Get plants Response
 
 ```js
 200 Ok
@@ -77,12 +77,12 @@ GET /todo/{{id}}
 }
 ```
 
-## Update Breakfast
+## Update plants
 
-### Update Breakfast Request
+### Update plants Request
 
 ```js
-PUT /todo/{{id}}
+PUT /plants/{{id}}
 ```
 
 ```json
@@ -94,7 +94,7 @@ PUT /todo/{{id}}
 }
 ```
 
-### Update Breakfast Response
+### Update plants Response
 
 ```js
 204 No Content
@@ -107,18 +107,18 @@ or
 ```
 
 ```yml
-Location: {{host}}/todo/{{id}}
+Location: {{host}}/plants/{{id}}
 ```
 
-## Delete Breakfast
+## Delete plants
 
-### Delete Breakfast Request
+### Delete plants Request
 
 ```js
-DELETE /todo/{{id}}
+DELETE /plants/{{id}}
 ```
 
-### Delete Breakfast Response
+### Delete plants Response
 
 ```js
 204 No Content
