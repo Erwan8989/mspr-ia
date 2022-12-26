@@ -40,6 +40,13 @@
 					android:label="Mon profil">
 			</activity>
 
+			<activity
+					android:name=".AjouterPlante"
+					android:exported="true"
+					tools:ignore="Instantiatable"
+					android:label="Mon profil">
+			</activity>
+
 	</application>
 
 </manifest>
