@@ -45,10 +45,14 @@
 
 		</TextView>
 
-
+  <LinearLayout
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="80dp"
+    android:gravity="center">
 				<TextView
 						android:id="@+id/nom"
-						android:layout_width="match_parent"
+						android:layout_width="175dp"
 						android:layout_height="wrap_content"
 						android:layout_marginHorizontal="15dp"
 						android:hint="Nom"
@@ -58,23 +62,34 @@
 
 				<TextView
 						android:id="@+id/espece"
-						android:layout_width="match_parent"
+						android:layout_width="175dp"
 						android:layout_height="wrap_content"
 						android:layout_marginHorizontal="15dp"
 						android:hint="Espèce"
-						android:layout_marginTop="10dp"
+						android:layout_marginTop="20dp"
 						android:inputType="number"
 						android:minHeight="48dp" />
+  </LinearLayout>
 
-				<TextView
-						android:id="@+id/descriptif"
-						android:layout_width="match_parent"
-						android:layout_height="wrap_content"
-						android:layout_marginHorizontal="15dp"
-						android:hint="Descriptif"
-						android:inputType="number"
-						android:layout_marginTop="10dp"
-						android:minHeight="48dp" />
+    <TextView
+      android:id="@+id/date_ajout"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_marginHorizontal="15dp"
+      android:hint="Date d'ajout"
+      android:inputType="number"
+      android:layout_marginTop="10dp"
+      android:minHeight="48dp" />
+
+    <TextView
+        android:id="@+id/descriptif"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="15dp"
+        android:hint="Descriptif"
+        android:inputType="number"
+        android:layout_marginTop="10dp"
+        android:minHeight="48dp" />
 
 				<Button
 						android:id="@+id/gardienner"
