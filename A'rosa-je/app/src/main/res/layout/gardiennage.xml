@@ -145,7 +145,7 @@
 					android:layout_width="105dp"
 					android:layout_height="wrap_content"
 					android:layout_alignBaseline="@id/name"
-					android:text="Titre du RDV."
+          android:text="Date du RDV"
 					android:textSize="18sp"
 					android:textColor="#000"
 					android:layout_marginHorizontal="138dp" />
@@ -154,7 +154,7 @@
 					android:id="@+id/name"
 					android:layout_width="wrap_content"
 					android:layout_height="wrap_content"
-					android:text="Date du RDV."
+          android:text="Titre du RDV"
 					android:textSize="18sp"
 					android:textColor="#000"
 				 />
