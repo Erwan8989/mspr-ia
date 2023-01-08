@@ -6,11 +6,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
-
-import java.util.zip.Inflater;
-
 
 public class Accueil extends Activity {
 
@@ -19,7 +14,7 @@ public class Accueil extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.accueil);
+        setContentView(R.layout.client_accueil);
 
         b1 = (Button) findViewById(R.id.btn_gardienner);
         b2 = (Button) findViewById(R.id.btn_monprofil);

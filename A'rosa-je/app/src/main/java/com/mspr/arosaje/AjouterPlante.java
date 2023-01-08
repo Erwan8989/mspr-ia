@@ -9,7 +9,7 @@ public class AjouterPlante extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.ajouter_article);
+        setContentView(R.layout.client_ajouter_article);
     }
 
 }
