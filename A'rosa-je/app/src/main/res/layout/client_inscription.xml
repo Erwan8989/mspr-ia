@@ -43,22 +43,10 @@
 					android:layout_below="@+id/login_text"
 					android:id="@+id/bloc_adresse">
 
-				<TextView
-						android:id="@+id/numero_rue"
-						android:layout_width="75dp"
-						android:layout_height="wrap_content"
-						android:layout_marginTop="20dp"
-						android:hint="Numéro"
-						android:inputType="number"
-						android:minHeight="48dp"
-						android:backgroundTint="#2F2E2E"
-						android:textColor="#808080"
-						android:textColorHint="#808080"
-						android:gravity="center"/>
 
 				<TextView
 						android:id="@+id/rue"
-						android:layout_width="252dp"
+						android:layout_width="match_parent"
 						android:layout_height="wrap_content"
 						android:layout_marginTop="20dp"
 						android:hint="Rue"
