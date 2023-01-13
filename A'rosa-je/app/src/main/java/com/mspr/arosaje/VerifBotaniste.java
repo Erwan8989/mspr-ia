@@ -3,21 +3,22 @@ package com.mspr.arosaje;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 
-public class ClientParametre extends Activity{
+public class VerifBotaniste extends Activity{
 
     @Override
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.client_parametre);
+        setContentView(R.layout.verification_botaniste);
 
     }
 
-    /*Bouton retour*/
-    @Override
+    /*Page de retour a définir*/
+    /*@Override
     public void onBackPressed() {
-        Intent intentBack = new Intent(this, ClientAccueil.class);
+        Intent intentBack = new Intent(this, saisir.class);
         startActivity(intentBack);
-    }
-
+    }*/
 }

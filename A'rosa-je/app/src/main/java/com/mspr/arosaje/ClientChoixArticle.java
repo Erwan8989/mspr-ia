@@ -3,8 +3,6 @@ package com.mspr.arosaje;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.Button;
 
 public class ClientChoixArticle extends Activity {
 
@@ -18,7 +16,7 @@ public class ClientChoixArticle extends Activity {
     /*Bouton retour*/
     @Override
     public void onBackPressed() {
-        Intent intentBack = new Intent(this, Accueil.class);
+        Intent intentBack = new Intent(this, ClientAccueil.class);
         startActivity(intentBack);
     }
 
