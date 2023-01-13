@@ -5,7 +5,7 @@ import android.os.Bundle;
 import android.widget.Button;
 import android.content.Intent;
 
-public class Gardiennage extends Activity {
+public class ClientGardiennage extends Activity {
 
     Button b1;
 
@@ -24,7 +24,7 @@ public class Gardiennage extends Activity {
 
     @Override
     public void onBackPressed() {
-        Intent intentBack = new Intent(this, Accueil.class);
+        Intent intentBack = new Intent(this, ClientAccueil.class);
         startActivity(intentBack);
     }
 

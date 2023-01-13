@@ -4,7 +4,7 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.content.Intent;
 
-public class Profil extends Activity {
+public class ClientProfil extends Activity {
 
 
     @Override
@@ -15,7 +15,7 @@ public class Profil extends Activity {
 
     @Override
     public void onBackPressed() {
-        Intent intentBack = new Intent(this, Accueil.class);
+        Intent intentBack = new Intent(this, ClientAccueil.class);
         startActivity(intentBack);
     }
 

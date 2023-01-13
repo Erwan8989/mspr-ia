@@ -7,7 +7,7 @@ import android.view.View;
 import android.widget.Button;
 
 
-public class Accueil extends Activity {
+public class ClientAccueil extends Activity {
 
     Button b1, b2, b3;
 
@@ -54,19 +54,19 @@ public class Accueil extends Activity {
     }*/
 
     public void openActivityGardienner(){
-        Intent gardienner = new Intent(this, Gardiennage.class);
+        Intent gardienner = new Intent(this, ClientGardiennage.class);
         startActivity(gardienner);
         finish();
     }
 
     public void openActivityProfil(){
-        Intent monProfil = new Intent(this, Profil.class);
+        Intent monProfil = new Intent(this, ClientProfil.class);
         startActivity(monProfil);
         finish();
     }
 
     public void openActivityAjouterPlante(){
-        Intent ajouterPlante = new Intent(this, AjouterPlante.class);
+        Intent ajouterPlante = new Intent(this, ClientAjouterPlante.class);
         startActivity(ajouterPlante);
         finish();
     }

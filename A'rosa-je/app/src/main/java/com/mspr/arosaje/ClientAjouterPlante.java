@@ -6,7 +6,7 @@ import android.view.View;
 import android.widget.Button;
 import android.content.Intent;
 
-public class AjouterPlante extends Activity {
+public class ClientAjouterPlante extends Activity {
 
     Button b1;
 
@@ -28,7 +28,7 @@ public class AjouterPlante extends Activity {
 
     @Override
     public void onBackPressed() {
-        Intent intentBack = new Intent(this, Accueil.class);
+        Intent intentBack = new Intent(this, ClientAccueil.class);
         startActivity(intentBack);
     }
 
