@@ -45,6 +45,13 @@ public class Accueil extends Activity {
 
     }
 
+    /*Page d'acceuil donc le bouton retour quitte l'app? */
+    /*@Override
+    public void onBackPressed() {
+        Intent intentBack = new Intent(this, saisir.class);
+        startActivity(intentBack);
+    }*/
+
     public void openActivityGardienner(){
         Intent gardienner = new Intent(this, Gardiennage.class);
         startActivity(gardienner);

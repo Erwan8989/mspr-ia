@@ -3,6 +3,7 @@ package com.mspr.arosaje;
 import android.app.Activity;
 import android.os.Bundle;
 import android.widget.Button;
+import android.content.Intent;
 
 public class Gardiennage extends Activity {
 
@@ -17,6 +18,15 @@ public class Gardiennage extends Activity {
 
         // ***************** Changement de page au clic *****************
 
+
+
     }
+
+    @Override
+    public void onBackPressed() {
+        Intent intentBack = new Intent(this, Accueil.class);
+        startActivity(intentBack);
+    }
+
 
 }
