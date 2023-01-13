@@ -84,6 +84,7 @@
 							android:text="Date d'ajout"
 							android:textColor="@color/black"
 							android:textSize="18sp" />
+
 					<TextView
 							android:id="@+id/statut_gardiennage"
 							android:layout_width="match_parent"
