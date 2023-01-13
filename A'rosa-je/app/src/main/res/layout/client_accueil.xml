@@ -92,11 +92,9 @@
 					android:layout_height="match_parent"
 					android:columnCount="2"
 					android:orientation="horizontal"
-					android:paddingHorizontal="9dp"
-					>
+					android:paddingHorizontal="9dp">
 
-				<LinearLayout
-						android:orientation="vertical">
+				<LinearLayout android:orientation="vertical">
 
 					<ImageButton
 							android:id="@+id/imageButton1"
@@ -105,15 +103,15 @@
 							android:layout_gravity="top" />
 
 
-						<TextView
-								android:id="@+id/nom_card_accueil"
-								android:layout_width="match_parent"
-								android:layout_gravity="bottom"
-								android:layout_height="wrap_content"
-								android:text="Nom"
-								android:textColor="@color/black"
-								android:layout_below="@id/imageButton1"
-								android:textSize="18sp" />
+					<TextView
+							android:id="@+id/nom_card_accueil"
+							android:layout_width="match_parent"
+							android:layout_gravity="bottom"
+							android:layout_height="wrap_content"
+							android:text="Nom"
+							android:textColor="@color/black"
+							android:layout_below="@id/imageButton1"
+							android:textSize="18sp" />
 
 					<TextView
 							android:id="@+id/date_card_accueil"
@@ -127,21 +125,21 @@
 
 			</GridLayout>
 
-			<Button
-					android:id="@+id/btn_addPlant"
-					android:layout_width="50dp"
-					android:layout_height="50dp"
-					android:layout_gravity="bottom|end"
-					android:layout_marginRight="16dp"
-					android:layout_marginBottom="16dp"
-					android:background="@drawable/circular_button"
-					android:drawableBottom="@drawable/ic_add"
-					android:padding="6dp"
-					android:textColor="@android:color/white"
-					tools:ignore="SpeakableTextPresentCheck" />
 
 		</LinearLayout>
 	</ScrollView>
 
+	<Button
+			android:id="@+id/btn_addPlant"
+			android:layout_width="50dp"
+			android:layout_height="50dp"
+			android:layout_gravity="bottom|end"
+			android:layout_marginRight="16dp"
+			android:layout_marginBottom="16dp"
+			android:background="@drawable/circular_button"
+			android:drawableBottom="@drawable/ic_add"
+			android:padding="6dp"
+			android:textColor="@android:color/white"
+			tools:ignore="SpeakableTextPresentCheck" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
