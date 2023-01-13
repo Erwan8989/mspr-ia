@@ -37,31 +37,28 @@
 
 			<LinearLayout
 					android:layout_width="match_parent"
-					android:layout_height="80dp"
+					android:layout_height="wrap_content"
 					android:gravity="center"
 					android:orientation="horizontal"
 					android:layout_below="@+id/login_text"
 					android:id="@+id/bloc_adresse">
 
-
 				<TextView
-						android:id="@+id/rue"
+						android:id="@+id/Adress_postal"
 						android:layout_width="match_parent"
 						android:layout_height="wrap_content"
-						android:layout_marginTop="20dp"
-						android:hint="Rue"
+						android:hint="Adresse Postal"
 						android:inputType="number"
 						android:minHeight="48dp"
 						android:backgroundTint="#2F2E2E"
 						android:textColor="#808080"
 						android:textColorHint="#808080"
 						android:gravity="center"/>
-
 			</LinearLayout>
 
 			<LinearLayout
 					android:layout_width="match_parent"
-					android:layout_height="80dp"
+					android:layout_height="wrap_content"
 					android:gravity="center"
 					android:orientation="horizontal"
 					android:layout_below="@+id/bloc_adresse"
