@@ -6,7 +6,9 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-public class VerifBotaniste extends Activity{
+import androidx.appcompat.app.AppCompatActivity;
+
+public class VerifBotaniste extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState){

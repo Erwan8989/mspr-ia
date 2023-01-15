@@ -4,7 +4,9 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 
-public class ClientConnexion extends Activity {
+import androidx.appcompat.app.AppCompatActivity;
+
+public class ClientConnexion extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState){
