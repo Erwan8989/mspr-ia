@@ -47,6 +47,62 @@
 					android:label="Mon profil">
 			</activity>
 
+		<activity
+				android:name=".BotanisteAccueil"
+				android:exported="true"
+				tools:ignore="Instantiatable"
+				android:label="Mon profil">
+		</activity>
+
+		<activity
+				android:name=".BotanisteChoixArticle"
+				android:exported="true"
+				tools:ignore="Instantiatable"
+				android:label="Mon profil">
+		</activity>
+
+		<activity
+				android:name=".ClientAjoutArticle"
+				android:exported="true"
+				tools:ignore="Instantiatable"
+				android:label="Mon profil">
+		</activity>
+
+		<activity
+				android:name=".ClientChoixArticle"
+				android:exported="true"
+				tools:ignore="Instantiatable"
+				android:label="Mon profil">
+		</activity>
+
+		<activity
+				android:name=".ClientConnexion"
+				android:exported="true"
+				tools:ignore="Instantiatable"
+				android:label="Mon profil">
+		</activity>
+
+		<activity
+				android:name=".ClientInscription"
+				android:exported="true"
+				tools:ignore="Instantiatable"
+				android:label="Mon profil">
+		</activity>
+
+		<activity
+				android:name=".ClientParametre"
+				android:exported="true"
+				tools:ignore="Instantiatable"
+				android:label="Mon profil">
+		</activity>
+
+		<activity
+				android:name=".VerifBotaniste"
+				android:exported="true"
+				tools:ignore="Instantiatable"
+				android:label="Mon profil">
+		</activity>
+
 	</application>
 
 </manifest>
