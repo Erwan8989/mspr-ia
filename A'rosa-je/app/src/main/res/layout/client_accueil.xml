@@ -117,7 +117,7 @@
 			android:layout_marginBottom="16dp"
 			android:background="@drawable/circular_button"
 			android:drawableBottom="@drawable/ic_add"
-			android:padding="12dp"
+			android:padding="8dp"
 			android:textColor="@android:color/white"
 			tools:ignore="SpeakableTextPresentCheck" />
 
