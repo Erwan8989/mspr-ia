@@ -9,7 +9,7 @@ import androidx.appcompat.app.AppCompatActivity;
 public class ClientInscription extends AppCompatActivity {
 
     @Override
-    protected void onCreate(Bundle savedInstanceState){
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.client_inscription);
 
@@ -21,7 +21,6 @@ public class ClientInscription extends AppCompatActivity {
         Intent intentBack = new Intent(this, ClientAccueil.class);
         startActivity(intentBack);
     }
-
 
 
 }

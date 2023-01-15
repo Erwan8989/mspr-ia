@@ -57,19 +57,19 @@ public class ClientAccueil extends AppCompatActivity {
         startActivity(intentBack);
     }*/
 
-    public void openActivityGardienner(){
+    public void openActivityGardienner() {
         Intent gardienner = new Intent(this, ClientGardiennage.class);
         startActivity(gardienner);
         finish();
     }
 
-    public void openActivityProfil(){
+    public void openActivityProfil() {
         Intent monProfil = new Intent(this, ClientProfil.class);
         startActivity(monProfil);
         finish();
     }
 
-    public void openActivityAjouterPlante(){
+    public void openActivityAjouterPlante() {
         Intent ajouterPlante = new Intent(this, ClientAjouterPlante.class);
         startActivity(ajouterPlante);
         finish();

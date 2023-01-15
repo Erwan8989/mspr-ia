@@ -23,7 +23,6 @@ public class ClientGardiennage extends AppCompatActivity {
         // ***************** Changement de page au clic *****************
 
 
-
     }
 
     @Override

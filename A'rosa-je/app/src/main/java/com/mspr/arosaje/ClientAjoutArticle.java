@@ -11,7 +11,7 @@ import androidx.appcompat.app.AppCompatActivity;
 public class ClientAjoutArticle extends AppCompatActivity {
 
     @Override
-    protected void onCreate(Bundle savedInstanceState){
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.client_ajouter_article);
 
