@@ -43,8 +43,8 @@
 					android:layout_below="@+id/login_text"
 					android:id="@+id/bloc_adresse">
 
-				<TextView
-						android:id="@+id/Adress_postal"
+				<EditText
+						android:id="@+id/adress_postal"
 						android:layout_width="match_parent"
 						android:layout_height="wrap_content"
 						android:hint="Adresse Postal"
@@ -64,7 +64,7 @@
 					android:layout_below="@+id/bloc_adresse"
 					android:id="@+id/bloc_adresse2">
 
-				<TextView
+				<EditText
 						android:id="@+id/code_postal"
 						android:layout_width="75dp"
 						android:layout_height="wrap_content"
@@ -77,7 +77,7 @@
 						android:textColor="#808080"
 						android:textColorHint="#808080" />
 
-				<TextView
+				<EditText
 						android:id="@+id/ville"
 						android:layout_width="252dp"
 						android:layout_height="wrap_content"
@@ -139,20 +139,27 @@
 					android:layout_below="@+id/confirm_password"
 					android:layout_marginTop="20dp">
 
-				<ImageView
+				<!--<ImageView
 						android:layout_width="match_parent"
 						android:layout_height="match_parent"
 						android:background="@drawable/ic_rectangle"
-						android:backgroundTint="#193155" />
+						android:backgroundTint="#193155" />-->
 
-				<TextView
+				<Button
+						android:id="@+id/button1"
+						android:layout_width="match_parent"
+						android:layout_height="match_parent"
+						android:text="INSCRIPTION"
+						android:textColor="#FFFFFF" />
+
+				<!--<TextView
 						android:layout_width="wrap_content"
 						android:layout_height="wrap_content"
 						android:layout_centerInParent="true"
 						android:text="S'inscrire"
 						android:textColor="#FFFFFF"
 						android:textSize="16sp"
-						android:textStyle="bold" />
+						android:textStyle="bold" />-->
 			</RelativeLayout>
 
 			<TextView
