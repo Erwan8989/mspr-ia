@@ -73,7 +73,7 @@ public class ClientInscription extends AppCompatActivity {
                             data[4] = "mdp";
                             data[5] = "conf_mdp";
 
-                            PutData putData = new PutData("http://127.0.0.1/register/customer", "POST", field, data);  // Mettre son ip
+                            PutData putData = new PutData("http://127.0.0.1/register/customer", "POST", field, data);
                             if (putData.startPut()) {
                                 if (putData.onComplete()) {
                                     progressBar.setVisibility(View.GONE);
