@@ -48,12 +48,14 @@
 						android:layout_width="match_parent"
 						android:layout_height="wrap_content"
 						android:hint="Adresse Postal"
-						android:inputType="number"
+						android:inputType="text"
 						android:minHeight="48dp"
 						android:backgroundTint="#2F2E2E"
 						android:textColor="#808080"
 						android:textColorHint="#808080"
-						android:gravity="center" />
+						android:gravity="center"
+						android:textSize="14sp"
+						tools:ignore="NotSibling"  />
 			</LinearLayout>
 
 			<LinearLayout
@@ -75,7 +77,9 @@
 						android:backgroundTint="#2F2E2E"
 						android:gravity="center"
 						android:textColor="#808080"
-						android:textColorHint="#808080" />
+						android:textColorHint="#808080"
+						android:textSize="14sp"
+						tools:ignore="NotSibling"  />
 
 				<EditText
 						android:id="@+id/ville"
@@ -84,11 +88,13 @@
 						android:gravity="center"
 						android:layout_marginTop="20dp"
 						android:hint="Ville"
-						android:inputType="number"
+						android:inputType="text"
 						android:minHeight="48dp"
 						android:backgroundTint="#2F2E2E"
 						android:textColor="#808080"
-						android:textColorHint="#808080" />
+						android:textColorHint="#808080"
+						android:textSize="14sp"
+						tools:ignore="NotSibling"  />
 
 			</LinearLayout>
 

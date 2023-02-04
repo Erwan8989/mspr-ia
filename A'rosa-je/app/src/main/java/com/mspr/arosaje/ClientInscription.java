@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ProgressBar;
@@ -13,6 +14,8 @@ import android.widget.Toast;
 import com.vishnusivadas.advanced_httpurlconnection.PutData;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import java.util.Arrays;
 
 public class ClientInscription extends AppCompatActivity {
 
@@ -66,19 +69,23 @@ public class ClientInscription extends AppCompatActivity {
 
                             //Creating array for data
                             String[] data = new String[6];
-                            data[0] = "post";
-                            data[1] = "code_post";
-                            data[2] = "ville";
-                            data[3] = "email";
-                            data[4] = "mdp";
-                            data[5] = "conf_mdp";
+                            data[0] = get_post;
+                            data[1] = get_code_post;
+                            data[2] = get_ville;
+                            data[3] = get_email;
+                            data[4] = get_mdp;
+                            data[5] = get_conf_mdp;
 
-                            PutData putData = new PutData("http://127.0.0.1/register/customer", "POST", field, data);
+                            System.out.println(Arrays.toString(data));
+
+                            PutData putData = new PutData("https://192.168.1.136:8000/register/customer", "POST", field, data);
+                            Log.e("test", String.valueOf(putData));
                             if (putData.startPut()) {
                                 if (putData.onComplete()) {
-                                    progressBar.setVisibility(View.GONE);
+//                                    progressBar.setVisibility(View.GONE);
 
                                     String result = putData.getResult();
+                                    System.out.println(result);
 
 //                                    if (result.equals("Sign Up Success")) {
 //                                        Toast.makeText(getApplicationContext(), result, Toast.LENGTH_SHORT).show();
