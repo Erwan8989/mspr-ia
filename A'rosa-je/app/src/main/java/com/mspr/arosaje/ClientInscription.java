@@ -73,7 +73,7 @@ public class ClientInscription extends AppCompatActivity {
 
     private void postDataUsingVolley(String get_post, String get_code_post, String get_ville, String get_email, String get_mdp, String get_conf_mdp) {
         // url to post our data
-        String url = "http://192.168.1.136:8000/register/customer";
+        String url = "http://192.168.1.79:8000/register/customer";
 //        loadingPB.setVisibility(View.VISIBLE);
 
         // creating a new variable for our request queue
