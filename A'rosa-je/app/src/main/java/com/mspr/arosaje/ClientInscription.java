@@ -16,6 +16,7 @@ import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.vishnusivadas.advanced_httpurlconnection.PutData;
@@ -73,7 +74,7 @@ public class ClientInscription extends AppCompatActivity {
 
     private void postDataUsingVolley(String get_post, String get_code_post, String get_ville, String get_email, String get_mdp, String get_conf_mdp) {
         // url to post our data
-        String url = "http://192.168.1.79:8000/register/customer";
+        String url = "http://192.168.1.136:8000/register/customer";
 //        loadingPB.setVisibility(View.VISIBLE);
 
         // creating a new variable for our request queue
@@ -82,72 +83,46 @@ public class ClientInscription extends AppCompatActivity {
         // on below line we are calling a string
         // request method to post the data to our API
         // in this we are calling a post method.
-        StringRequest request = new StringRequest(Request.Method.POST, url, new com.android.volley.Response.Listener<String>() {
-            @Override
-            public void onResponse(String response) {
-                // inside on response method we are
-                // hiding our progress bar
-                // and setting data to edit text as empty
-//                loadingPB.setVisibility(View.GONE);
+        try {
+            JSONObject respObj = new JSONObject();
+            respObj.put("street", "tsdf");
+            respObj.put("zipCode", "tsdf");
+            respObj.put("city", "tsdf");
+            respObj.put("email", "tsdf");
+            respObj.put("password", "tsdf");
+            respObj.put("firstname", "tsdf");
+            respObj.put("lastname", "sfdcfscdc");
+            respObj.put("streetNumber", "sdfcsd");
 
-                post.setText("");
-                code_post.setText("");
-                ville.setText("");
-                email.setText("");
-                mdp.setText("");
-                conf_mdp.setText("");
-
-                // on below line we are displaying a success toast message.
-                Toast.makeText(ClientInscription.this, "Data added to API", Toast.LENGTH_SHORT).show();
-                try {
-                    // on below line we are parsing the response
-                    // to json object to extract data from it.
-                    JSONObject respObj = new JSONObject(response);
-
-                    // below are the strings which we
-                    // extract from our json object.
-                    String name = respObj.getString("name");
-                    String job = respObj.getString("job");
-
-                    // on below line we are setting this string s to our text view.
-//                    responseTV.setText("Name : " + name + "\n" + "Job : " + job);
-                } catch (JSONException e) {
-                    e.printStackTrace();
+            JsonObjectRequest request = new JsonObjectRequest(Request.Method.POST, url, respObj, new Response.Listener<JSONObject>() {
+                @Override
+                public void onResponse(JSONObject response) {
+                    // after getting the response we are
+                    // hiding our progress bar and setting data to edit text.
+                    // loadingPB.setVisibility(View.GONE);
+                    // nameEdt.setText("");
+                    // jobEdt.setText("");
+                    // below line is to display a toast message.
+                    Toast.makeText(ClientInscription.this, "Data added to API", Toast.LENGTH_SHORT).show();
                 }
-            }
-        }, new com.android.volley.Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                // method to handle errors.
-                Toast.makeText(ClientInscription.this, "Fail to get response = " + error, Toast.LENGTH_SHORT).show();
-            }
-        }) {
-            @Override
-            protected Map<String, String> getParams() {
-                // below line we are creating a map for
-                // storing our values in key and value pair.
-                Map<String, String> params = new HashMap<String, String>();
+            }, new Response.ErrorListener() {
+                @Override
+                public void onErrorResponse(VolleyError error) {
+                    // this method is called when we get
+                    // any error while calling an API.
+                    // below line is to display a toast message.
+                    Log.d("Wil", "onErrorResponse: " + error + error.getMessage());
+                    Toast.makeText(ClientInscription.this, "Fail to get response = " + error, Toast.LENGTH_SHORT).show();
+                }
+            });
 
-                // on below line we are passing our key
-                // and value pair to our parameters.
-                params.put("street", "tsdf");
-                params.put("zipCode", "tsdf");
-                params.put("city", "tsdf");
-                params.put("email", "tsdf");
-                params.put("password", "tsdf");
-                params.put("firstname", "tsdf");
-                params.put("lastname", "sfdcfscdc");
-                params.put("streetNumber", "sdfcsd");
-                //params.put("get_conf_mdp", get_conf_mdp);
+            queue.add(request);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
-                // at last we are
-                // returning our params.
-                return params;
-            }
-        };
         // below line is to make
         // a json object request.
-        queue.add(request);
     }
 
 }
