@@ -85,8 +85,6 @@ public class ClientInscription extends AppCompatActivity {
             respObj.put("lastname", "sfdcfscdc");
             respObj.put("streetNumber", "52");
 
-            Log.e("respobj", String.valueOf(respObj));
-
             JsonObjectRequest request = new JsonObjectRequest(Request.Method.POST, url, respObj, new Response.Listener<JSONObject>() {
                 @Override
                 public void onResponse(JSONObject response) {
