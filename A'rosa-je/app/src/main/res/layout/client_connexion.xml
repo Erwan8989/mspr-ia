@@ -37,7 +37,7 @@
 					android:textSize="18sp" />
 
 			<EditText
-					android:id="@+id/email_address"
+					android:id="@+id/email_address2"
 					android:layout_width="match_parent"
 					android:layout_height="60dp"
 					android:layout_below="@+id/login_text"
