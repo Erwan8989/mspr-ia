@@ -30,6 +30,21 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ProgressBar;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
+
 public class ClientInscription extends AppCompatActivity {
 
     android.widget.EditText post, code_post, ville, email, mdp, conf_mdp;
@@ -67,62 +82,66 @@ public class ClientInscription extends AppCompatActivity {
                     return;
                 }*/
                 // calling a method to post the data and passing our name and job.
-                postDataUsingVolley(get_post, get_code_post, get_ville, get_email, get_mdp, get_conf_mdp);
+                postData(get_post, get_code_post, get_ville, get_email, get_mdp, get_conf_mdp);
             }
         });
     }
 
-    private void postDataUsingVolley(String get_post, String get_code_post, String get_ville, String get_email, String get_mdp, String get_conf_mdp) {
+    private void postData(String get_post, String get_code_post, String get_ville, String get_email, String get_mdp, String get_conf_mdp) {
         // url to post our data
-        String url = "http://192.168.1.136:8000/register/customer";
+//        String url = "http://192.168.1.136:8000/register/customer";
 //        loadingPB.setVisibility(View.VISIBLE);
 
         // creating a new variable for our request queue
-        RequestQueue queue = Volley.newRequestQueue(ClientInscription.this);
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl("http://192.168.1.136:8000/register/customer/")
+                // as we are sending data in json format so
+                // we have to add Gson converter factory
+                .addConverterFactory(GsonConverterFactory.create())
+                // at last we are building our retrofit builder.
+                .build();
 
-        // on below line we are calling a string
-        // request method to post the data to our API
-        // in this we are calling a post method.
-        try {
-            JSONObject respObj = new JSONObject();
-            respObj.put("street", "tsdf");
-            respObj.put("zipCode", "tsdf");
-            respObj.put("city", "tsdf");
-            respObj.put("email", "tsdf");
-            respObj.put("password", "tsdf");
-            respObj.put("firstname", "tsdf");
-            respObj.put("lastname", "sfdcfscdc");
-            respObj.put("streetNumber", "sdfcsd");
+        RetrofitAPI retrofitAPI = retrofit.create(RetrofitAPI.class);
 
-            JsonObjectRequest request = new JsonObjectRequest(Request.Method.POST, url, respObj, new Response.Listener<JSONObject>() {
-                @Override
-                public void onResponse(JSONObject response) {
-                    // after getting the response we are
-                    // hiding our progress bar and setting data to edit text.
-                    // loadingPB.setVisibility(View.GONE);
-                    // nameEdt.setText("");
-                    // jobEdt.setText("");
-                    // below line is to display a toast message.
-                    Toast.makeText(ClientInscription.this, "Data added to API", Toast.LENGTH_SHORT).show();
-                }
-            }, new Response.ErrorListener() {
-                @Override
-                public void onErrorResponse(VolleyError error) {
-                    // this method is called when we get
-                    // any error while calling an API.
-                    // below line is to display a toast message.
-                    Log.d("Wil", "onErrorResponse: " + error + error.getMessage());
-                    Toast.makeText(ClientInscription.this, "Fail to get response = " + error, Toast.LENGTH_SHORT).show();
-                }
-            });
+        // passing data from our text fields to our modal class.
+        DataModal modal = new DataModal(get_post, get_code_post, get_ville, get_email, get_mdp, get_conf_mdp);
 
-            queue.add(request);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        // calling a method to create a post and passing our modal class.
+        Call<DataModal> call = retrofitAPI.createPost(modal);
 
-        // below line is to make
-        // a json object request.
+        call.enqueue(new Callback<DataModal>() {
+            @Override
+            public void onResponse(Call<DataModal> call, retrofit2.Response<DataModal> response) {
+                // this method is called when we get response from our api.
+                Toast.makeText(ClientInscription.this, "Data added to API", Toast.LENGTH_SHORT).show();
+
+                // below line is for hiding our progress bar.
+//                loadingPB.setVisibility(View.GONE);
+
+                // on below line we are setting empty text
+                // to our both edit text.
+                /*jobEdt.setText("");
+                nameEdt.setText("");
+
+                // we are getting response from our body
+                // and passing it to our modal class.
+                DataModal responseFromAPI = response.body();
+
+                // on below line we are getting our data from modal class and adding it to our string.
+                String responseString = "Response Code : " + response.code() + "\nName : " + responseFromAPI.getName() + "\n" + "Job : " + responseFromAPI.getJob();
+
+                // below line we are setting our
+                // string to our text view.
+                responseTV.setText(responseString);*/
+            }
+
+            @Override
+            public void onFailure(Call<DataModal> call, Throwable t) {
+                // setting text to our text view when
+                // we get error response from API.
+                Log.e("Error found is : ", t.getMessage());
+            }
+
+        });
     }
-
 }
