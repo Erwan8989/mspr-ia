@@ -89,6 +89,9 @@ public class ClientInscription extends AppCompatActivity {
                 @Override
                 public void onResponse(JSONObject response) {
                     Toast.makeText(ClientInscription.this, "Inscription effectuée", Toast.LENGTH_SHORT).show();
+                    Intent identification = new Intent(getApplicationContext(), ClientConnexion.class);
+                    startActivity(identification);
+                    finish();
                 }
             }, new Response.ErrorListener() {
                 @Override
