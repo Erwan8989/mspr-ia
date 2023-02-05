@@ -19,6 +19,8 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.vishnusivadas.advanced_httpurlconnection.PutData;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -91,10 +93,11 @@ public class ClientInscription extends AppCompatActivity {
         // url to post our data
 //        String url = "http://192.168.1.136:8000/register/customer";
 //        loadingPB.setVisibility(View.VISIBLE);
-
+        Gson gson = new GsonBuilder()
+                .setLenient()
+                .create();
         // creating a new variable for our request queue
-        Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("http://192.168.1.136:8000/register/customer/")
+        Retrofit retrofit = new Retrofit.Builder().addConverterFactory(GsonConverterFactory.create(gson)).baseUrl("http://192.168.1.136:8000/register/")
                 // as we are sending data in json format so
                 // we have to add Gson converter factory
                 .addConverterFactory(GsonConverterFactory.create())
@@ -114,6 +117,8 @@ public class ClientInscription extends AppCompatActivity {
             public void onResponse(Call<DataModal> call, retrofit2.Response<DataModal> response) {
                 // this method is called when we get response from our api.
                 Toast.makeText(ClientInscription.this, "Data added to API", Toast.LENGTH_SHORT).show();
+
+                Log.e("user", String.valueOf(response));
 
                 // below line is for hiding our progress bar.
 //                loadingPB.setVisibility(View.GONE);
@@ -141,7 +146,6 @@ public class ClientInscription extends AppCompatActivity {
                 // we get error response from API.
                 Log.e("Error found is : ", t.getMessage());
             }
-
         });
     }
 }
