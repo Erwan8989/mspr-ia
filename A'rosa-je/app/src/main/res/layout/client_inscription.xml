@@ -44,11 +44,11 @@
 					android:id="@+id/nom_prenom">
 
 				<EditText
-						android:id="@+id/prenom"
+						android:id="@+id/prenom_insc"
 						android:layout_width="170dp"
 						android:layout_height="wrap_content"
 						android:hint="Prénom"
-						android:inputType="number"
+						android:inputType="text"
 						android:minHeight="48dp"
 						android:backgroundTint="#2F2E2E"
 						android:gravity="center"
@@ -58,7 +58,7 @@
 						tools:ignore="NotSibling" />
 
 				<EditText
-						android:id="@+id/nom"
+						android:id="@+id/nom_insc"
 						android:layout_width="match_parent"
 						android:layout_height="wrap_content"
 						android:gravity="center"
@@ -174,7 +174,6 @@
 					android:hint="Mot de passe"
 					android:inputType="textPassword"
 					android:textColor="#808080"
-
 					android:gravity="center"
 					android:textColorHint="#808080"
 					android:textSize="14sp" />

@@ -32,7 +32,7 @@ import java.util.Map;
 
 public class ClientInscription extends AppCompatActivity {
 
-    android.widget.EditText post, code_post, ville, email, mdp, conf_mdp;
+    android.widget.EditText post, code_post, ville, email, mdp, conf_mdp, numero_rue, prenom, nom;
     Button b1;
     ProgressBar progressBar;
 
@@ -47,6 +47,9 @@ public class ClientInscription extends AppCompatActivity {
         email = findViewById(R.id.email_address);
         mdp = findViewById(R.id.password_insc);
         conf_mdp = findViewById(R.id.confirm_password);
+        numero_rue = findViewById(R.id.numero_rue);
+        prenom = findViewById(R.id.prenom_insc);
+        nom = findViewById(R.id.nom_insc);
 
         Log.e("post", String.valueOf(post));
 
@@ -56,19 +59,22 @@ public class ClientInscription extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                String get_post, get_code_post, get_ville, get_email, get_mdp, get_conf_mdp;
+                String get_post, get_code_post, get_ville, get_email, get_mdp, get_conf_mdp, get_numero_rue, get_prenom, get_nom;
                 get_post = String.valueOf(post.getText());
                 get_code_post = String.valueOf(code_post.getText());
                 get_ville = String.valueOf(ville.getText());
                 get_email = String.valueOf(email.getText());
                 get_mdp = String.valueOf(mdp.getText());
                 get_conf_mdp = String.valueOf(conf_mdp.getText());
-                postDataUsingVolley(get_post, get_code_post, get_ville, get_email, get_mdp, get_conf_mdp);
+                get_numero_rue = String.valueOf(numero_rue.getText());
+                get_prenom = String.valueOf(prenom.getText());
+                get_nom = String.valueOf(nom.getText());
+                postDataUsingVolley(get_post, get_code_post, get_ville, get_email, get_mdp, get_conf_mdp, get_numero_rue, get_prenom, get_nom);
             }
         });
     }
 
-    private void postDataUsingVolley(String get_post, String get_code_post, String get_ville, String get_email, String get_mdp, String get_conf_mdp) {
+    private void postDataUsingVolley(String get_post, String get_code_post, String get_ville, String get_email, String get_mdp, String get_conf_mdp, String get_numero_rue, String get_prenom, String get_nom) {
         // ********** METTRE SYSTEMATIQUEMENT SA PROPRE IP **********
         String url = "http://192.168.1.136:8000/register/customer";
 
@@ -81,9 +87,9 @@ public class ClientInscription extends AppCompatActivity {
             respObj.put("city", get_ville);
             respObj.put("email", get_email);
             respObj.put("password", get_mdp);
-            respObj.put("firstname", "tsdf");
-            respObj.put("lastname", "sfdcfscdc");
-            respObj.put("streetNumber", "52");
+            respObj.put("firstname", get_prenom);
+            respObj.put("lastname", get_nom);
+            respObj.put("streetNumber", get_numero_rue);
 
             JsonObjectRequest request = new JsonObjectRequest(Request.Method.POST, url, respObj, new Response.Listener<JSONObject>() {
                 @Override
