@@ -95,8 +95,8 @@
 						android:textStyle="bold" />
 			</RelativeLayout>
 
-			<TextView
-					android:id="@+id/btn_register"
+			<Button
+					android:id="@+id/btn_insc"
 					android:layout_width="match_parent"
 					android:layout_height="wrap_content"
 					android:layout_below="@id/btn_login"

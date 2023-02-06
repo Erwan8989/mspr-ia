@@ -24,7 +24,7 @@ public class ClientInscription extends AppCompatActivity {
 
     android.widget.EditText post, code_post, ville, email, mdp, conf_mdp, numero_rue, prenom, nom;
     String type_user;
-    Button b1;
+    Button b1, b_login;
     ProgressBar progressBar;
 
     @Override
@@ -45,6 +45,7 @@ public class ClientInscription extends AppCompatActivity {
         Log.e("post", String.valueOf(post));
 
         b1 = findViewById(R.id.button1);
+        b_login = findViewById(R.id.login);
 
         b1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -63,6 +64,19 @@ public class ClientInscription extends AppCompatActivity {
                 postDataUsingVolley(get_post, get_code_post, get_ville, get_email, get_mdp, get_conf_mdp, get_numero_rue, get_prenom, get_nom);
             }
         });
+
+        b_login.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v2) {
+                openActivityClientConnexion();
+            }
+        });
+    }
+
+    public void openActivityClientConnexion() {
+        Intent ClientConnexion = new Intent(this, ClientConnexion.class);
+        startActivity(ClientConnexion);
+        finish();
     }
 
     public void radio_insc(View view) {
