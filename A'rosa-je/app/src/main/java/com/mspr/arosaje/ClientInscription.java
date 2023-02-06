@@ -49,7 +49,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class ClientInscription extends AppCompatActivity {
 
-    android.widget.EditText post, code_post, ville, email, mdp, conf_mdp;
+    android.widget.EditText post, code_post, ville, email, mdp, conf_mdp, numero_rue, prenom, nom;
     Button b1;
     ProgressBar progressBar;
 
@@ -62,90 +62,69 @@ public class ClientInscription extends AppCompatActivity {
         code_post = findViewById(R.id.code_postal);
         ville = findViewById(R.id.ville);
         email = findViewById(R.id.email_address);
-        mdp = findViewById(R.id.password);
+        mdp = findViewById(R.id.password_insc);
         conf_mdp = findViewById(R.id.confirm_password);
+        numero_rue = findViewById(R.id.numero_rue);
+        prenom = findViewById(R.id.prenom_insc);
+        nom = findViewById(R.id.nom_insc);
 
-        String get_post, get_code_post, get_ville, get_email, get_mdp, get_conf_mdp;
-        get_post = String.valueOf(post.getText());
-        get_code_post = String.valueOf(code_post.getText());
-        get_ville = String.valueOf(ville.getText());
-        get_email = String.valueOf(email.getText());
-        get_mdp = String.valueOf(mdp.getText());
-        get_conf_mdp = String.valueOf(conf_mdp.getText());
+        Log.e("post", String.valueOf(post));
 
         b1 = findViewById(R.id.button1);
 
         b1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // validating if the text field is empty or not.
-                /*if (nameEdt.getText().toString().isEmpty() && jobEdt.getText().toString().isEmpty()) {
-                    Toast.makeText(MainActivity.this, "Please enter both the values", Toast.LENGTH_SHORT).show();
-                    return;
-                }*/
-                // calling a method to post the data and passing our name and job.
-                postData(get_post, get_code_post, get_ville, get_email, get_mdp, get_conf_mdp);
+
+                String get_post, get_code_post, get_ville, get_email, get_mdp, get_conf_mdp, get_numero_rue, get_prenom, get_nom;
+                get_post = String.valueOf(post.getText());
+                get_code_post = String.valueOf(code_post.getText());
+                get_ville = String.valueOf(ville.getText());
+                get_email = String.valueOf(email.getText());
+                get_mdp = String.valueOf(mdp.getText());
+                get_conf_mdp = String.valueOf(conf_mdp.getText());
+                get_numero_rue = String.valueOf(numero_rue.getText());
+                get_prenom = String.valueOf(prenom.getText());
+                get_nom = String.valueOf(nom.getText());
+                postDataUsingVolley(get_post, get_code_post, get_ville, get_email, get_mdp, get_conf_mdp, get_numero_rue, get_prenom, get_nom);
             }
         });
     }
 
-    private void postData(String get_post, String get_code_post, String get_ville, String get_email, String get_mdp, String get_conf_mdp) {
-        // url to post our data
-//        String url = "http://192.168.1.136:8000/register/customer";
-//        loadingPB.setVisibility(View.VISIBLE);
-        Gson gson = new GsonBuilder()
-                .setLenient()
-                .create();
-        // creating a new variable for our request queue
-        Retrofit retrofit = new Retrofit.Builder().addConverterFactory(GsonConverterFactory.create(gson)).baseUrl("http://192.168.1.136:8000/register/")
-                // as we are sending data in json format so
-                // we have to add Gson converter factory
-                .addConverterFactory(GsonConverterFactory.create())
-                // at last we are building our retrofit builder.
-                .build();
+    private void postDataUsingVolley(String get_post, String get_code_post, String get_ville, String get_email, String get_mdp, String get_conf_mdp, String get_numero_rue, String get_prenom, String get_nom) {
+        // ********** METTRE SYSTEMATIQUEMENT SA PROPRE IP **********
+        String url = "http://192.168.1.136:8000/register/customer";
 
-        RetrofitAPI retrofitAPI = retrofit.create(RetrofitAPI.class);
+        RequestQueue queue = Volley.newRequestQueue(ClientInscription.this);
 
-        // passing data from our text fields to our modal class.
-        DataModal modal = new DataModal(get_post, get_code_post, get_ville, get_email, get_mdp, get_conf_mdp);
+        try {
+            JSONObject respObj = new JSONObject();
+            respObj.put("street", get_post);
+            respObj.put("zipCode", get_code_post);
+            respObj.put("city", get_ville);
+            respObj.put("email", get_email);
+            respObj.put("password", get_mdp);
+            respObj.put("firstname", get_prenom);
+            respObj.put("lastname", get_nom);
+            respObj.put("streetNumber", get_numero_rue);
 
-        // calling a method to create a post and passing our modal class.
-        Call<DataModal> call = retrofitAPI.createPost(modal);
-
-        call.enqueue(new Callback<DataModal>() {
-            @Override
-            public void onResponse(Call<DataModal> call, retrofit2.Response<DataModal> response) {
-                // this method is called when we get response from our api.
-                Toast.makeText(ClientInscription.this, "Data added to API", Toast.LENGTH_SHORT).show();
-
-                Log.e("user", String.valueOf(response));
-
-                // below line is for hiding our progress bar.
-//                loadingPB.setVisibility(View.GONE);
-
-                // on below line we are setting empty text
-                // to our both edit text.
-                /*jobEdt.setText("");
-                nameEdt.setText("");
-
-                // we are getting response from our body
-                // and passing it to our modal class.
-                DataModal responseFromAPI = response.body();
-
-                // on below line we are getting our data from modal class and adding it to our string.
-                String responseString = "Response Code : " + response.code() + "\nName : " + responseFromAPI.getName() + "\n" + "Job : " + responseFromAPI.getJob();
-
-                // below line we are setting our
-                // string to our text view.
-                responseTV.setText(responseString);*/
-            }
-
-            @Override
-            public void onFailure(Call<DataModal> call, Throwable t) {
-                // setting text to our text view when
-                // we get error response from API.
-                Log.e("Error found is : ", t.getMessage());
-            }
-        });
+            JsonObjectRequest request = new JsonObjectRequest(Request.Method.POST, url, respObj, new Response.Listener<JSONObject>() {
+                @Override
+                public void onResponse(JSONObject response) {
+                    Toast.makeText(ClientInscription.this, "Inscription effectuée", Toast.LENGTH_SHORT).show();
+                    Intent identification = new Intent(getApplicationContext(), ClientConnexion.class);
+                    startActivity(identification);
+                    finish();
+                }
+            }, new Response.ErrorListener() {
+                @Override
+                public void onErrorResponse(VolleyError error) {
+                    Toast.makeText(ClientInscription.this, "Fail to get response = " + error, Toast.LENGTH_SHORT).show();
+                }
+            });
+            queue.add(request);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }
