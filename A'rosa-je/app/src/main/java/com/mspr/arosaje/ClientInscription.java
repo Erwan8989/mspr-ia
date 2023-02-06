@@ -23,7 +23,7 @@ import org.json.JSONObject;
 public class ClientInscription extends AppCompatActivity {
 
     android.widget.EditText post, code_post, ville, email, mdp, conf_mdp, numero_rue, prenom, nom;
-    String type;
+    String type_user;
     Button b1;
     ProgressBar progressBar;
 
@@ -72,18 +72,18 @@ public class ClientInscription extends AppCompatActivity {
         switch (view.getId()) {
             case R.id.client_insc:
                 if (checked)
-                    type = "customer";
+                    type_user = "customer";
                 break;
             case R.id.botaniste_insc:
                 if (checked)
-                    type = "botaniste";
+                    type_user = "botaniste";
                 break;
         }
     }
 
     private void postDataUsingVolley(String get_post, String get_code_post, String get_ville, String get_email, String get_mdp, String get_conf_mdp, String get_numero_rue, String get_prenom, String get_nom) {
         // ********** METTRE SYSTEMATIQUEMENT SA PROPRE IP **********
-        String url = "http://192.168.1.136:8000/register/" + type;
+        String url = "http://192.168.1.136:8000/register/" + type_user;
 
         RequestQueue queue = Volley.newRequestQueue(ClientInscription.this);
 
