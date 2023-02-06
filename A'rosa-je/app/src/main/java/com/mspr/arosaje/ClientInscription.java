@@ -1,15 +1,12 @@
 package com.mspr.arosaje;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Looper;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ProgressBar;
-import android.widget.TextView;
+import android.widget.RadioButton;
 import android.widget.Toast;
 
 import com.android.volley.Request;
@@ -17,22 +14,16 @@ import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
-import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
-import com.vishnusivadas.advanced_httpurlconnection.PutData;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import org.json.JSONException;
 import org.json.JSONObject;
-
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
 
 public class ClientInscription extends AppCompatActivity {
 
     android.widget.EditText post, code_post, ville, email, mdp, conf_mdp, numero_rue, prenom, nom;
+    String type;
     Button b1;
     ProgressBar progressBar;
 
@@ -74,9 +65,25 @@ public class ClientInscription extends AppCompatActivity {
         });
     }
 
+    public void radio_insc(View view) {
+        // Is the button now checked?
+        boolean checked = ((RadioButton) view).isChecked();
+        // Check which radio button was clicked
+        switch (view.getId()) {
+            case R.id.client_insc:
+                if (checked)
+                    type = "customer";
+                break;
+            case R.id.botaniste_insc:
+                if (checked)
+                    type = "botaniste";
+                break;
+        }
+    }
+
     private void postDataUsingVolley(String get_post, String get_code_post, String get_ville, String get_email, String get_mdp, String get_conf_mdp, String get_numero_rue, String get_prenom, String get_nom) {
         // ********** METTRE SYSTEMATIQUEMENT SA PROPRE IP **********
-        String url = "http://192.168.1.136:8000/register/customer";
+        String url = "http://192.168.1.136:8000/register/" + type;
 
         RequestQueue queue = Volley.newRequestQueue(ClientInscription.this);
 
