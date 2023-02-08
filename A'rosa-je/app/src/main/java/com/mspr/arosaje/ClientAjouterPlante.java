@@ -25,7 +25,7 @@ public class ClientAjouterPlante extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.client_ajouter_article);
 
-        b1 = (Button) findViewById(R.id.btn_resgisterPlant);
+        b1 = (Button) findViewById(R.id.btn_ajout_image);
 
         // By ID we can get each component
         // which id is assigned in XML file
