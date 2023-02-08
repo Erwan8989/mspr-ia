@@ -21,6 +21,7 @@ import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.vishnusivadas.advanced_httpurlconnection.PutData;
@@ -36,6 +37,7 @@ public class ClientConnexion extends AppCompatActivity {
 
     Button btn_insc, btn_conn;
     android.widget.EditText mail_conn, password_conn;
+    private RequestQueue rQueue;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,82 +67,54 @@ public class ClientConnexion extends AppCompatActivity {
                 } else {
                     Toast.makeText(getApplicationContext(), "Tous les champs sont requis", Toast.LENGTH_SHORT).show();
                 }*/
-                login();
+                try {
+                    loginAction();
+                } catch (JSONException e) {
+                    throw new RuntimeException(e);
+                }
             }
         });
     }
 
-    private void login() {
-        //Getting values from edit texts
-        final String email = mail_conn.getText().toString().trim();
-        final String password = password_conn.getText().toString().trim();
+    private void loginAction() throws JSONException {
+        String url = "http://172.20.10.2:8000/login";
+        final String user = mail_conn.getText().toString();
+        final String pswd = password_conn.getText().toString();
+        /*if (userr.isEmpty()) {
+            user.setError("Username or Email is required");
+            user.requestFocus();
+            return;
+        }
+        if (pswd.isEmpty()) {
+            password.setError("Password is required");
+            password.requestFocus();
+            return;
+        }*/
+        RequestQueue queue = Volley.newRequestQueue(ClientConnexion.this);
+        try {
+            JSONObject respObj = new JSONObject();
+            respObj.put("username", user);
+            respObj.put("password", pswd);
 
-        //Creating a string request
-        StringRequest stringRequest = new StringRequest(Request.Method.POST, "http://172.20.10.2:8000/login",
-                new Response.Listener<String>() {
-                    @Override
-                    public void onResponse(String response) {
-                        Log.e("response ", response);
-                        //If we are getting success from server
-                        if (response.equalsIgnoreCase("200")) {
-                            //Creating a shared preference
-                            SharedPreferences sharedPreferences = ClientConnexion.this.getSharedPreferences("test", Context.MODE_PRIVATE);
-
-                            //Creating editor to store values to shared preferences
-                            SharedPreferences.Editor editor = sharedPreferences.edit();
-
-                            /*//Adding values to editor
-                            editor.putBoolean("test", true);
-                            editor.putString(Config.EMAIL_SHARED_PREF, email);*/
-
-                            //Saving values to editor
-                            editor.commit();
-                            //Starting profile activity
-                            Intent intent = new Intent(getApplicationContext(), ClientAccueil.class);
-                            startActivity(intent);
-                            Log.e("Success", response);
-                        } else {
-                            //If the server response is not success
-                            //Displaying an error message on toast
-                            Toast.makeText(ClientConnexion.this, "Invalid username or password", Toast.LENGTH_LONG).show();
-                        }
-                    }
-                },
-                new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        Log.e("Error", String.valueOf(error));
-                    }
-                }) {
-            @Override
-            protected Map<String, String> getParams() throws AuthFailureError {
-                Map<String,String> params = new HashMap<>();
-                //Adding parameters to request
-                params.put("username", email);
-                params.put("password", password);
-
-                Log.e("params1 ", String.valueOf(params));
-                //returning parameter
-                return params;
-            }
-            @Override
-            public Map<String, String> getHeaders() throws AuthFailureError {
-                HashMap<String, String> params = new HashMap<String, String>();
-                params.put("Content-Type", "application/json");
-                String creds = String.format("%s:%s","username","password");
-                String auth = "Basic " + Base64.encodeToString(creds.getBytes(), Base64.DEFAULT);
-                params.put("Authorization", auth);
-
-                Log.e("params2 ", String.valueOf(params));
-                return params;
-            }
-        };
-
-        //Adding the string request to the queue
-        RequestQueue requestQueue = Volley.newRequestQueue(this);
-        requestQueue.add(stringRequest);
-        Log.e("Request queue ", String.valueOf(requestQueue));
-        Log.e("String", String.valueOf(stringRequest));
+            JsonObjectRequest request = new JsonObjectRequest(Request.Method.POST, url, respObj, new Response.Listener<JSONObject>() {
+                @Override
+                public void onResponse(JSONObject response) {
+                    Toast.makeText(ClientConnexion.this, "Inscription effectuée", Toast.LENGTH_SHORT).show();
+                    Intent identification = new Intent(getApplicationContext(), ClientAccueil.class);
+                    startActivity(identification);
+                    finish();
+                }
+            }, new Response.ErrorListener() {
+                @Override
+                public void onErrorResponse(VolleyError error) {
+                    Log.e("error", String.valueOf(error));
+                    Toast.makeText(ClientConnexion.this, "Fail to get response = " + error, Toast.LENGTH_SHORT).show();
+                }
+            });
+            queue.add(request);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     public void openActivityClientCInscription() {
