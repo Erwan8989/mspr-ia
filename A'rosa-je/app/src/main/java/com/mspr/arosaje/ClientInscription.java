@@ -97,7 +97,7 @@ public class ClientInscription extends AppCompatActivity {
 
     private void postDataUsingVolley(String get_post, String get_code_post, String get_ville, String get_email, String get_mdp, String get_conf_mdp, String get_numero_rue, String get_prenom, String get_nom) {
         // ********** METTRE SYSTEMATIQUEMENT SA PROPRE IP **********
-        String url = "http://192.168.1.136:8000/register/" + type_user;
+        String url = "http://172.20.10.2:8000/register/" + type_user;
 
         RequestQueue queue = Volley.newRequestQueue(ClientInscription.this);
 
