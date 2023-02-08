@@ -65,5 +65,12 @@
 				android:layout_marginBottom="20dp"
 				android:text="Enregistrer" />
 
+		<ImageView
+				android:layout_width="350dp"
+				android:layout_marginLeft="15dp"
+				android:layout_height="450dp"
+				android:id="@+id/click_image"
+				android:layout_marginBottom="10dp"/>
+
 	</LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
