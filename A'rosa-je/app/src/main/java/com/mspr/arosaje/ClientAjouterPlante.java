@@ -62,6 +62,7 @@ public class ClientAjouterPlante extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 
         // Match the request 'pic id with requestCode
+        super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == pic_id) {
 
             // BitMap is data structure of image file
