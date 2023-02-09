@@ -15,7 +15,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class ClientAjouterPlante extends AppCompatActivity {
 
-    Button b1;
+    Button btn_ajout_image;
     ImageView click_image_id;
 
     private static final int pic_id = 123;
@@ -25,27 +25,14 @@ public class ClientAjouterPlante extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.client_ajouter_article);
 
-        b1 = (Button) findViewById(R.id.btn_ajout_image);
-
-        // By ID we can get each component
-        // which id is assigned in XML file
-        // get Buttons and imageview.
+        btn_ajout_image = (Button) findViewById(R.id.btn_ajout_image);
         click_image_id = (ImageView) findViewById(R.id.click_image);
 
-        // Camera_open button is for open the camera
-        // and add the setOnClickListener in this button
-        b1.setOnClickListener(new View.OnClickListener() {
+        btn_ajout_image.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                // Create the camera_intent ACTION_IMAGE_CAPTURE
-                // it will open the camera for capture the image
-                Intent camera_intent
-                        = new Intent(MediaStore
-                        .ACTION_IMAGE_CAPTURE);
-
-                // Start the activity with camera_intent,
-                // and request pic id
+                Intent camera_intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
                 startActivityForResult(camera_intent, pic_id);
             }
         });
@@ -58,7 +45,6 @@ public class ClientAjouterPlante extends AppCompatActivity {
         });*/
     }
 
-    // This method will help to retrieve the image
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 
         // Match the request 'pic id with requestCode
@@ -67,8 +53,7 @@ public class ClientAjouterPlante extends AppCompatActivity {
 
             // BitMap is data structure of image file
             // which stor the image in memory
-            Bitmap photo = (Bitmap) data.getExtras()
-                    .get("data");
+            Bitmap photo = (Bitmap) data.getExtras().get("data");
 
             // Set the image in imageview for display
             click_image_id.setImageBitmap(photo);
