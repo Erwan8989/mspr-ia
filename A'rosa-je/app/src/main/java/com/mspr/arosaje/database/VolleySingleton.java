@@ -8,6 +8,7 @@ import com.android.volley.NetworkResponse;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
+import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 
@@ -59,11 +60,11 @@ public class VolleySingleton {
                     assert response.headers != null;
                     Map<String, String> responseHeaders = response.headers;
                     String rawCookies = responseHeaders.get("Set-Cookie");
-                    Log.d("cookies",rawCookies);
+                    Log.e("cookies",rawCookies);
                     return super.parseNetworkResponse(response);
                 }
             }
-            ;
+                    ;
             addToRequestQueue(request);
         } catch (Exception e) {
             e.printStackTrace();
