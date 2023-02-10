@@ -1,15 +1,12 @@
 package com.mspr.arosaje;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Looper;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ProgressBar;
-import android.widget.TextView;
+import android.widget.RadioButton;
 import android.widget.Toast;
 
 import com.android.volley.Request;
@@ -17,23 +14,17 @@ import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
-import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
-import com.vishnusivadas.advanced_httpurlconnection.PutData;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import org.json.JSONException;
 import org.json.JSONObject;
-
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
 
 public class ClientInscription extends AppCompatActivity {
 
     android.widget.EditText post, code_post, ville, email, mdp, conf_mdp, numero_rue, prenom, nom;
-    Button b1;
+    String type_user = "customer";
+    Button b1, b_login;
     ProgressBar progressBar;
 
     @Override
@@ -54,6 +45,7 @@ public class ClientInscription extends AppCompatActivity {
         Log.e("post", String.valueOf(post));
 
         b1 = findViewById(R.id.button1);
+        b_login = findViewById(R.id.login);
 
         b1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -72,11 +64,35 @@ public class ClientInscription extends AppCompatActivity {
                 postDataUsingVolley(get_post, get_code_post, get_ville, get_email, get_mdp, get_conf_mdp, get_numero_rue, get_prenom, get_nom);
             }
         });
+
+        b_login.setOnClickListener(v2 -> openActivityClientConnexion());
+    }
+
+    public void openActivityClientConnexion() {
+        Intent ClientConnexion = new Intent(this, ClientConnexion.class);
+        startActivity(ClientConnexion);
+        finish();
+    }
+
+    public void radio_insc(View view) {
+        // Is the button now checked?
+        boolean checked = ((RadioButton) view).isChecked();
+        // Check which radio button was clicked
+        switch (view.getId()) {
+            case R.id.client_insc:
+                if (checked)
+                    type_user = "customer";
+                break;
+            case R.id.botaniste_insc:
+                if (checked)
+                    type_user = "botaniste";
+                break;
+        }
     }
 
     private void postDataUsingVolley(String get_post, String get_code_post, String get_ville, String get_email, String get_mdp, String get_conf_mdp, String get_numero_rue, String get_prenom, String get_nom) {
         // ********** METTRE SYSTEMATIQUEMENT SA PROPRE IP **********
-        String url = "http://192.168.1.136:8000/register/customer";
+        String url = "http://172.20.10.2:8000/register/" + type_user;
 
         RequestQueue queue = Volley.newRequestQueue(ClientInscription.this);
 
@@ -87,6 +103,7 @@ public class ClientInscription extends AppCompatActivity {
             respObj.put("city", get_ville);
             respObj.put("email", get_email);
             respObj.put("password", get_mdp);
+            respObj.put("passwordConfirm", get_mdp);
             respObj.put("firstname", get_prenom);
             respObj.put("lastname", get_nom);
             respObj.put("streetNumber", get_numero_rue);
