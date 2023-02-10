@@ -7,63 +7,76 @@
 		android:gravity="center"
 		android:orientation="vertical">
 
-	<LinearLayout
+	<ScrollView
 			android:layout_width="match_parent"
-			android:layout_height="match_parent"
-			android:orientation="vertical">
+			android:layout_height="wrap_content">
 
-		<TextView
+		<LinearLayout
 				android:layout_width="match_parent"
-				android:layout_height="120dp"
-				android:background="#dcdfc7"
-				android:gravity="center"
-				android:text="upload jusqu'à x photos"
-				android:textAlignment="center"
-				android:textColor="#000"
-				android:textSize="17dp">
+				android:layout_height="match_parent"
+				android:orientation="vertical">
 
 
-		</TextView>
+			<EditText
+					android:id="@+id/nom_ajout_plante"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:layout_marginHorizontal="15dp"
+					android:layout_marginTop="20dp"
+					android:hint="Nom"
+					android:inputType="text"
+					android:minHeight="48dp" />
+
+			<EditText
+					android:id="@+id/espece_ajout_plante"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:layout_marginHorizontal="15dp"
+					android:layout_marginTop="10dp"
+					android:hint="Espèce"
+					android:inputType="text"
+					android:minHeight="48dp" />
+
+			<EditText
+					android:id="@+id/description_ajout_plante"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:layout_marginHorizontal="15dp"
+					android:layout_marginTop="10dp"
+					android:hint="Descriptif"
+					android:inputType="text"
+					android:minHeight="48dp" />
+
+			<LinearLayout
+					android:orientation="horizontal"
+					android:layout_width="match_parent"
+					android:layout_height="55dp"
+					android:layout_weight="1"
+					android:gravity="center">
+
+				<Button
+						android:id="@+id/btn_ajout_image"
+						android:layout_width="150dp"
+						android:layout_height="55dp"
+						android:text="Ajouter une image"
+						android:layout_marginEnd="20dp" />
+
+				<Button
+						android:id="@+id/btn_enregistrer_plante"
+						android:layout_width="150dp"
+						android:layout_height="55dp"
+						android:text="Enregistrer" />
 
 
-		<EditText
-				android:id="@+id/nom"
-				android:layout_width="match_parent"
-				android:layout_height="wrap_content"
-				android:layout_marginHorizontal="15dp"
-				android:layout_marginTop="20dp"
-				android:hint="Nom"
-				android:inputType="number"
-				android:minHeight="48dp" />
+			</LinearLayout>
 
-		<EditText
-				android:id="@+id/espece"
-				android:layout_width="match_parent"
-				android:layout_height="wrap_content"
-				android:layout_marginHorizontal="15dp"
-				android:layout_marginTop="10dp"
-				android:hint="Espèce"
-				android:inputType="number"
-				android:minHeight="48dp" />
+			<ImageView
+					android:layout_width="match_parent"
+					android:layout_height="500dp"
+					android:id="@+id/click_image" />
 
-		<EditText
-				android:id="@+id/descriptif"
-				android:layout_width="match_parent"
-				android:layout_height="wrap_content"
-				android:layout_marginHorizontal="15dp"
-				android:layout_marginTop="10dp"
-				android:hint="Descriptif"
-				android:inputType="number"
-				android:minHeight="48dp" />
+		</LinearLayout>
 
-		<Button
-				android:id="@+id/btn_resgisterPlant"
-				android:layout_width="150dp"
-				android:layout_height="55dp"
-				android:layout_marginLeft="20dp"
-				android:layout_marginTop="10dp"
-				android:layout_marginBottom="20dp"
-				android:text="Enregistrer" />
 
-	</LinearLayout>
+	</ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>
