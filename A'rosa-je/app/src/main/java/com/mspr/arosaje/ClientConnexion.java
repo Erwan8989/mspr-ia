@@ -53,7 +53,7 @@ public class ClientConnexion extends AppCompatActivity {
     }
 
     private void loginAction(String mail, String pwd) throws JSONException {
-        String url = "http://172.20.10.4:8000/login";
+        String url = "http://172.20.10.2:8000/login";
         if (mail.isEmpty()) {
             mail_conn.setError("Username or Email is required");
             mail_conn.requestFocus();
