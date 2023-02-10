@@ -1,6 +1,5 @@
-package com.mspr.arosaje;
+package com.mspr.arosaje.client;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
@@ -9,6 +8,8 @@ import android.view.View;
 import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.mspr.arosaje.R;
 
 
 public class ClientAccueil extends AppCompatActivity {
@@ -26,26 +27,11 @@ public class ClientAccueil extends AppCompatActivity {
 
         // ***************** Changement de page au clic *****************
 
-        b1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v2) {
-                openActivityGardienner();
-            }
-        });
+        b1.setOnClickListener(v2 -> openActivityGardienner());
 
-        b2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v2) {
-                openActivityProfil();
-            }
-        });
+        b2.setOnClickListener(v2 -> openActivityProfil());
 
-        b3.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v2) {
-                openActivityAjouterPlante();
-            }
-        });
+        b3.setOnClickListener(v2 -> openActivityAjouterPlante());
 
     }
 

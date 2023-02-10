@@ -1,23 +1,31 @@
-package com.mspr.arosaje;
+package com.mspr.arosaje.client;
 
-import android.app.Activity;
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Button;
+import android.content.Intent;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-public class ClientParametre extends AppCompatActivity {
+import com.mspr.arosaje.R;
+
+public class ClientGardiennage extends AppCompatActivity {
+
+    Button b1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.client_parametre);
+        setContentView(R.layout.client_gardiennage);
+
+        b1 = (Button) findViewById(R.id.btn_register);
+
+        // ***************** Changement de page au clic *****************
+
 
     }
 
-    /*Bouton retour*/
     @Override
     public void onBackPressed() {
         Intent intentBack = new Intent(this, ClientAccueil.class);
@@ -28,7 +36,7 @@ public class ClientParametre extends AppCompatActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.top_menu_engrenage, menu);
+        getMenuInflater().inflate(R.menu.top_menu_sans_deco, menu);
         return super.onCreateOptionsMenu(menu);
     }
 
@@ -36,12 +44,13 @@ public class ClientParametre extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
 
-        if (id == R.id.deco) {
+        if (id == R.id.empty) {
             Intent accueil = new Intent(this, ClientConnexion.class);
             startActivity(accueil);
             finish();
         }
         return super.onOptionsItemSelected(item);
     }
+
 
 }

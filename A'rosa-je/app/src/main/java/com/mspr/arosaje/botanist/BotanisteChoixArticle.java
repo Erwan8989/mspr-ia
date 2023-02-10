@@ -1,6 +1,5 @@
-package com.mspr.arosaje;
+package com.mspr.arosaje.botanist;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
@@ -8,22 +7,24 @@ import android.view.MenuItem;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-public class ClientAjoutArticle extends AppCompatActivity {
+import com.mspr.arosaje.client.ClientConnexion;
+import com.mspr.arosaje.R;
+
+public class BotanisteChoixArticle extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.client_ajouter_article);
+        setContentView(R.layout.botaniste_choisir_article);
 
     }
 
-
-    /*Bouton retour*/
-    @Override
+    /*Page de retour a définir*/
+    /*@Override
     public void onBackPressed() {
-        Intent intentBack = new Intent(this, ClientAccueil.class);
+        Intent intentBack = new Intent(this, saisir.class);
         startActivity(intentBack);
-    }
+    }*/
 
     // ********** App bar **********
 

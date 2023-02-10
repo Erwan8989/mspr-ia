@@ -1,36 +1,35 @@
-package com.mspr.arosaje;
+package com.mspr.arosaje.client;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-public class BotanisteAccueil extends AppCompatActivity {
+import com.mspr.arosaje.R;
+
+public class ClientParametre extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.botaniste_accueil);
+        setContentView(R.layout.client_parametre);
 
     }
 
-    /*Page de retour a définir*/
-    /*@Override
+    /*Bouton retour*/
+    @Override
     public void onBackPressed() {
-        Intent intentBack = new Intent(this, saisir.class);
+        Intent intentBack = new Intent(this, ClientAccueil.class);
         startActivity(intentBack);
-    }*/
+    }
 
     // ********** App bar **********
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.top_menu_deco, menu);
+        getMenuInflater().inflate(R.menu.top_menu_engrenage, menu);
         return super.onCreateOptionsMenu(menu);
     }
 

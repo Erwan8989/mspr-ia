@@ -1,22 +1,25 @@
-package com.mspr.arosaje;
+package com.mspr.arosaje.client;
 
-import android.app.Activity;
-import android.os.Bundle;
 import android.content.Intent;
+import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-public class ClientProfil extends AppCompatActivity {
+import com.mspr.arosaje.R;
 
+public class ClientAjoutArticle extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.client_profil);
+        setContentView(R.layout.client_ajouter_article);
+
     }
 
+
+    /*Bouton retour*/
     @Override
     public void onBackPressed() {
         Intent intentBack = new Intent(this, ClientAccueil.class);
@@ -42,5 +45,4 @@ public class ClientProfil extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
-
 }

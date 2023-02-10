@@ -1,4 +1,4 @@
-package com.mspr.arosaje;
+package com.mspr.arosaje.botanist;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -7,6 +7,8 @@ import android.view.View;
 import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.mspr.arosaje.R;
 
 public class VerifBotaniste extends AppCompatActivity {
 

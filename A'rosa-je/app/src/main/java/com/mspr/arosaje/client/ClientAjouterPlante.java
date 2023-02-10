@@ -1,6 +1,5 @@
-package com.mspr.arosaje;
+package com.mspr.arosaje.client;
 
-import android.app.Activity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -9,6 +8,8 @@ import android.widget.Button;
 import android.content.Intent;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.mspr.arosaje.R;
 
 public class ClientAjouterPlante extends AppCompatActivity {
 
@@ -21,13 +22,7 @@ public class ClientAjouterPlante extends AppCompatActivity {
 
         b1 = (Button) findViewById(R.id.btn_resgisterPlant);
 
-
-        b1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v2) {
-                Ajout_plante();
-            }
-        });
+        b1.setOnClickListener(v2 -> Ajout_plante());
     }
 
     @Override

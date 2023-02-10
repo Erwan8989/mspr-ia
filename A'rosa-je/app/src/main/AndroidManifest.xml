@@ -21,7 +21,7 @@
 			tools:ignore="GoogleAppIndexingWarning">
 
 			<activity
-				android:name=".ClientInscription"
+				android:name=".client.ClientInscription"
 				android:exported="true"
 				android:label="@string/app_name">
 
@@ -34,77 +34,77 @@
 			</activity>
 
 			<activity
-					android:name=".ClientGardiennage"
+					android:name=".client.ClientGardiennage"
 					android:exported="true"
 					tools:ignore="Instantiatable"
 					android:label="Gardiennage">
 			</activity>
 
 			<activity
-					android:name=".ClientProfil"
+					android:name=".client.ClientProfil"
 					android:exported="true"
 					tools:ignore="Instantiatable"
 					android:label="Mon profil">
 			</activity>
 
 			<activity
-					android:name=".ClientAjouterPlante"
+					android:name=".client.ClientAjouterPlante"
 					android:exported="true"
 					tools:ignore="Instantiatable"
 					android:label="Mon profil">
 			</activity>
 
 		<activity
-				android:name=".BotanisteAccueil"
+				android:name=".botanist.BotanisteAccueil"
 				android:exported="true"
 				tools:ignore="Instantiatable"
 				android:label="Mon profil">
 		</activity>
 
 		<activity
-				android:name=".BotanisteChoixArticle"
+				android:name=".botanist.BotanisteChoixArticle"
 				android:exported="true"
 				tools:ignore="Instantiatable"
 				android:label="Mon profil">
 		</activity>
 
 		<activity
-				android:name=".ClientAjoutArticle"
+				android:name=".client.ClientAjoutArticle"
 				android:exported="true"
 				tools:ignore="Instantiatable"
 				android:label="Mon profil">
 		</activity>
 
 		<activity
-				android:name=".ClientChoixArticle"
+				android:name=".client.ClientChoixArticle"
 				android:exported="true"
 				tools:ignore="Instantiatable"
 				android:label="Mon profil">
 		</activity>
 
 		<activity
-				android:name=".ClientConnexion"
+				android:name=".client.ClientConnexion"
 				android:exported="true"
 				tools:ignore="Instantiatable"
 				android:label="Mon profil">
 		</activity>
 
 		<activity
-				android:name=".ClientAccueil"
+				android:name=".client.ClientAccueil"
 				android:exported="true"
 				tools:ignore="Instantiatable"
 				android:label="Mon profil">
 		</activity>
 
 		<activity
-				android:name=".ClientParametre"
+				android:name=".client.ClientParametre"
 				android:exported="true"
 				tools:ignore="Instantiatable"
 				android:label="Mon profil">
 		</activity>
 
 		<activity
-				android:name=".VerifBotaniste"
+				android:name=".botanist.VerifBotaniste"
 				android:exported="true"
 				tools:ignore="Instantiatable"
 				android:label="Mon profil">
