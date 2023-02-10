@@ -41,33 +41,21 @@ public class ClientConnexion extends AppCompatActivity {
         btn_conn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v2) {
-                String url = "http://172.20.10.4:8000/login";
                 String mail, password;
                 mail = String.valueOf(mail_conn.getText());
                 password = String.valueOf(password_conn.getText());
 
                 try {
-                    JSONObject respObj = new JSONObject();
-                    respObj.put("username", mail);
-                    respObj.put("password", password);
-                    VolleySingleton
-                            .getInstance(ClientConnexion.this)
-                            .postData(url, respObj, response -> {
-                                Toast.makeText(ClientConnexion.this, "Connexion effectuée", Toast.LENGTH_SHORT).show();
-                                Log.d("USER", "onResponse: " + response);
-                                Intent identification = new Intent(getApplicationContext(), ClientAccueil.class);
-                                startActivity(identification);
-                                finish();
-                            });
-                } catch (Exception e) {
-                    e.printStackTrace();
+                    loginAction(mail, password);
+                } catch (JSONException e) {
+                    throw new RuntimeException(e);
                 }
             }
         });
     }
 
-    /*private void loginAction(String mail, String pwd) throws JSONException {
-        ;
+    private void loginAction(String mail, String pwd) throws JSONException {
+        String url = "http://172.20.10.4:8000/login";
         if (mail.isEmpty()) {
             mail_conn.setError("Username or Email is required");
             mail_conn.requestFocus();
@@ -78,33 +66,24 @@ public class ClientConnexion extends AppCompatActivity {
             password_conn.requestFocus();
             return;
         }
-        RequestQueue queue = Volley.newRequestQueue(ClientConnexion.this);
         try {
             JSONObject respObj = new JSONObject();
             respObj.put("username", mail);
             respObj.put("password", pwd);
 
-            JsonObjectRequest request = new JsonObjectRequest(Request.Method.POST, url, respObj, new Response.Listener<JSONObject>() {
-                @Override
-                public void onResponse(JSONObject response) {
-                    Toast.makeText(ClientConnexion.this, "Connexion effectuée", Toast.LENGTH_SHORT).show();
-                    Log.d("USER", "onResponse: " + response);
-                    Intent identification = new Intent(getApplicationContext(), ClientAccueil.class);
-                    startActivity(identification);
-                    finish();
-                }
-            }, new Response.ErrorListener() {
-                @Override
-                public void onErrorResponse(VolleyError error) {
-                    Log.e("error", String.valueOf(error));
-                    Toast.makeText(ClientConnexion.this, "Fail to get response = " + error, Toast.LENGTH_SHORT).show();
-                }
-            });
-            queue.add(request);
+            VolleySingleton
+                    .getInstance(ClientConnexion.this)
+                    .postData(url, respObj, response -> {
+                        Toast.makeText(ClientConnexion.this, "Connexion effectuée", Toast.LENGTH_SHORT).show();
+                        Log.d("USER", "onResponse: " + response);
+                        Intent identification = new Intent(getApplicationContext(), ClientAccueil.class);
+                        startActivity(identification);
+                        finish();
+                    });
         } catch (Exception e) {
             e.printStackTrace();
         }
-    }*/
+    }
 
     public void openActivityClientCInscription() {
         Intent ClientInscription = new Intent(this, ClientInscription.class);
