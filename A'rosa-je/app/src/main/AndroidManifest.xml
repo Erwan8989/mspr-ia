@@ -21,7 +21,7 @@
 			tools:ignore="GoogleAppIndexingWarning">
 
 			<activity
-				android:name=".ClientAjouterPlante"
+				android:name=".ClientConnexion"
 				android:exported="true"
 				android:label="@string/app_name">
 
@@ -47,12 +47,19 @@
 					android:label="Mon profil">
 			</activity>
 
-			<!--<activity
+		<activity
+				android:name=".ClientInscription"
+				android:exported="true"
+				tools:ignore="Instantiatable"
+				android:label="Mon profil">
+		</activity>
+
+			<activity
 					android:name=".ClientAjouterPlante"
 					android:exported="true"
 					tools:ignore="Instantiatable"
 					android:label="Mon profil">
-			</activity>-->
+			</activity>
 
 		<activity
 				android:name=".BotanisteAccueil"
@@ -77,13 +84,6 @@
 
 		<activity
 				android:name=".ClientChoixArticle"
-				android:exported="true"
-				tools:ignore="Instantiatable"
-				android:label="Mon profil">
-		</activity>
-
-		<activity
-				android:name=".ClientConnexion"
 				android:exported="true"
 				tools:ignore="Instantiatable"
 				android:label="Mon profil">

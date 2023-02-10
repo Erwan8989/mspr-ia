@@ -68,14 +68,14 @@ public class ClientAjouterPlante extends AppCompatActivity {
 
     private void postDataUsingVolley(String get_user, String get_nom, String get_espece, String get_description) {
         // ********** METTRE SYSTEMATIQUEMENT SA PROPRE IP **********
-        String url = "http://192.168.1.136:8000/plant";
+        String url = "http://172.20.10.2:8000/plant";
 
         RequestQueue queue = Volley.newRequestQueue(ClientAjouterPlante.this);
 
         try {
             JSONObject respObj = new JSONObject();
             Log.e("respobj1", String.valueOf(respObj));
-            respObj.put("user", get_user);
+//            respObj.put("user", get_user);
             respObj.put("name", get_nom);
             respObj.put("type", get_espece);
             respObj.put("description", get_description);
