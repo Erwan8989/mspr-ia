@@ -23,7 +23,7 @@ import org.json.JSONObject;
 public class ClientInscription extends AppCompatActivity {
 
     android.widget.EditText post, code_post, ville, email, mdp, conf_mdp, numero_rue, prenom, nom;
-    String type_user;
+    String type_user = "customer";
     Button b1, b_login;
     ProgressBar progressBar;
 
@@ -65,12 +65,7 @@ public class ClientInscription extends AppCompatActivity {
             }
         });
 
-        b_login.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v2) {
-                openActivityClientConnexion();
-            }
-        });
+        b_login.setOnClickListener(v2 -> openActivityClientConnexion());
     }
 
     public void openActivityClientConnexion() {
@@ -97,7 +92,7 @@ public class ClientInscription extends AppCompatActivity {
 
     private void postDataUsingVolley(String get_post, String get_code_post, String get_ville, String get_email, String get_mdp, String get_conf_mdp, String get_numero_rue, String get_prenom, String get_nom) {
         // ********** METTRE SYSTEMATIQUEMENT SA PROPRE IP **********
-        String url = "http://172.20.10.2:8000/register/" + type_user;
+        String url = "http://172.20.10.4:8000/register/" + type_user;
 
         RequestQueue queue = Volley.newRequestQueue(ClientInscription.this);
 
@@ -108,6 +103,7 @@ public class ClientInscription extends AppCompatActivity {
             respObj.put("city", get_ville);
             respObj.put("email", get_email);
             respObj.put("password", get_mdp);
+            respObj.put("passwordConfirm", get_mdp);
             respObj.put("firstname", get_prenom);
             respObj.put("lastname", get_nom);
             respObj.put("streetNumber", get_numero_rue);

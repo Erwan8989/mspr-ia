@@ -34,12 +34,7 @@ public class ClientConnexion extends AppCompatActivity {
         mail_conn = findViewById(R.id.mail_conn);
         password_conn = findViewById(R.id.password_conn);
 
-        btn_insc.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v2) {
-                openActivityClientCInscription();
-            }
-        });
+        btn_insc.setOnClickListener(v2 -> openActivityClientCInscription());
 
         btn_conn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -79,6 +74,7 @@ public class ClientConnexion extends AppCompatActivity {
                 @Override
                 public void onResponse(JSONObject response) {
                     Toast.makeText(ClientConnexion.this, "Connexion effectuée", Toast.LENGTH_SHORT).show();
+                    Log.d("USER", "onResponse: " + response);
                     Intent identification = new Intent(getApplicationContext(), ClientAccueil.class);
                     startActivity(identification);
                     finish();
