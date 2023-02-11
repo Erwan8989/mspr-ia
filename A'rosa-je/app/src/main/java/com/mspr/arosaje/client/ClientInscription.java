@@ -10,7 +10,7 @@ import android.widget.RadioButton;
 import android.widget.Toast;
 
 import com.mspr.arosaje.R;
-import com.mspr.arosaje.database.VolleySingleton;
+import com.mspr.arosaje.auth.AuthManager;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -46,8 +46,6 @@ public class ClientInscription extends AppCompatActivity {
         b1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String url = "http://172.20.10.4:8000/register/" + type_user;
-
                 try {
                     JSONObject respObj = new JSONObject();
                     respObj.put("street", String.valueOf(post.getText()));
@@ -60,14 +58,12 @@ public class ClientInscription extends AppCompatActivity {
                     respObj.put("lastname", String.valueOf(prenom.getText()));
                     respObj.put("streetNumber", String.valueOf(numero_rue.getText()));
 
-                    VolleySingleton
-                            .getInstance(ClientInscription.this)
-                            .postData(url, respObj, response -> {
-                                Toast.makeText(ClientInscription.this, "Inscription effectuée", Toast.LENGTH_SHORT).show();
-                                Intent identification = new Intent(getApplicationContext(), ClientConnexion.class);
-                                startActivity(identification);
-                                finish();
-                            });
+                    AuthManager.getInstance(ClientInscription.this).register(respObj, type_user, response -> {
+                        Toast.makeText(ClientInscription.this, "Inscription effectuée", Toast.LENGTH_SHORT).show();
+                        Intent identification = new Intent(getApplicationContext(), ClientConnexion.class);
+                        startActivity(identification);
+                        finish();
+                    });
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
