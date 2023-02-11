@@ -16,6 +16,8 @@ public class AuthManager {
 
     private static Object User;
 
+    private static String token;
+
     private AuthManager(Context ctx) {
         this.db = VolleySingleton.getInstance(ctx);
     }
@@ -55,5 +57,13 @@ public class AuthManager {
 
     public static void setUser(Object user) {
         User = user;
+    }
+
+    public static String getToken() {
+        return token;
+    }
+
+    public static void setToken(String token) {
+        AuthManager.token = token;
     }
 }
