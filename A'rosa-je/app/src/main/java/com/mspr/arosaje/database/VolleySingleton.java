@@ -10,9 +10,11 @@ import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
+import com.mspr.arosaje.auth.AuthManager;
 
 import org.json.JSONObject;
 
+import java.util.HashMap;
 import java.util.Map;
 
 public class VolleySingleton {
@@ -20,6 +22,7 @@ public class VolleySingleton {
     private RequestQueue requestQueue;
     private final Context ctx;
 
+    // ********** METTRE SYSTEMATIQUEMENT SA PROPRE IP **********
     private final String baseUrl = "http://192.168.1.79:8000";
 
     private static final String TAG = "VolleySingleton";
@@ -47,7 +50,6 @@ public class VolleySingleton {
     }
 
     public void postData(String route, JSONObject data, Response.Listener<JSONObject> onSuccess) {
-        // ********** METTRE SYSTEMATIQUEMENT SA PROPRE IP **********
         Log.d(TAG, "postData: " + data);
 
         try {
@@ -56,15 +58,30 @@ public class VolleySingleton {
                     onSuccess,
                     error -> Toast.makeText(ctx, "Fail to get response = " + error, Toast.LENGTH_SHORT).show()){
                 @Override
+                public Map<String, String> getHeaders() {
+                    Map<String, String> headers = new HashMap<>();
+
+                    if (AuthManager.getToken() != null) // Si on est déjà login, il contient forcément le token de symfony
+                        headers.put("Cookie", AuthManager.getToken()); // on le set dans les cookies
+                    return headers;
+                }
+                @Override
                 protected Response<JSONObject> parseNetworkResponse(NetworkResponse response) {
                     assert response.headers != null;
                     Map<String, String> responseHeaders = response.headers;
                     String rawCookies = responseHeaders.get("Set-Cookie");
-                    Log.e("cookies",rawCookies);
+
+                    if (rawCookies != null) { // on récupère le token à la connexion pour le stocker dans AuthManager si il existe
+                        AuthManager.setToken(rawCookies);
+                    }
+
+                    Log.e("cookies", String.valueOf(rawCookies));
                     return super.parseNetworkResponse(response);
                 }
             }
             ;
+
+//            Log.d("REQ", "postData: " + request.getHeaders());
 
             addToRequestQueue(request);
         } catch (Exception e) {
@@ -72,7 +89,6 @@ public class VolleySingleton {
         }
     }
     public void getData(String route, Response.Listener<JSONObject> onSuccess) {
-        // ********** METTRE SYSTEMATIQUEMENT SA PROPRE IP **********
         try {
 
             JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, baseUrl + route, null,
@@ -83,15 +99,20 @@ public class VolleySingleton {
                     })
             {
                 @Override
+                public Map<String, String> getHeaders() {
+                    Map<String, String> headers = new HashMap<>();
+                    if (AuthManager.getToken() != null)
+                        headers.put("Cookie", AuthManager.getToken()); // on le set dans les cookies
+                    return headers;
+                }
+
+                @Override
                 protected Response<JSONObject> parseNetworkResponse(NetworkResponse response) {
-                    assert response.headers != null;
-                    Map<String, String> responseHeaders = response.headers;
-                    String rawCookies = responseHeaders.get("Set-Cookie");
-                    Log.e("cookies",rawCookies);
                     return super.parseNetworkResponse(response);
                 }
             }
             ;
+//            Log.d("REQ", "postData: " + request.getHeaders());
             addToRequestQueue(request);
         } catch (Exception e) {
             e.printStackTrace();
