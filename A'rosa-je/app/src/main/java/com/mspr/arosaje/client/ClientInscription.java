@@ -58,7 +58,7 @@ public class ClientInscription extends AppCompatActivity {
                     respObj.put("lastname", String.valueOf(prenom.getText()));
                     respObj.put("streetNumber", String.valueOf(numero_rue.getText()));
 
-                    AuthManager.getInstance(ClientInscription.this).register(respObj, type_user, response -> {
+                    AuthManager.getInstance(ClientInscription.this).register(respObj, "/" + type_user, response -> {
                         Toast.makeText(ClientInscription.this, "Inscription effectuée", Toast.LENGTH_SHORT).show();
                         Intent identification = new Intent(getApplicationContext(), ClientConnexion.class);
                         startActivity(identification);
