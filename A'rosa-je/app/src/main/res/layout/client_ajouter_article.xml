@@ -71,11 +71,12 @@
 			</LinearLayout>
 
 			<ImageView
-					android:layout_width="300dp"
-					android:layout_height="400dp"
+					android:layout_width="225dp"
+					android:layout_height="300dp"
 					android:layout_gravity="center"
 					android:layout_marginTop="15dp"
-					android:id="@+id/click_image" />
+					android:id="@+id/click_image"
+					android:scaleType="centerCrop"/>
 
 		</LinearLayout>
 
