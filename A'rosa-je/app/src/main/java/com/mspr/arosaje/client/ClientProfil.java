@@ -2,12 +2,20 @@ package com.mspr.arosaje.client;
 
 import android.os.Bundle;
 import android.content.Intent;
+import android.view.LayoutInflater;
 import android.view.Menu;
+import android.view.View;
+import android.view.ViewGroup;
 import android.view.MenuItem;
+import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.mspr.arosaje.R;
+
+import java.util.ArrayList;
 
 public class ClientProfil extends AppCompatActivity {
 
@@ -16,6 +24,19 @@ public class ClientProfil extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.client_profil);
+
+        // Lookup the recyclerview in activity layout
+        RecyclerView rvContacts = (RecyclerView) findViewById(R.id.vertical_recycle_view);
+
+        // Initialize contacts
+        ArrayList<Contact> contacts = Contact.createContactsList(20);
+        // Create adapter passing in the sample user data
+        UserAdapter adapter = new UserAdapter(contacts);
+        // Attach the adapter to the recyclerview to populate items
+        rvContacts.setAdapter(adapter);
+        // Set layout manager to position the items
+        rvContacts.setLayoutManager(new LinearLayoutManager(this));
+        // That's all!
     }
 
     @Override
