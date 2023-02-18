@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -35,8 +36,21 @@ public class UserAdapter extends
 
             title = (TextView) itemView.findViewById(R.id.textView2);
             desc = (TextView) itemView.findViewById(R.id.textView3);
+
+            itemView.setOnClickListener(this::onClick);
+
+        }
+        // Handles the row being being clicked
+        public void onClick(View view) {
+            int position = getAbsoluteAdapterPosition(); // gets item position
+            if (position != RecyclerView.NO_POSITION) { // Check if an item was deleted, but the user clicked it before the UI removed it
+                Contact contact = mContacts.get(position);
+                // We can access the data within the views
+                Toast.makeText(view.getContext(), contact.getId(), Toast.LENGTH_SHORT).show();
+            }
         }
     }
+
 
     // Store a member variable for the contacts
     private ArrayList<Contact> mContacts;

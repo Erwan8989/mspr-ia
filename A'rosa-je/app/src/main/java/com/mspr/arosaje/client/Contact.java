@@ -8,11 +8,16 @@ import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class Contact {
-    private String mName, mDescription;
+    private String mId, mName, mDescription;
 
-    public Contact(String name, String description) {
+    public Contact(String id, String name, String description) {
+        mId = id;
         mName = name;
         mDescription = description;
+    }
+
+    public String getId() {
+        return mId;
     }
 
     public String getName() {
@@ -31,7 +36,7 @@ public class Contact {
         String tt = null, ttt = null;
         for (int i = 0; i < arrayList.length(); i++) {
             JSONObject jsonobject = arrayList.getJSONObject(i);
-            contacts.add(new Contact(jsonobject.getString("name"), jsonobject.getString("description")));
+            contacts.add(new Contact(jsonobject.getString("id"), jsonobject.getString("name"), jsonobject.getString("description")));
         }
 
 //        String tt = (String) arrayList.get(1);
