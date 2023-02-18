@@ -1,32 +1,41 @@
 package com.mspr.arosaje.client;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class Contact {
-    private String mName;
-    private boolean mOnline;
+    private String mName, mDescription;
 
-    public Contact(String name, boolean online) {
+    public Contact(String name, String description) {
         mName = name;
-        mOnline = online;
+        mDescription = description;
     }
 
     public String getName() {
         return mName;
     }
 
-    public boolean isOnline() {
-        return mOnline;
+    public String getDescription() {
+        return mDescription;
     }
 
     private static int lastContactId = 0;
 
-    public static ArrayList<Contact> createContactsList(int numContacts) {
+    public static ArrayList<Contact> createContactsList(JSONArray arrayList) throws JSONException {
         ArrayList<Contact> contacts = new ArrayList<Contact>();
 
-        for (int i = 1; i <= numContacts; i++) {
-            contacts.add(new Contact("Person ", i <= numContacts / 2));
+        String tt = null, ttt = null;
+        for (int i = 0; i < arrayList.length(); i++) {
+            JSONObject jsonobject = arrayList.getJSONObject(i);
+            contacts.add(new Contact(jsonobject.getString("name"), jsonobject.getString("description")));
         }
+
+//        String tt = (String) arrayList.get(1);
+
 
         return contacts;
     }

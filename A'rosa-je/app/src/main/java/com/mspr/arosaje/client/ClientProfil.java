@@ -1,16 +1,11 @@
 package com.mspr.arosaje.client;
 
-import android.content.Context;
 import android.os.Bundle;
 import android.content.Intent;
-import android.view.LayoutInflater;
+import android.util.Log;
 import android.view.Menu;
-import android.view.View;
-import android.view.ViewGroup;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -19,14 +14,16 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.mspr.arosaje.R;
 import com.mspr.arosaje.database.VolleySingleton;
 
-import org.json.JSONObject;
+import org.json.JSONArray;
+import org.json.JSONException;
 
 import java.util.ArrayList;
 
 public class ClientProfil extends AppCompatActivity {
 
     TextView title, description;
-
+    private ArrayList testvar;
+    ArrayList<String> listdata = new ArrayList<String>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,22 +35,46 @@ public class ClientProfil extends AppCompatActivity {
         try {
             VolleySingleton
                     .getInstance(ClientProfil.this)
-                    .getData("/plant", response -> Toast
-                            .makeText(ClientProfil.this, (CharSequence) response, Toast.LENGTH_SHORT)
-                            .show());
+                    .getData("/plant", response -> {
+                        try {
+                            /*testvar = this.test(response);
+                            Log.e("test2", String.valueOf(testvar));*/
+                            Log.e("response", String.valueOf(response));
+                            // Initialize contacts
+                            ArrayList<Contact> contacts = Contact.createContactsList(response);
+                            // Create adapter passing in the sample user data
+                            UserAdapter adapter = new UserAdapter(contacts);
+                            // Attach the adapter to the recyclerview to populate items
+                            rvContacts.setAdapter(adapter);
+                            // Set layout manager to position the items
+                            rvContacts.setLayoutManager(new LinearLayoutManager(this));
+                            // That's all!
+                        } catch (JSONException e) {
+                            throw new RuntimeException(e);
+                        }
+                    });
         } catch (Exception e) {
             e.printStackTrace();
         }
 
-        // Initialize contacts
-        ArrayList<Contact> contacts = Contact.createContactsList(5);
-        // Create adapter passing in the sample user data
-        UserAdapter adapter = new UserAdapter(contacts);
-        // Attach the adapter to the recyclerview to populate items
-        rvContacts.setAdapter(adapter);
-        // Set layout manager to position the items
-        rvContacts.setLayoutManager(new LinearLayoutManager(this));
-        // That's all!
+//        Log.e("test", String.valueOf(test));
+
+    }
+
+    public ArrayList<String> test(JSONArray response) throws JSONException {
+//        this.test = response;
+
+
+        JSONArray jArray = (JSONArray)response;
+        if (jArray != null) {
+            for (int i=0;i<jArray.length();i++){
+                listdata.add(jArray.getString(i));
+            }
+        }
+
+        Log.e("test", String.valueOf(listdata));
+        return listdata;
+
     }
 
     @Override

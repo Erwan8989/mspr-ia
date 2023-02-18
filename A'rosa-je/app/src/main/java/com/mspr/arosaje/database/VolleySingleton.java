@@ -8,10 +8,15 @@ import com.android.volley.NetworkResponse;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.VolleyLog;
+import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.mspr.arosaje.auth.AuthManager;
 
+import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.HashMap;
@@ -23,7 +28,7 @@ public class VolleySingleton {
     private final Context ctx;
 
     // ********** METTRE SYSTEMATIQUEMENT SA PROPRE IP **********
-    private final String baseUrl = "http://192.168.1.79:8000";
+    private final String baseUrl = "http://192.168.1.136:8000";
 
     private static final String TAG = "VolleySingleton";
 
@@ -88,16 +93,15 @@ public class VolleySingleton {
             e.printStackTrace();
         }
     }
-    public void getData(String route, Response.Listener<JSONObject> onSuccess) {
-        try {
 
-            JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, baseUrl + route, null,
+    public void getData(String route, Response.Listener<JSONArray> onSuccess) {
+        try {
+            JsonArrayRequest request = new JsonArrayRequest(Request.Method.GET, baseUrl + route, null,
                     onSuccess,
                     error -> {
                         Toast.makeText(ctx, "Fail to get response = " + error, Toast.LENGTH_SHORT).show();
                         Log.d("ERROR", "onErrorResponse: " + error);
-                    })
-            {
+                    }) {
                 @Override
                 public Map<String, String> getHeaders() {
                     Map<String, String> headers = new HashMap<>();
@@ -107,11 +111,10 @@ public class VolleySingleton {
                 }
 
                 @Override
-                protected Response<JSONObject> parseNetworkResponse(NetworkResponse response) {
+                protected Response<JSONArray> parseNetworkResponse(NetworkResponse response) {
                     return super.parseNetworkResponse(response);
                 }
-            }
-            ;
+            };
 //            Log.d("REQ", "postData: " + request.getHeaders());
             addToRequestQueue(request);
         } catch (Exception e) {

@@ -1,6 +1,7 @@
 package com.mspr.arosaje.client;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -63,13 +64,17 @@ public class UserAdapter extends
     @Override
     public void onBindViewHolder(UserAdapter.ViewHolder holder, int position) {
         // Get the data model based on position
+
+        String tt = String.valueOf(mContacts.get(0));
+
+        Log.e("mContacts", tt);
         Contact contact = mContacts.get(position);
 
         // Set item views based on your views and data model
         TextView textView = holder.title;
         textView.setText(contact.getName());
         TextView desc = holder.desc;
-        desc.setText(contact.getName());
+        desc.setText(contact.getDescription());
     }
 
     // Returns the total count of items in the list
