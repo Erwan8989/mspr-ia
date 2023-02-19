@@ -19,8 +19,6 @@ import org.json.JSONException;
 import java.util.ArrayList;
 
 public class ClientProfil extends AppCompatActivity {
-    Context context = this;
-    ArrayList<String> listdata = new ArrayList<String>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
