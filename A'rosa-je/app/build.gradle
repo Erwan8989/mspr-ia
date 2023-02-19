@@ -47,6 +47,6 @@ dependencies {
     implementation 'org.apache.httpcomponents.client5:httpclient5:5.2'
     implementation 'com.android.volley:volley:1.2.1'
     implementation 'androidx.recyclerview:recyclerview:1.2.1'
-
+    implementation 'com.cloudinary:cloudinary-android:2.3.1'
     implementation fileTree(include: ['*.jar'], dir: 'libs')
 }

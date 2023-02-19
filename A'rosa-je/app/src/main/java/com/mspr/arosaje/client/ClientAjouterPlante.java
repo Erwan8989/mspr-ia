@@ -3,11 +3,13 @@ package com.mspr.arosaje.client;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.content.Intent;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -15,14 +17,18 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.mspr.arosaje.R;
 import com.mspr.arosaje.database.VolleySingleton;
+import com.mspr.arosaje.img.CloudinaryManager;
+import com.mspr.arosaje.img.ImageManager;
 
 import org.json.JSONObject;
+
+import java.io.File;
 
 public class ClientAjouterPlante extends AppCompatActivity {
 
     Button btn_ajout_image, btn_enregistrer_plante;
     ImageView click_image_id;
-    android.widget.EditText nom, espece, description;
+    EditText nom, espece, description;
 
     private static final int pic_id = 123;
 
@@ -38,7 +44,6 @@ public class ClientAjouterPlante extends AppCompatActivity {
         espece = findViewById(R.id.espece_ajout_plante);
         description = findViewById(R.id.description_ajout_plante);
 
-
         btn_ajout_image.setOnClickListener(v -> {
             Intent camera_intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
             startActivityForResult(camera_intent, pic_id);
@@ -53,6 +58,11 @@ public class ClientAjouterPlante extends AppCompatActivity {
                     respObj.put("type", String.valueOf(espece.getText()));
                     respObj.put("description", String.valueOf(description.getText()));
 
+                    if(ImageManager.getRemoteImg() != null) {
+                        respObj.put("photo", ImageManager.getRemoteImg());
+                    }
+
+                    Log.d("RES", "onSuccess: " + respObj);
 
                     VolleySingleton
                             .getInstance(ClientAjouterPlante.this)
@@ -73,11 +83,15 @@ public class ClientAjouterPlante extends AppCompatActivity {
         if (requestCode == pic_id) {
 
             // BitMap is data structure of image file
-            // which stor the image in memory
+            // which store the image in memory
             Bitmap photo = (Bitmap) data.getExtras().get("data");
+
+            //create a file to write bitmap data
+            File img = ImageManager.createFile(photo, this.getCacheDir());
 
             // Set the image in imageview for display
             click_image_id.setImageBitmap(photo);
+            CloudinaryManager.getInstance(this).uploadImage(img);
         }
     }
 
@@ -106,5 +120,4 @@ public class ClientAjouterPlante extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
-
 }
