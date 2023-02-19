@@ -40,6 +40,7 @@ public class BotanisteChoixArticle extends AppCompatActivity {
         String description = intent.getStringExtra("description");
         String date = intent.getStringExtra("date");
         String url_photo = intent.getStringExtra("url_photo");
+        String id = intent.getStringExtra("id");
 
         textView_nom = (TextView) findViewById(R.id.nom_choisir_botaniste);
         textView_espece = (TextView) findViewById(R.id.espece_choisir_botaniste);
@@ -60,12 +61,12 @@ public class BotanisteChoixArticle extends AppCompatActivity {
             public void onClick(View v2) {
                 try {
                     JSONObject respObj = new JSONObject();
-                    respObj.put("commentaire", String.valueOf(commentaire.getText()));
+                    respObj.put("text", String.valueOf(commentaire.getText()));
 
                     VolleySingleton
                             .getInstance(BotanisteChoixArticle.this)
-                            .postData("/plant", respObj, response -> Toast
-                                    .makeText(BotanisteChoixArticle.this, "Plante ajoutée", Toast.LENGTH_SHORT)
+                            .postData("/plant/" + id + "/comment", respObj, response -> Toast
+                                    .makeText(BotanisteChoixArticle.this, "Commentaire ajouté", Toast.LENGTH_SHORT)
                                     .show());
                 } catch (Exception e) {
                     e.printStackTrace();

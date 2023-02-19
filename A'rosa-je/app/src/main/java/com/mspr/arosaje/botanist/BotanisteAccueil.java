@@ -78,5 +78,4 @@ public class BotanisteAccueil extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
-
 }
