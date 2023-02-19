@@ -67,19 +67,15 @@
 				android:inputType="number"
 				android:minHeight="48dp" />
 
-		<TextView
-				android:id="@+id/section_commentaire"
+		<androidx.recyclerview.widget.RecyclerView
 				android:layout_width="match_parent"
-				android:layout_height="120dp"
-				android:layout_margin="20dp"
-				android:background="#dcdfc7"
-				android:gravity="center"
-				android:text="Commentaires"
-				android:textAlignment="center"
-				android:textColor="#000"
-				android:textSize="17dp">
+				android:layout_height="match_parent"
+				android:id="@+id/vertical_recycle_view_commentaire_profil"
+				android:orientation="vertical"
+				app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
 
-		</TextView>
+
+	</TextView>
 
 
 	</LinearLayout>
