@@ -66,35 +66,13 @@
 
 				</LinearLayout>
 
-				<GridLayout
-						android:id="@+id/GridLayout1"
+				<androidx.recyclerview.widget.RecyclerView
 						android:layout_width="match_parent"
 						android:layout_height="match_parent"
-						android:columnCount="2"
-						android:orientation="horizontal"
-						android:paddingHorizontal="9dp">
+						android:id="@+id/vertical_recycle_view_accueil_botaniste"
+						android:orientation="vertical"
+						app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
 
-					<LinearLayout android:orientation="vertical">
-
-						<ImageButton
-								android:id="@+id/imageButton1"
-								android:layout_width="200dp"
-								android:layout_height="100dp"
-								android:layout_gravity="top" />
-
-
-						<TextView
-								android:id="@+id/nom_card_profil"
-								android:layout_width="match_parent"
-								android:layout_gravity="bottom"
-								android:layout_height="wrap_content"
-								android:text="Nom"
-								android:textColor="@color/black"
-								android:layout_below="@id/imageButton1"
-								android:textSize="18sp" />
-					</LinearLayout>
-
-				</GridLayout>
 			</LinearLayout>
 		</LinearLayout>
 	</ScrollView>

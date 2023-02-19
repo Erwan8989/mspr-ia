@@ -6,9 +6,20 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
+import com.mspr.arosaje.client.ClientAccueil;
 import com.mspr.arosaje.client.ClientConnexion;
 import com.mspr.arosaje.R;
+import com.mspr.arosaje.client.PlantAdapter2;
+import com.mspr.arosaje.client.PlantAdapter3;
+import com.mspr.arosaje.client.info_plant;
+import com.mspr.arosaje.database.VolleySingleton;
+
+import org.json.JSONException;
+
+import java.util.ArrayList;
 
 public class BotanisteAccueil extends AppCompatActivity {
 
@@ -17,6 +28,28 @@ public class BotanisteAccueil extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.botaniste_accueil);
 
+        RecyclerView rvPlantsAccueil = (RecyclerView) findViewById(R.id.vertical_recycle_view_accueil_botaniste);
+
+        try {
+            VolleySingleton
+                    .getInstance(BotanisteAccueil.this)
+                    .getData("/plantAll", response -> {
+                        try {
+                            // Initialize infoplants
+                            ArrayList<info_plant> infoplants = info_plant.createList(response);
+                            // Create adapter passing in the sample plant data
+                            PlantAdapter3 adapter = new PlantAdapter3(infoplants);
+                            // Attach the adapter to the recyclerview to populate items
+                            rvPlantsAccueil.setAdapter(adapter);
+                            // Set layout manager to position the items
+                            rvPlantsAccueil.setLayoutManager(new LinearLayoutManager(this));
+                        } catch (JSONException e) {
+                            throw new RuntimeException(e);
+                        }
+                    });
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     /*Page de retour a définir*/

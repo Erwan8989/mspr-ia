@@ -33,8 +33,6 @@ public class ClientAccueil extends AppCompatActivity {
         b2 = (Button) findViewById(R.id.btn_monprofil);
         b3 = (Button) findViewById(R.id.btn_addPlant);
 
-
-
         RecyclerView rvPlantsAccueil = (RecyclerView) findViewById(R.id.vertical_recycle_view_accueil);
 
         try {
@@ -57,8 +55,6 @@ public class ClientAccueil extends AppCompatActivity {
         } catch (Exception e) {
             e.printStackTrace();
         }
-
-
 
         // ***************** Changement de page au clic *****************
 
