@@ -1,5 +1,6 @@
 package com.mspr.arosaje.client;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.content.Intent;
 import android.util.Log;
@@ -23,6 +24,7 @@ public class ClientProfil extends AppCompatActivity {
 
     TextView title, description;
     private ArrayList testvar;
+    Context context = this;
     ArrayList<String> listdata = new ArrayList<String>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,6 +61,22 @@ public class ClientProfil extends AppCompatActivity {
 
 //        Log.e("test", String.valueOf(test));
 
+    }
+
+    public void open(String nom, String espece, String description) {
+        try {
+            Log.e("context", String.valueOf(this));
+            Intent intent = new Intent(context, ClientChoixArticle.class);
+            /*Bundle b = new Bundle();
+            b.putString("nom", nom);
+            b.putString("espece", espece);
+            b.putString("description", description);
+            intent.putExtras(b);*/
+            startActivity(intent);
+            finish();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     public ArrayList<String> test(JSONArray response) throws JSONException {

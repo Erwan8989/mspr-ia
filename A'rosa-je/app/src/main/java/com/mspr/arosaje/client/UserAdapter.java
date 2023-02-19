@@ -1,6 +1,10 @@
 package com.mspr.arosaje.client;
 
+import static androidx.core.content.ContextCompat.startActivity;
+
 import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -26,13 +30,14 @@ public class UserAdapter extends
         // for any view that will be set as you render a row
         public TextView title;
         public TextView desc;
-
+        private final Context context;
         // We also create a constructor that accepts the entire item row
         // and does the view lookups to find each subview
         public ViewHolder(View itemView) {
             // Stores the itemView in a public final member variable that can be used
             // to access the context from any ViewHolder instance.
             super(itemView);
+            context = itemView.getContext();
 
             title = (TextView) itemView.findViewById(R.id.textView2);
             desc = (TextView) itemView.findViewById(R.id.textView3);
@@ -45,8 +50,13 @@ public class UserAdapter extends
             int position = getAbsoluteAdapterPosition(); // gets item position
             if (position != RecyclerView.NO_POSITION) { // Check if an item was deleted, but the user clicked it before the UI removed it
                 Contact contact = mContacts.get(position);
-                // We can access the data within the views
-                Toast.makeText(view.getContext(), contact.getId(), Toast.LENGTH_SHORT).show();
+                final Intent intent;
+                intent =  new Intent(context, ClientChoixArticle.class);
+                intent.putExtra("nom", contact.getName());
+                intent.putExtra("espece", contact.getEspece());
+                intent.putExtra("description", contact.getDescription());
+                intent.putExtra("date", contact.getDate());
+                context.startActivity(intent);
             }
         }
     }

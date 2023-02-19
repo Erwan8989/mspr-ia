@@ -2,20 +2,37 @@ package com.mspr.arosaje.client;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.mspr.arosaje.R;
 
 public class ClientChoixArticle extends AppCompatActivity {
-
+    TextView textView_nom, textView_espece, textView_date_ajout, textView_description;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.client_choisir_article);
 
+        Intent intent = getIntent();
+        String nom = intent.getStringExtra("nom");
+        String espece = intent.getStringExtra("espece");
+        String description = intent.getStringExtra("description");
+        String date = intent.getStringExtra("date");
+
+        textView_nom = (TextView) findViewById(R.id.nom_choisir);
+        textView_espece = (TextView) findViewById(R.id.espece_choisir);
+        textView_date_ajout = (TextView) findViewById(R.id.date_ajout_choisir);
+        textView_description = (TextView) findViewById(R.id.descriptif_choisir);
+
+        textView_nom.setText(nom);
+        textView_espece.setText(espece);
+        textView_date_ajout.setText(date);
+        textView_description.setText(description);
     }
 
     /*Bouton retour*/
