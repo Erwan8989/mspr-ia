@@ -11,6 +11,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.mspr.arosaje.R;
 import com.mspr.arosaje.auth.AuthManager;
+import com.mspr.arosaje.botanist.BotanisteAccueil;
 import com.mspr.arosaje.database.VolleySingleton;
 
 import org.json.JSONException;
@@ -21,7 +22,7 @@ public class ClientConnexion extends AppCompatActivity {
 
     Button btn_insc, btn_conn;
     android.widget.EditText mail_conn, password_conn;
-
+    Intent identification;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,7 +44,15 @@ public class ClientConnexion extends AppCompatActivity {
                 try {
                     AuthManager.getInstance(ClientConnexion.this).login(mail, password, response -> {
                         Toast.makeText(ClientConnexion.this, "Connexion effectuée", Toast.LENGTH_SHORT).show();
-                        Intent identification = new Intent(getApplicationContext(), ClientAccueil.class);
+                        try {
+                            if (response.getString("roles").equals("[\"ROLE_USER\",\"ROLE_CUSTOMER\"]")) {
+                                identification = new Intent(getApplicationContext(), ClientAccueil.class);
+                            } else {
+                                identification = new Intent(getApplicationContext(), BotanisteAccueil.class);
+                            }
+                        } catch (JSONException e) {
+                            throw new RuntimeException(e);
+                        }
                         startActivity(identification);
                         finish();
                     });
