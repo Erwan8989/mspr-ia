@@ -31,7 +31,7 @@ public class ClientProfil extends AppCompatActivity {
         try {
             VolleySingleton
                     .getInstance(ClientProfil.this)
-                    .getData("/plant", response -> {
+                    .getData("/plant/me", response -> {
                         try {
                             // Initialize infoplants
                             ArrayList<info_plant> infoplants = info_plant.createList(response);
