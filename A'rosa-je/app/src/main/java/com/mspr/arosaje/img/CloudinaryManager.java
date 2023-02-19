@@ -43,7 +43,8 @@ public class CloudinaryManager {
         MediaManager
                 .get()
                 .upload(uri)
-                .option("tags", "arosaje")
+                .option("folder", "arosaje")
+                .option("public_id", file.getName())
                 .callback(new UploadCallback() {
                     @Override
                     public void onStart(String requestId) {
