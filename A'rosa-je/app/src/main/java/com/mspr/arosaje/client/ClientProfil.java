@@ -6,7 +6,6 @@ import android.content.Intent;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -15,42 +14,36 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.mspr.arosaje.R;
 import com.mspr.arosaje.database.VolleySingleton;
 
-import org.json.JSONArray;
 import org.json.JSONException;
 
 import java.util.ArrayList;
 
 public class ClientProfil extends AppCompatActivity {
-
-    TextView title, description;
-    private ArrayList testvar;
     Context context = this;
     ArrayList<String> listdata = new ArrayList<String>();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.client_profil);
 
         // Lookup the recyclerview in activity layout
-        RecyclerView rvContacts = (RecyclerView) findViewById(R.id.vertical_recycle_view);
+        RecyclerView rvPlants = (RecyclerView) findViewById(R.id.vertical_recycle_view);
 
         try {
             VolleySingleton
                     .getInstance(ClientProfil.this)
                     .getData("/plant", response -> {
                         try {
-                            /*testvar = this.test(response);
-                            Log.e("test2", String.valueOf(testvar));*/
                             Log.e("response", String.valueOf(response));
-                            // Initialize contacts
-                            ArrayList<Contact> contacts = Contact.createContactsList(response);
-                            // Create adapter passing in the sample user data
-                            UserAdapter adapter = new UserAdapter(contacts);
+                            // Initialize infoplants
+                            ArrayList<info_plant> infoplants = info_plant.createList(response);
+                            // Create adapter passing in the sample plant data
+                            PlantAdapter adapter = new PlantAdapter(infoplants);
                             // Attach the adapter to the recyclerview to populate items
-                            rvContacts.setAdapter(adapter);
+                            rvPlants.setAdapter(adapter);
                             // Set layout manager to position the items
-                            rvContacts.setLayoutManager(new LinearLayoutManager(this));
-                            // That's all!
+                            rvPlants.setLayoutManager(new LinearLayoutManager(this));
                         } catch (JSONException e) {
                             throw new RuntimeException(e);
                         }
@@ -58,41 +51,6 @@ public class ClientProfil extends AppCompatActivity {
         } catch (Exception e) {
             e.printStackTrace();
         }
-
-//        Log.e("test", String.valueOf(test));
-
-    }
-
-    public void open(String nom, String espece, String description) {
-        try {
-            Log.e("context", String.valueOf(this));
-            Intent intent = new Intent(context, ClientChoixArticle.class);
-            /*Bundle b = new Bundle();
-            b.putString("nom", nom);
-            b.putString("espece", espece);
-            b.putString("description", description);
-            intent.putExtras(b);*/
-            startActivity(intent);
-            finish();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
-    public ArrayList<String> test(JSONArray response) throws JSONException {
-//        this.test = response;
-
-
-        JSONArray jArray = (JSONArray)response;
-        if (jArray != null) {
-            for (int i=0;i<jArray.length();i++){
-                listdata.add(jArray.getString(i));
-            }
-        }
-
-        Log.e("test", String.valueOf(listdata));
-        return listdata;
-
     }
 
     @Override
@@ -120,5 +78,4 @@ public class ClientProfil extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
-
 }

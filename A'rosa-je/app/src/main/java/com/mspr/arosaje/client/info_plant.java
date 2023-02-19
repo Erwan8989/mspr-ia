@@ -1,23 +1,17 @@
 package com.mspr.arosaje.client;
 
-import static androidx.core.content.ContextCompat.startActivity;
-
-import android.content.Intent;
-import android.os.Bundle;
-
 import androidx.appcompat.app.AppCompatActivity;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
-public class Contact extends AppCompatActivity {
+public class info_plant extends AppCompatActivity {
     private String mId, mName, mDescription, mEspece, mDate;
 
-    public Contact(String id, String name, String description, String espece, String date) {
+    public info_plant(String id, String name, String description, String espece, String date) {
         mId = id;
         mName = name;
         mDescription = description;
@@ -45,20 +39,14 @@ public class Contact extends AppCompatActivity {
         return mDate;
     }
 
-    private static int lastContactId = 0;
+    public static ArrayList<info_plant> createList(JSONArray arrayList) throws JSONException {
+        ArrayList<info_plant> infoplants = new ArrayList<info_plant>();
 
-    public static ArrayList<Contact> createContactsList(JSONArray arrayList) throws JSONException {
-        ArrayList<Contact> contacts = new ArrayList<Contact>();
-
-        String tt = null, ttt = null;
         for (int i = 0; i < arrayList.length(); i++) {
             JSONObject jsonobject = arrayList.getJSONObject(i);
-            contacts.add(new Contact(jsonobject.getString("id"), jsonobject.getString("name"), jsonobject.getString("description"), jsonobject.getString("specie"), jsonobject.getString("createdAt")));
+            infoplants.add(new info_plant(jsonobject.getString("id"), jsonobject.getString("name"), jsonobject.getString("description"), jsonobject.getString("specie"), jsonobject.getString("createdAt")));
         }
 
-//        String tt = (String) arrayList.get(1);
-
-
-        return contacts;
+        return infoplants;
     }
 }
