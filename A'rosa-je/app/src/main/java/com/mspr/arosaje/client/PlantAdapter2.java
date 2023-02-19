@@ -13,8 +13,8 @@ import com.mspr.arosaje.R;
 
 import java.util.ArrayList;
 
-public class PlantAdapter extends
-        RecyclerView.Adapter<PlantAdapter.ViewHolder> {
+public class PlantAdapter2 extends
+        RecyclerView.Adapter<PlantAdapter2.ViewHolder> {
     public class ViewHolder extends RecyclerView.ViewHolder {
         public TextView title;
         public TextView desc;
@@ -33,7 +33,7 @@ public class PlantAdapter extends
             if (position != RecyclerView.NO_POSITION) { // Check if an item was deleted, but the user clicked it before the UI removed it
                 info_plant infoplant = mInfoplants.get(position);
                 final Intent intent;
-                intent = new Intent(context, ClientChoixArticleProfil.class);
+                intent = new Intent(context, ClientChoixArticleAccueil.class);
                 intent.putExtra("nom", infoplant.getName());
                 intent.putExtra("espece", infoplant.getEspece());
                 intent.putExtra("description", infoplant.getDescription());
@@ -46,13 +46,13 @@ public class PlantAdapter extends
     private ArrayList<info_plant> mInfoplants;
 
     // Pass in the plant array into the constructor
-    public PlantAdapter(ArrayList<info_plant> infoplants) {
+    public PlantAdapter2(ArrayList<info_plant> infoplants) {
         mInfoplants = infoplants;
     }
 
     // Usually involves inflating a layout from XML and returning the holder
     @Override
-    public PlantAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public PlantAdapter2.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         Context context = parent.getContext();
         LayoutInflater inflater = LayoutInflater.from(context);
 
@@ -65,7 +65,7 @@ public class PlantAdapter extends
     }
 
     @Override
-    public void onBindViewHolder(PlantAdapter.ViewHolder holder, int position) {
+    public void onBindViewHolder(PlantAdapter2.ViewHolder holder, int position) {
         // Get the data model based on position
         info_plant infoplant = mInfoplants.get(position);
 

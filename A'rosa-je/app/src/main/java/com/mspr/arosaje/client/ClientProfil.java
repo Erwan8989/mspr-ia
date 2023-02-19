@@ -33,7 +33,6 @@ public class ClientProfil extends AppCompatActivity {
                     .getInstance(ClientProfil.this)
                     .getData("/plant", response -> {
                         try {
-                            Log.e("response", String.valueOf(response));
                             // Initialize infoplants
                             ArrayList<info_plant> infoplants = info_plant.createList(response);
                             // Create adapter passing in the sample plant data

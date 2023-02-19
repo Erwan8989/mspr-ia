@@ -2,7 +2,6 @@ package com.mspr.arosaje.client;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
@@ -11,12 +10,12 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.mspr.arosaje.R;
 
-public class ClientChoixArticle extends AppCompatActivity {
+public class ClientChoixArticleProfil extends AppCompatActivity {
     TextView textView_nom, textView_espece, textView_date_ajout, textView_description;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.client_choisir_article);
+        setContentView(R.layout.client_choisir_article_profil);
 
         Intent intent = getIntent();
         String nom = intent.getStringExtra("nom");

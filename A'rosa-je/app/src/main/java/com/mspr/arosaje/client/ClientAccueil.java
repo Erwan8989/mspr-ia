@@ -2,14 +2,22 @@ package com.mspr.arosaje.client;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.mspr.arosaje.R;
+import com.mspr.arosaje.database.VolleySingleton;
+
+import org.json.JSONException;
+
+import java.util.ArrayList;
 
 
 public class ClientAccueil extends AppCompatActivity {
@@ -24,6 +32,33 @@ public class ClientAccueil extends AppCompatActivity {
         b1 = (Button) findViewById(R.id.btn_gardienner);
         b2 = (Button) findViewById(R.id.btn_monprofil);
         b3 = (Button) findViewById(R.id.btn_addPlant);
+
+
+
+        RecyclerView rvPlantsAccueil = (RecyclerView) findViewById(R.id.vertical_recycle_view_accueil);
+
+        try {
+            VolleySingleton
+                    .getInstance(ClientAccueil.this)
+                    .getData("/plant", response -> {
+                        try {
+                            // Initialize infoplants
+                            ArrayList<info_plant> infoplants = info_plant.createList(response);
+                            // Create adapter passing in the sample plant data
+                            PlantAdapter2 adapter = new PlantAdapter2(infoplants);
+                            // Attach the adapter to the recyclerview to populate items
+                            rvPlantsAccueil.setAdapter(adapter);
+                            // Set layout manager to position the items
+                            rvPlantsAccueil.setLayoutManager(new LinearLayoutManager(this));
+                        } catch (JSONException e) {
+                            throw new RuntimeException(e);
+                        }
+                    });
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+
 
         // ***************** Changement de page au clic *****************
 

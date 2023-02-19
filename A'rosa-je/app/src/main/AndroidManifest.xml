@@ -83,7 +83,14 @@
 		</activity>
 
 		<activity
-				android:name=".client.ClientChoixArticle"
+				android:name=".client.ClientChoixArticleProfil"
+				android:exported="true"
+				tools:ignore="Instantiatable"
+				android:label="Mon profil">
+		</activity>
+
+		<activity
+				android:name=".client.ClientChoixArticleAccueil"
 				android:exported="true"
 				tools:ignore="Instantiatable"
 				android:label="Mon profil">
