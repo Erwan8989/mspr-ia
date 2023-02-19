@@ -17,7 +17,7 @@
 				android:layout_height="300dp"
 				android:layout_gravity="center"
 				android:layout_marginTop="15dp"
-				android:id="@+id/click_image"
+				android:id="@+id/image_profil"
 				android:scaleType="centerCrop"/>
 
 		<LinearLayout

@@ -5,11 +5,15 @@ import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.mspr.arosaje.R;
+
+import org.json.JSONException;
 
 import java.util.ArrayList;
 
@@ -19,12 +23,14 @@ public class PlantAdapter extends
         public TextView title;
         public TextView desc;
         private final Context context;
+        ImageView img_view;
 
         public ViewHolder(View itemView) {
             super(itemView);
             context = itemView.getContext();
             title = (TextView) itemView.findViewById(R.id.textView2);
             desc = (TextView) itemView.findViewById(R.id.textView3);
+            img_view = (ImageView) itemView.findViewById(R.id.image_list_profil);
             itemView.setOnClickListener(this::onClick);
         }
 
@@ -38,6 +44,11 @@ public class PlantAdapter extends
                 intent.putExtra("espece", infoplant.getEspece());
                 intent.putExtra("description", infoplant.getDescription());
                 intent.putExtra("date", infoplant.getDate());
+                try {
+                    intent.putExtra("url_photo", infoplant.getUrlPhoto());
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
                 context.startActivity(intent);
             }
         }
@@ -74,6 +85,13 @@ public class PlantAdapter extends
         textView.setText(infoplant.getName());
         TextView desc = holder.desc;
         desc.setText(infoplant.getDescription());
+
+        try {
+            if (infoplant.getUrlPhoto() != null)
+                Glide.with(holder.context).load(infoplant.getUrlPhoto()).into(holder.img_view);
+        } catch (JSONException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     // Returns the total count of items in the list
