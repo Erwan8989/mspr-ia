@@ -9,6 +9,8 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 
 public class ImageManager {
+    private static String remoteImg;
+
     public static File createFile(Bitmap photo, File dir) {
         File f = new File(dir, "test.png");
         try {
@@ -27,5 +29,13 @@ public class ImageManager {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    public static String getRemoteImg() {
+        return remoteImg;
+    }
+
+    public static void setRemoteImg(String remoteImg) {
+        ImageManager.remoteImg = remoteImg;
     }
 }

@@ -1,9 +1,9 @@
 package com.mspr.arosaje.client;
 
 import android.graphics.Bitmap;
-import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -58,6 +58,12 @@ public class ClientAjouterPlante extends AppCompatActivity {
                     respObj.put("type", String.valueOf(espece.getText()));
                     respObj.put("description", String.valueOf(description.getText()));
 
+                    if(ImageManager.getRemoteImg() != null) {
+                        respObj.put("photo", ImageManager.getRemoteImg());
+                    }
+
+                    Log.d("RES", "onSuccess: " + respObj);
+
                     VolleySingleton
                             .getInstance(ClientAjouterPlante.this)
                             .postData("/plant", respObj, response -> Toast
@@ -85,7 +91,7 @@ public class ClientAjouterPlante extends AppCompatActivity {
 
             // Set the image in imageview for display
             click_image_id.setImageBitmap(photo);
-            String requestId = CloudinaryManager.getInstance(this).uploadImage(img);
+            CloudinaryManager.getInstance(this).uploadImage(img);
         }
     }
 

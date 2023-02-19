@@ -2,7 +2,6 @@ package com.mspr.arosaje.img;
 
 import android.content.Context;
 import android.net.Uri;
-import android.util.Log;
 
 import com.cloudinary.android.MediaManager;
 import com.cloudinary.android.callback.ErrorInfo;
@@ -39,9 +38,9 @@ public class CloudinaryManager {
         MediaManager.init(ctx, config);
     }
 
-    public String uploadImage(File file) {
+    public void uploadImage(File file) {
         Uri uri = this.getImgName(file);
-        return MediaManager
+        MediaManager
                 .get()
                 .upload(uri)
                 .option("tags", "arosaje")
@@ -58,7 +57,7 @@ public class CloudinaryManager {
 
                     @Override
                     public void onSuccess(String requestId, Map resultData) {
-                        Log.d("RES", "onSuccess: " + resultData);
+                        ImageManager.setRemoteImg((String) resultData.get("url"));
                     }
 
                     @Override
