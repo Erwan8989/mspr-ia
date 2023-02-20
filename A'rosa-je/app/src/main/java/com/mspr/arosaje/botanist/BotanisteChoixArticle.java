@@ -2,6 +2,7 @@ package com.mspr.arosaje.botanist;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -12,14 +13,23 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.mspr.arosaje.client.ClientChoixArticleProfil;
 import com.mspr.arosaje.client.ClientConnexion;
 import com.mspr.arosaje.R;
+import com.mspr.arosaje.client.PlantAdapter3;
+import com.mspr.arosaje.client.PlantAdapter4;
+import com.mspr.arosaje.client.info_commentaire;
+import com.mspr.arosaje.client.info_plant;
 import com.mspr.arosaje.database.VolleySingleton;
 
+import org.json.JSONException;
 import org.json.JSONObject;
+
+import java.util.ArrayList;
 
 public class BotanisteChoixArticle extends AppCompatActivity {
 
@@ -74,6 +84,29 @@ public class BotanisteChoixArticle extends AppCompatActivity {
             }
         });
 
+        RecyclerView rvPlantsAccueil = (RecyclerView) findViewById(R.id.vertical_recycle_view_commentaire_profil_botaniste);
+
+        try {
+            VolleySingleton
+                    .getInstance(BotanisteChoixArticle.this)
+                    .getData("/plant/" + id + "/comment", response -> {
+                        try {
+                            Log.e("response", String.valueOf(response));
+                            // Initialize infoplants
+                            ArrayList<info_commentaire> infocommentaire = info_commentaire.createList(response);
+                            // Create adapter passing in the sample plant data
+                            PlantAdapter4 adapter = new PlantAdapter4(infocommentaire);
+                            // Attach the adapter to the recyclerview to populate items
+                            rvPlantsAccueil.setAdapter(adapter);
+                            // Set layout manager to position the items
+                            rvPlantsAccueil.setLayoutManager(new LinearLayoutManager(this));
+                        } catch (JSONException e) {
+                            throw new RuntimeException(e);
+                        }
+                    });
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     /*Page de retour a définir*/

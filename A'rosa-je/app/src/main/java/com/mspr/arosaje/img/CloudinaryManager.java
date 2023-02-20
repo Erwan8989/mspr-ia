@@ -31,10 +31,10 @@ public class CloudinaryManager {
 
     private void init() {
         HashMap<String, Object> config = new HashMap<>();
-        config.put("cloud_name", System.getenv("cloud_name"));
+        config.put("cloud_name", "dcwp5ii19");
         config.put("secure", true);
-        config.put("api_key", System.getenv("api_key"));
-        config.put("api_secret", System.getenv("api_secret"));
+        config.put("api_key", "498774846994266");
+        config.put("api_secret", "szTDmRCnKhBo3lTLgAAjyTo5e3M");
         MediaManager.init(ctx, config);
     }
 
