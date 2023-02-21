@@ -18,7 +18,7 @@
 				android:layout_gravity="center"
 				android:layout_marginTop="15dp"
 				android:id="@+id/click_image2"
-				android:scaleType="centerCrop"/>
+				android:scaleType="centerCrop" />
 
 		<LinearLayout
 				android:layout_width="match_parent"
@@ -76,21 +76,32 @@
 				android:layout_marginBottom="20dp"
 				android:text="Gardienner" />
 
-		<TextView
-				android:id="@+id/section_commentaire"
+		<LinearLayout
+				android:orientation="horizontal"
 				android:layout_width="match_parent"
-				android:layout_height="120dp"
-				android:layout_margin="20dp"
-				android:background="#dcdfc7"
-				android:gravity="center"
-				android:text="Commentaires"
-				android:textAlignment="center"
-				android:textColor="#000"
-				android:textSize="17dp">
+				android:layout_height="55dp"
+				android:gravity="center">
+			<EditText
+					android:id="@+id/champ_commentaire_client_accueil"
+					android:layout_width="200dp"
+					android:layout_height="wrap_content"
+					android:hint="Commentaire"
+					android:inputType="text"
+					android:layout_marginEnd="20dp"/>
 
-		</TextView>
+			<Button
+					android:id="@+id/btn_ajout_commentaire_client_accueil"
+					android:layout_width="150dp"
+					android:layout_height="55dp"
+					android:text="Envoyer"/>
+		</LinearLayout>
 
-
+		<androidx.recyclerview.widget.RecyclerView
+				android:layout_width="match_parent"
+				android:layout_height="match_parent"
+				android:id="@+id/vertical_recycle_view_commentaire_accueil_client"
+				android:orientation="vertical"
+				app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
 	</LinearLayout>
 
 
