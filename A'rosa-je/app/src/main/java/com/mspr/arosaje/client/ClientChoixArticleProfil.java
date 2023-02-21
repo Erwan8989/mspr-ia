@@ -13,13 +13,18 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.mspr.arosaje.R;
 import com.mspr.arosaje.database.VolleySingleton;
 import com.mspr.arosaje.img.ImageManager;
 
+import org.json.JSONException;
 import org.json.JSONObject;
+
+import java.util.ArrayList;
 
 public class ClientChoixArticleProfil extends AppCompatActivity {
     TextView textView_nom, textView_espece, textView_date_ajout, textView_description;
@@ -39,6 +44,7 @@ public class ClientChoixArticleProfil extends AppCompatActivity {
         String description = intent.getStringExtra("description");
         String date = intent.getStringExtra("date");
         String url_photo = intent.getStringExtra("url_photo");
+        String id = intent.getStringExtra("id");
 
         textView_nom = (TextView) findViewById(R.id.nom_choisir);
         textView_espece = (TextView) findViewById(R.id.espece_choisir);
@@ -59,12 +65,12 @@ public class ClientChoixArticleProfil extends AppCompatActivity {
             public void onClick(View v2) {
                 try {
                     JSONObject respObj = new JSONObject();
-                    respObj.put("commentaire", String.valueOf(commentaire.getText()));
+                    respObj.put("text", String.valueOf(commentaire.getText()));
 
                     VolleySingleton
                             .getInstance(ClientChoixArticleProfil.this)
-                            .postData("/plant", respObj, response -> Toast
-                                    .makeText(ClientChoixArticleProfil.this, "Plante ajoutée", Toast.LENGTH_SHORT)
+                            .postData("/plant/" + id + "/comment", respObj, response -> Toast
+                                    .makeText(ClientChoixArticleProfil.this, "Commentaire ajouté", Toast.LENGTH_SHORT)
                                     .show());
                 } catch (Exception e) {
                     e.printStackTrace();
@@ -72,6 +78,29 @@ public class ClientChoixArticleProfil extends AppCompatActivity {
             }
         });
 
+        RecyclerView rvPlantsAccueil = (RecyclerView) findViewById(R.id.vertical_recycle_view_commentaire_profil);
+
+        try {
+            VolleySingleton
+                    .getInstance(ClientChoixArticleProfil.this)
+                    .getData("/plant/" + id + "/comment", response -> {
+                        try {
+                            Log.e("response", String.valueOf(response));
+                            // Initialize infoplants
+                            ArrayList<info_commentaire> infocommentaire = info_commentaire.createList(response);
+                            // Create adapter passing in the sample plant data
+                            PlantAdapter4 adapter = new PlantAdapter4(infocommentaire);
+                            // Attach the adapter to the recyclerview to populate items
+                            rvPlantsAccueil.setAdapter(adapter);
+                            // Set layout manager to position the items
+                            rvPlantsAccueil.setLayoutManager(new LinearLayoutManager(this));
+                        } catch (JSONException e) {
+                            throw new RuntimeException(e);
+                        }
+                    });
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     /*Bouton retour*/
