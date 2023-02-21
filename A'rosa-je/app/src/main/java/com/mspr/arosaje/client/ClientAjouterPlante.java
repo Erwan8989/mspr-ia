@@ -69,6 +69,7 @@ public class ClientAjouterPlante extends AppCompatActivity {
                             .postData("/plant", respObj, response -> Toast
                                     .makeText(ClientAjouterPlante.this, "Plante ajoutée", Toast.LENGTH_SHORT)
                                     .show());
+                    redirect();
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
@@ -93,6 +94,11 @@ public class ClientAjouterPlante extends AppCompatActivity {
             click_image_id.setImageBitmap(photo);
             CloudinaryManager.getInstance(this).uploadImage(img);
         }
+    }
+
+    public void redirect() {
+        Intent intentBack = new Intent(this, ClientAccueil.class);
+        startActivity(intentBack);
     }
 
     @Override
