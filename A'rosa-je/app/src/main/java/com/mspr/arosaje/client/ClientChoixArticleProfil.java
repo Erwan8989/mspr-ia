@@ -72,6 +72,7 @@ public class ClientChoixArticleProfil extends AppCompatActivity {
                             .postData("/plant/" + id + "/comment", respObj, response -> Toast
                                     .makeText(ClientChoixArticleProfil.this, "Commentaire ajouté", Toast.LENGTH_SHORT)
                                     .show());
+                    refresh(nom, espece, description, date, url_photo, id);
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
@@ -103,10 +104,21 @@ public class ClientChoixArticleProfil extends AppCompatActivity {
         }
     }
 
+    public void refresh(String nom, String espece, String description, String date, String url, String id) {
+        Intent intent = new Intent(this, ClientChoixArticleProfil.class);
+        intent.putExtra("nom", nom);
+        intent.putExtra("espece", espece);
+        intent.putExtra("description", description);
+        intent.putExtra("date", date);
+        intent.putExtra("url_photo", url);
+        intent.putExtra("id", id);
+        startActivity(intent);
+    }
+
     /*Bouton retour*/
     @Override
     public void onBackPressed() {
-        Intent intentBack = new Intent(this, ClientAccueil.class);
+        Intent intentBack = new Intent(this, ClientProfil.class);
         startActivity(intentBack);
     }
 

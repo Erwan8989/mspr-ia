@@ -17,9 +17,11 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.mspr.arosaje.client.ClientChoixArticleAccueil;
 import com.mspr.arosaje.client.ClientChoixArticleProfil;
 import com.mspr.arosaje.client.ClientConnexion;
 import com.mspr.arosaje.R;
+import com.mspr.arosaje.client.ClientProfil;
 import com.mspr.arosaje.client.PlantAdapter3;
 import com.mspr.arosaje.client.PlantAdapter4;
 import com.mspr.arosaje.client.info_commentaire;
@@ -78,6 +80,7 @@ public class BotanisteChoixArticle extends AppCompatActivity {
                             .postData("/plant/" + id + "/comment", respObj, response -> Toast
                                     .makeText(BotanisteChoixArticle.this, "Commentaire ajouté", Toast.LENGTH_SHORT)
                                     .show());
+                    refresh(nom, espece, description, date, url_photo, id);
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
@@ -116,12 +119,28 @@ public class BotanisteChoixArticle extends AppCompatActivity {
         startActivity(intentBack);
     }*/
 
+    public void refresh(String nom, String espece, String description, String date, String url, String id) {
+        Intent intent = new Intent(this, BotanisteChoixArticle.class);
+        intent.putExtra("nom", nom);
+        intent.putExtra("espece", espece);
+        intent.putExtra("description", description);
+        intent.putExtra("date", date);
+        intent.putExtra("url_photo", url);
+        intent.putExtra("id", id);
+        startActivity(intent);
+    }
+
     // ********** App bar **********
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.top_menu_sans_deco, menu);
         return super.onCreateOptionsMenu(menu);
+    }
+
+    public void onBackPressed() {
+        Intent intentBack = new Intent(this, BotanisteAccueil.class);
+        startActivity(intentBack);
     }
 
     @Override

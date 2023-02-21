@@ -72,6 +72,7 @@ public class ClientChoixArticleAccueil extends AppCompatActivity {
                             .postData("/plant/" + id + "/comment", respObj, response -> Toast
                                     .makeText(ClientChoixArticleAccueil.this, "Commentaire ajouté", Toast.LENGTH_SHORT)
                                     .show());
+                    refresh(nom, espece, description, date, url_photo, id);
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
@@ -101,6 +102,17 @@ public class ClientChoixArticleAccueil extends AppCompatActivity {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    public void refresh(String nom, String espece, String description, String date, String url, String id) {
+        Intent intent = new Intent(this, ClientChoixArticleAccueil.class);
+        intent.putExtra("nom", nom);
+        intent.putExtra("espece", espece);
+        intent.putExtra("description", description);
+        intent.putExtra("date", date);
+        intent.putExtra("url_photo", url);
+        intent.putExtra("id", id);
+        startActivity(intent);
     }
 
     /*Bouton retour*/
