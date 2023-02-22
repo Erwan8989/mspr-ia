@@ -23,7 +23,7 @@
 					android:layout_height="wrap_content"
 					android:layout_marginTop="10dp"
 					android:paddingStart="20dp"
-					android:text="Créer une demande de RDV."
+					android:text="Garder la plante bidule de truc"
 					android:textColor="@color/black"
 					android:textSize="18sp" />
 
@@ -39,34 +39,35 @@
 						android:layout_width="175dp"
 						android:layout_height="wrap_content"
 						android:layout_marginHorizontal="10dp"
-						android:hint="Titre"
+						android:hint="Titre du rendez-vous"
 						android:inputType=""
 						android:minHeight="48dp" />
 
-
-				<Spinner
-						android:id="@+id/espece"
-						android:layout_width="175dp"
-						android:layout_height="match_parent"
-						android:layout_marginHorizontal="15dp"
-						android:hint="Espèce" />
+				<ImageView
+						android:layout_width="75dp"
+						android:layout_height="100dp"
+						android:layout_gravity="center"
+						android:layout_marginLeft="30dp"
+						android:id="@+id/click_image2"
+						android:scaleType="centerCrop" />
 
 			</LinearLayout>
 
 			<LinearLayout
 					android:layout_width="match_parent"
-					android:layout_height="wrap_content"
+					android:layout_height="match_parent"
 					android:gravity="center"
 					android:orientation="horizontal">
 
-				<EditText
-						android:id="@+id/datePriseEnCharge"
-						android:layout_width="match_parent"
+				<DatePicker
+						android:id="@+id/datePicker1"
+						android:layout_width="wrap_content"
 						android:layout_height="wrap_content"
-						android:layout_marginHorizontal="15dp"
-						android:hint="Date de prise en charge"
-						android:inputType="number"
-						android:minHeight="48dp" />
+						android:datePickerMode="calendar"
+						android:scaleY="0.60"
+						android:scaleX="0.60"
+						android:layout_marginTop="-80dp"
+						android:layout_marginBottom="-105dp"/>
 
 			</LinearLayout>
 
@@ -82,7 +83,7 @@
 						android:layout_width="match_parent"
 						android:layout_height="wrap_content"
 						android:layout_marginHorizontal="15dp"
-						android:hint="Descriptif"
+						android:hint="Message"
 						android:inputType="number"
 						android:minHeight="48dp" />
 

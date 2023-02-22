@@ -32,7 +32,7 @@ public class ClientChoixArticleProfil extends AppCompatActivity {
 
     EditText commentaire;
 
-    Button btn_ajout_commentaire;
+    Button btn_ajout_commentaire, btn_gardienner;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -53,6 +53,7 @@ public class ClientChoixArticleProfil extends AppCompatActivity {
         img_view = (ImageView) findViewById(R.id.image_profil);
         btn_ajout_commentaire = (Button) findViewById(R.id.btn_ajout_commentaire);
         commentaire = findViewById(R.id.champ_commentaire);
+        btn_gardienner = findViewById(R.id.btn_gardienner_choix);
 
         textView_nom.setText(nom);
         textView_espece.setText(espece);
@@ -102,6 +103,8 @@ public class ClientChoixArticleProfil extends AppCompatActivity {
         } catch (Exception e) {
             e.printStackTrace();
         }
+
+        btn_gardienner.setOnClickListener(v2 -> openActivityGardienner());
     }
 
     public void refresh(String nom, String espece, String description, String date, String url, String id) {
@@ -120,6 +123,12 @@ public class ClientChoixArticleProfil extends AppCompatActivity {
     public void onBackPressed() {
         Intent intentBack = new Intent(this, ClientProfil.class);
         startActivity(intentBack);
+    }
+
+    public void openActivityGardienner() {
+        Intent gardienner = new Intent(this, ClientGardiennage.class);
+        startActivity(gardienner);
+        finish();
     }
 
     // ********** App bar **********

@@ -28,7 +28,7 @@ public class ClientGardiennage extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        Intent intentBack = new Intent(this, ClientAccueil.class);
+        Intent intentBack = new Intent(this, ClientProfil.class);
         startActivity(intentBack);
     }
 

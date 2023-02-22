@@ -67,6 +67,13 @@
 				android:inputType="number"
 				android:minHeight="48dp" />
 
+		<Button
+				android:id="@+id/btn_gardienner_choix"
+				android:layout_width="150dp"
+				android:layout_height="55dp"
+				android:layout_marginLeft="20dp"
+				android:text="Faire garder ma plante" />
+
 	<LinearLayout
 			android:orientation="horizontal"
 			android:layout_width="match_parent"
