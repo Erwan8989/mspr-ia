@@ -104,7 +104,7 @@ public class ClientChoixArticleProfil extends AppCompatActivity {
             e.printStackTrace();
         }
 
-        btn_gardienner.setOnClickListener(v2 -> openActivityGardienner());
+        btn_gardienner.setOnClickListener(v2 -> openActivityGardienner(nom, espece, description, date, url_photo, id));
     }
 
     public void refresh(String nom, String espece, String description, String date, String url, String id) {
@@ -125,8 +125,14 @@ public class ClientChoixArticleProfil extends AppCompatActivity {
         startActivity(intentBack);
     }
 
-    public void openActivityGardienner() {
+    public void openActivityGardienner(String nom, String espece, String description, String date, String url, String id) {
         Intent gardienner = new Intent(this, ClientGardiennage.class);
+        gardienner.putExtra("nom", nom);
+        gardienner.putExtra("espece", espece);
+        gardienner.putExtra("description", description);
+        gardienner.putExtra("date", date);
+        gardienner.putExtra("url_photo", url);
+        gardienner.putExtra("id", id);
         startActivity(gardienner);
         finish();
     }

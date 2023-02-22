@@ -23,7 +23,13 @@ public class ClientGardiennage extends AppCompatActivity {
 
         // ***************** Changement de page au clic *****************
 
-
+        Intent intent = getIntent();
+        String nom = intent.getStringExtra("nom");
+        String espece = intent.getStringExtra("espece");
+        String description = intent.getStringExtra("description");
+        String date = intent.getStringExtra("date");
+        String url_photo = intent.getStringExtra("url_photo");
+        String id = intent.getStringExtra("id");
     }
 
     @Override
