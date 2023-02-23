@@ -67,7 +67,7 @@
 						android:scaleY="0.60"
 						android:scaleX="0.60"
 						android:layout_marginTop="-80dp"
-						android:layout_marginBottom="-105dp"/>
+						android:layout_marginBottom="-105dp" />
 
 			</LinearLayout>
 
@@ -98,55 +98,6 @@
 				android:layout_marginLeft="20dp"
 				android:layout_marginBottom="20dp"
 				android:text="Enregistrer" />
-
-
-		<TextView
-				android:layout_width="wrap_content"
-				android:layout_height="wrap_content"
-				android:layout_marginTop="10dp"
-				android:paddingLeft="20dp"
-				android:text="Vos demandes de RDV."
-				android:textColor="@color/black"
-				android:textSize="18sp" />
-
-		<RelativeLayout
-				android:layout_width="wrap_content"
-				android:layout_height="wrap_content"
-				android:layout_margin="15dp"
-				android:background="#dc7a65"
-				android:orientation="horizontal"
-				android:paddingTop="10dp"
-				android:paddingBottom="10dp"
-				android:textAlignment="center">
-
-			<TextView
-					android:id="@+id/number"
-					android:layout_width="105dp"
-					android:layout_height="wrap_content"
-					android:layout_alignBaseline="@id/name"
-					android:layout_marginHorizontal="138dp"
-					android:text="Date du RDV"
-					android:textColor="#000"
-					android:textSize="18sp" />
-
-			<TextView
-					android:id="@+id/name"
-					android:layout_width="wrap_content"
-					android:layout_height="wrap_content"
-					android:text="Titre du RDV"
-					android:textColor="#000"
-					android:textSize="18sp" />
-
-
-			<ImageView
-					android:id="@+id/remove"
-					android:layout_width="wrap_content"
-					android:layout_height="wrap_content"
-					android:layout_alignParentRight="true"
-					android:layout_marginRight="25dp"
-					android:src="@drawable/ic_remove" />
-
-		</RelativeLayout>
 
 	</LinearLayout>
 

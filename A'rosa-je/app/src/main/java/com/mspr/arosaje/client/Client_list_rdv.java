@@ -10,14 +10,14 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.mspr.arosaje.R;
 
-public class ClientGardiennage extends AppCompatActivity {
+public class Client_list_rdv extends AppCompatActivity {
 
     Button b1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.client_gardiennage);
+        setContentView(R.layout.client_create_gardiennage);
 
         b1 = (Button) findViewById(R.id.btn_register);
 

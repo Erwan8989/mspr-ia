@@ -19,7 +19,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.mspr.arosaje.R;
 import com.mspr.arosaje.database.VolleySingleton;
-import com.mspr.arosaje.img.ImageManager;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -126,7 +125,7 @@ public class ClientChoixArticleProfil extends AppCompatActivity {
     }
 
     public void openActivityGardienner(String nom, String espece, String description, String date, String url, String id) {
-        Intent gardienner = new Intent(this, ClientGardiennage.class);
+        Intent gardienner = new Intent(this, Client_list_rdv.class);
         gardienner.putExtra("nom", nom);
         gardienner.putExtra("espece", espece);
         gardienner.putExtra("description", description);
