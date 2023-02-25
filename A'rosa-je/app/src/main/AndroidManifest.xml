@@ -63,6 +63,13 @@
 			</activity>
 
 		<activity
+				android:name=".client.Client_create_gardiennage"
+				android:exported="true"
+				tools:ignore="Instantiatable"
+				android:label="Mon profil">
+		</activity>
+
+		<activity
 				android:name=".botanist.BotanisteAccueil"
 				android:exported="true"
 				tools:ignore="Instantiatable"

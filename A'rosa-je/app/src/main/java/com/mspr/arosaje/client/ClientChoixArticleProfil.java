@@ -125,7 +125,7 @@ public class ClientChoixArticleProfil extends AppCompatActivity {
     }
 
     public void openActivityGardienner(String nom, String espece, String description, String date, String url, String id) {
-        Intent gardienner = new Intent(this, Client_list_rdv.class);
+        Intent gardienner = new Intent(this, Client_create_gardiennage.class);
         gardienner.putExtra("nom", nom);
         gardienner.putExtra("espece", espece);
         gardienner.putExtra("description", description);

@@ -17,9 +17,9 @@ public class Client_list_rdv extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.client_create_gardiennage);
+        setContentView(R.layout.client_list_rdv);
 
-        b1 = (Button) findViewById(R.id.btn_register);
+//        b1 = (Button) findViewById(R.id.btn_register);
 
         // ***************** Changement de page au clic *****************
 
