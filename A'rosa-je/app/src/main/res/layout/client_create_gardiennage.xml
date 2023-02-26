@@ -40,7 +40,7 @@
 						android:layout_height="wrap_content"
 						android:layout_marginHorizontal="10dp"
 						android:hint="Titre du rendez-vous"
-						android:inputType=""
+						android:inputType="text"
 						android:minHeight="48dp" />
 
 				<ImageView
@@ -48,7 +48,7 @@
 						android:layout_height="100dp"
 						android:layout_gravity="center"
 						android:layout_marginLeft="30dp"
-						android:id="@+id/click_image2"
+						android:id="@+id/image_create_rdv"
 						android:scaleType="centerCrop" />
 
 			</LinearLayout>
@@ -83,12 +83,12 @@
 
 
 				<EditText
-						android:id="@+id/descriptif"
+						android:id="@+id/message_add_rdv"
 						android:layout_width="match_parent"
 						android:layout_height="wrap_content"
 						android:layout_marginHorizontal="15dp"
 						android:hint="Message"
-						android:inputType="number"
+						android:inputType="text"
 						android:minHeight="48dp" />
 
 

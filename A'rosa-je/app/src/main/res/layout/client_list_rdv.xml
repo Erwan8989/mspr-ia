@@ -17,7 +17,7 @@
 				android:layout_height="wrap_content"
 				android:layout_marginTop="10dp"
 				android:paddingStart="20dp"
-				android:text="Demande en attente"
+				android:text="Demandes en attente"
 				android:textColor="@color/black"
 				android:textSize="18sp" />
 
@@ -44,7 +44,7 @@
 				android:layout_height="wrap_content"
 				android:layout_marginTop="10dp"
 				android:paddingStart="20dp"
-				android:text="Demande acceptée et planifiée"
+				android:text="Gardiennages planifiés"
 				android:textColor="@color/black"
 				android:textSize="18sp" />
 
@@ -71,7 +71,7 @@
 				android:layout_height="wrap_content"
 				android:layout_marginTop="10dp"
 				android:paddingStart="20dp"
-				android:text="Plante à faire garder"
+				android:text="Plantes que je dois garder"
 				android:textColor="@color/black"
 				android:textSize="18sp" />
 
