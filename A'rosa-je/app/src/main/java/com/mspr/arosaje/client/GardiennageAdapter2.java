@@ -21,16 +21,16 @@ import java.util.ArrayList;
 public class GardiennageAdapter2 extends
         RecyclerView.Adapter<GardiennageAdapter2.ViewHolder> {
     public class ViewHolder extends RecyclerView.ViewHolder {
-        public TextView title;
-        public TextView desc;
+        public TextView title, date_gard, username;
         private final Context context;
         ImageView img_view;
 
         public ViewHolder(View itemView) {
             super(itemView);
             context = itemView.getContext();
-            title = (TextView) itemView.findViewById(R.id.textView2);
-            desc = (TextView) itemView.findViewById(R.id.textView3);
+            title = (TextView) itemView.findViewById(R.id.titre_gardiennage);
+            date_gard = (TextView) itemView.findViewById(R.id.date_gardiennage);
+            username = (TextView) itemView.findViewById(R.id.username_gardiennage);
             img_view = (ImageView) itemView.findViewById(R.id.image_list_profil);
             itemView.setOnClickListener(this::onClick);
         }
@@ -85,8 +85,10 @@ public class GardiennageAdapter2 extends
         // Set item views based on your views and data model
         TextView textView = holder.title;
         textView.setText(infogardiennage.getName());
-        TextView desc = holder.desc;
-        desc.setText(infogardiennage.getDescription());
+        TextView username = holder.username;
+        username.setText(infogardiennage.getUsername());
+        TextView date_gard = holder.date_gard;
+        date_gard.setText(infogardiennage.getDate());
 
         try {
             if (infogardiennage.getUrlPhoto() != null)
