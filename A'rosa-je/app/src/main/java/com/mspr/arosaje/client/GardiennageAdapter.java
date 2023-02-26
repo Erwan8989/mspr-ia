@@ -85,8 +85,8 @@ public class GardiennageAdapter extends
         // Set item views based on your views and data model
         TextView textView = holder.title;
         textView.setText(infogardiennage.getName());
-        TextView username = holder.username;
-        username.setText(infogardiennage.getUsername());
+        /*TextView username = holder.username;
+        username.setText(infogardiennage.getUsername());*/
         TextView date_gard = holder.date_gard;
         date_gard.setText(infogardiennage.getDate());
 

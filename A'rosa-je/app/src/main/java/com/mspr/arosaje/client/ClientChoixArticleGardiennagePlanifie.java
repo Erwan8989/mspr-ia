@@ -35,7 +35,7 @@ public class ClientChoixArticleGardiennagePlanifie extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.client_choisir_demande_planifié);
+        setContentView(R.layout.client_choisir_demande_planifie);
 
         Intent intent = getIntent();
         String nom = intent.getStringExtra("nom");

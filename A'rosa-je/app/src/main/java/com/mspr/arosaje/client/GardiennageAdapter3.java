@@ -20,7 +20,7 @@ import java.util.ArrayList;
 
 public class GardiennageAdapter3 extends
         RecyclerView.Adapter<GardiennageAdapter3.ViewHolder> {
-    public class ViewHolder extends RecyclerView.ViewHolder {=
+    public class ViewHolder extends RecyclerView.ViewHolder {
         public TextView title, date_gard, username;
         private final Context context;
         ImageView img_view;
@@ -85,8 +85,8 @@ public class GardiennageAdapter3 extends
         // Set item views based on your views and data model
         TextView textView = holder.title;
         textView.setText(infogardiennage.getName());
-        TextView username = holder.username;
-        username.setText(infogardiennage.getUsername());
+        /*TextView username = holder.username;
+        username.setText(infogardiennage.getUsername());*/
         TextView date_gard = holder.date_gard;
         date_gard.setText(infogardiennage.getDate());
 

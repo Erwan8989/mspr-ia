@@ -70,7 +70,7 @@ public class GardiennageAdapter2 extends
         LayoutInflater inflater = LayoutInflater.from(context);
 
         // Inflate the custom layout
-        View gardiennageView = inflater.inflate(R.layout.client_choisir_demande_planifié, parent, false);
+        View gardiennageView = inflater.inflate(R.layout.client_choisir_demande_planifie, parent, false);
 
         // Return a new holder instance
         ViewHolder viewHolder = new ViewHolder(gardiennageView);
@@ -85,8 +85,8 @@ public class GardiennageAdapter2 extends
         // Set item views based on your views and data model
         TextView textView = holder.title;
         textView.setText(infogardiennage.getName());
-        TextView username = holder.username;
-        username.setText(infogardiennage.getUsername());
+        /*TextView username = holder.username;
+        username.setText(infogardiennage.getUsername());*/
         TextView date_gard = holder.date_gard;
         date_gard.setText(infogardiennage.getDate());
 
