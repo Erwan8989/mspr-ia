@@ -25,7 +25,7 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
-public class ClientChoixArticleGardiennageEnAttente extends AppCompatActivity {
+public class ClientChoixArticleGardiennagePlanifie extends AppCompatActivity {
     TextView textView_nom, textView_espece, textView_date_ajout, textView_description, date_gardiennage;
     ImageView img_view;
 
@@ -35,7 +35,7 @@ public class ClientChoixArticleGardiennageEnAttente extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.client_choisir_demande_attente);
+        setContentView(R.layout.client_choisir_demande_planifié);
 
         Intent intent = getIntent();
         String nom = intent.getStringExtra("nom");
@@ -54,6 +54,7 @@ public class ClientChoixArticleGardiennageEnAttente extends AppCompatActivity {
         btn_ajout_commentaire = (Button) findViewById(R.id.btn_ajout_commentaire_gardiennage_attente);
         commentaire = findViewById(R.id.champ_commentaire_gardiennage_attente);
         date_gardiennage = findViewById(R.id.date_gardiennage_attente);
+        btn_gardienner = findViewById(R.id.btn_ajout_commentaire_gardiennage_attente);
 
         textView_nom.setText(nom);
         textView_espece.setText(espece);
@@ -70,9 +71,9 @@ public class ClientChoixArticleGardiennageEnAttente extends AppCompatActivity {
                     respObj.put("text", String.valueOf(commentaire.getText()));
 
                     VolleySingleton
-                            .getInstance(ClientChoixArticleGardiennageEnAttente.this)
+                            .getInstance(ClientChoixArticleGardiennagePlanifie.this)
                             .postData("/plant/" + id + "/comment", respObj, response -> Toast
-                                    .makeText(ClientChoixArticleGardiennageEnAttente.this, "Commentaire ajouté", Toast.LENGTH_SHORT)
+                                    .makeText(ClientChoixArticleGardiennagePlanifie.this, "Commentaire ajouté", Toast.LENGTH_SHORT)
                                     .show());
                     refresh(nom, espece, description, date, url_photo, id);
                 } catch (Exception e) {
@@ -85,7 +86,7 @@ public class ClientChoixArticleGardiennageEnAttente extends AppCompatActivity {
 
         try {
             VolleySingleton
-                    .getInstance(ClientChoixArticleGardiennageEnAttente.this)
+                    .getInstance(ClientChoixArticleGardiennagePlanifie.this)
                     .getData("/plant/" + id + "/comment", response -> {
                         try {
                             Log.e("response", String.valueOf(response));
@@ -109,7 +110,7 @@ public class ClientChoixArticleGardiennageEnAttente extends AppCompatActivity {
     }
 
     public void refresh(String nom, String espece, String description, String date, String url, String id) {
-        Intent intent = new Intent(this, ClientChoixArticleGardiennageEnAttente.class);
+        Intent intent = new Intent(this, ClientChoixArticleGardiennagePlanifie.class);
         intent.putExtra("nom", nom);
         intent.putExtra("espece", espece);
         intent.putExtra("description", description);
