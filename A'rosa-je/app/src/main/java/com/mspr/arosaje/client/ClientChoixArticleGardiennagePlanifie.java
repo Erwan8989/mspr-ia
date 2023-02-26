@@ -26,7 +26,7 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 
 public class ClientChoixArticleGardiennagePlanifie extends AppCompatActivity {
-    TextView textView_nom, textView_espece, textView_date_ajout, textView_description, date_gardiennage;
+    TextView textView_nom, textView_espece, textView_date_ajout, textView_description, date_gardiennage, guard;
     ImageView img_view;
 
     EditText commentaire;
@@ -45,6 +45,7 @@ public class ClientChoixArticleGardiennagePlanifie extends AppCompatActivity {
         String url_photo = intent.getStringExtra("url_photo");
         String id = intent.getStringExtra("id");
         String get_date_gardiennage = intent.getStringExtra("date_gardiennage");
+        String get_guard = intent.getStringExtra("guard");
 
         textView_nom = (TextView) findViewById(R.id.nom_choisir_gardiennage);
         textView_espece = (TextView) findViewById(R.id.espece_choisir_gardiennage_attente);
@@ -54,13 +55,14 @@ public class ClientChoixArticleGardiennagePlanifie extends AppCompatActivity {
         btn_ajout_commentaire = (Button) findViewById(R.id.btn_ajout_commentaire_gardiennage_attente);
         commentaire = findViewById(R.id.champ_commentaire_gardiennage_attente);
         date_gardiennage = findViewById(R.id.date_gardiennage_attente);
-        btn_gardienner = findViewById(R.id.btn_ajout_commentaire_gardiennage_attente);
+        guard = findViewById(R.id.user_guard);
 
         textView_nom.setText(nom);
         textView_espece.setText(espece);
         textView_date_ajout.setText(date);
         textView_description.setText(description);
         date_gardiennage.setText(description);
+        guard.setText(get_guard);
         Glide.with(this).load(url_photo).into(img_view);
 
         btn_ajout_commentaire.setOnClickListener(new View.OnClickListener() {
