@@ -70,7 +70,7 @@ public class GardiennageAdapter3 extends
         LayoutInflater inflater = LayoutInflater.from(context);
 
         // Inflate the custom layout
-        View gardiennageView = inflater.inflate(R.layout.list_card_gardiennage, parent, false);
+        View gardiennageView = inflater.inflate(R.layout.client_choisir_demande_attente, parent, false);
 
         // Return a new holder instance
         ViewHolder viewHolder = new ViewHolder(gardiennageView);
