@@ -39,6 +39,7 @@ public class Client_create_gardiennage extends AppCompatActivity {
         img_view = (ImageView) findViewById(R.id.image_create_rdv);
         title = findViewById(R.id.titre);
         message = findViewById(R.id.message_add_rdv);
+        btn_enregistrer = findViewById(R.id.btn_register);
 
         Intent intent = getIntent();
         String nom = intent.getStringExtra("nom");
