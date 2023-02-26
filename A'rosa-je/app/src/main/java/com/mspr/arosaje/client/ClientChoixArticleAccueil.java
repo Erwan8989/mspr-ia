@@ -27,12 +27,12 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 
 public class ClientChoixArticleAccueil extends AppCompatActivity {
-    TextView textView_nom, textView_espece, textView_date_ajout, textView_description;
+    TextView textView_nom, textView_espece, textView_date_ajout, textView_description, date_rdv;
     ImageView img_view;
 
     EditText commentaire;
 
-    Button btn_ajout_commentaire;
+    Button btn_ajout_commentaire, btn_garder;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,6 +45,7 @@ public class ClientChoixArticleAccueil extends AppCompatActivity {
         String date = intent.getStringExtra("date");
         String url_photo = intent.getStringExtra("url_photo");
         String id = intent.getStringExtra("id");
+        String date_rdv_accueil = intent.getStringExtra("date");
 
         textView_nom = (TextView) findViewById(R.id.nom_choisir);
         textView_espece = (TextView) findViewById(R.id.espece_choisir);
@@ -53,11 +54,14 @@ public class ClientChoixArticleAccueil extends AppCompatActivity {
         img_view = (ImageView) findViewById(R.id.click_image2);
         btn_ajout_commentaire = (Button) findViewById(R.id.btn_ajout_commentaire_client_accueil);
         commentaire = findViewById(R.id.champ_commentaire_client_accueil);
+        date_rdv = findViewById(R.id.date_gardiennage_attente_accueil);
+        btn_garder = findViewById(R.id.btn_garder_plante);
 
         textView_nom.setText(nom);
         textView_espece.setText(espece);
         textView_date_ajout.setText(date);
         textView_description.setText(description);
+        date_rdv.setText(date_rdv_accueil);
         Glide.with(this).load(url_photo).into(img_view);
 
         btn_ajout_commentaire.setOnClickListener(new View.OnClickListener() {
@@ -73,6 +77,17 @@ public class ClientChoixArticleAccueil extends AppCompatActivity {
                                     .makeText(ClientChoixArticleAccueil.this, "Commentaire ajouté", Toast.LENGTH_SHORT)
                                     .show());
                     refresh(nom, espece, description, date, url_photo, id);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+
+        btn_garder.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v2) {
+                try {
+                    // to do
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
