@@ -12,50 +12,101 @@
 			android:layout_height="match_parent"
 			android:orientation="vertical">
 
-		<ImageView
-				android:layout_width="225dp"
-				android:layout_height="300dp"
-				android:layout_gravity="center"
-				android:layout_marginTop="15dp"
-				android:id="@+id/image_gardiennage_attente"
-				android:scaleType="centerCrop" />
-
 		<LinearLayout
 				android:layout_width="match_parent"
-				android:layout_height="80dp"
-				android:gravity="center"
-				android:orientation="horizontal">
+				android:layout_height="wrap_content"
+				android:paddingHorizontal="10dp"
+			>
+			<ImageView
+					android:layout_width="225dp"
+					android:layout_height="300dp"
+					android:layout_gravity="center"
+					android:layout_marginTop="15dp"
+					android:id="@+id/image_gardiennage_attente"
+					android:scaleType="centerCrop" />
 
-			<TextView
-					android:id="@+id/nom_choisir_gardiennage"
-					android:layout_width="175dp"
+			<LinearLayout
+					android:layout_width="match_parent"
 					android:layout_height="wrap_content"
-					android:layout_marginHorizontal="15dp"
-					android:layout_marginTop="20dp"
-					android:hint="Nom"
-					android:inputType="number"
-					android:minHeight="48dp" />
+					android:gravity="center"
+					android:orientation="vertical">
 
-			<TextView
-					android:id="@+id/espece_choisir_gardiennage_attente"
-					android:layout_width="175dp"
-					android:layout_height="wrap_content"
-					android:layout_marginHorizontal="15dp"
-					android:layout_marginTop="20dp"
-					android:hint="Espèce"
-					android:inputType="number"
-					android:minHeight="48dp" />
+				<TextView
+						android:id="@+id/nom_choisir_gardiennage"
+						android:layout_width="match_parent"
+						android:layout_height="wrap_content"
+						android:layout_marginHorizontal="15dp"
+						android:layout_marginTop="20dp"
+						android:hint="Nom"
+						android:inputType="number"
+						android:minHeight="48dp" />
+
+				<TextView
+						android:id="@+id/espece_choisir_gardiennage_attente"
+						android:layout_width="match_parent"
+						android:layout_height="wrap_content"
+						android:layout_marginHorizontal="15dp"
+						android:layout_marginTop="20dp"
+						android:hint="Espèce"
+						android:inputType="number"
+						android:minHeight="48dp" />
+
+				<TextView
+						android:id="@+id/date_ajout_choisir_gardiennage_attente"
+						android:layout_width="match_parent"
+						android:layout_height="wrap_content"
+						android:layout_marginHorizontal="15dp"
+						android:layout_marginTop="20dp"
+						android:hint="Date d'ajout"
+						android:inputType="number"
+						android:minHeight="48dp" />
+
+				<LinearLayout
+						android:orientation="horizontal"
+						android:layout_width="match_parent"
+						android:layout_height="wrap_content"
+						android:layout_marginTop="20dp"
+						android:layout_marginHorizontal="15dp">
+
+					<TextView
+							android:layout_width="wrap_content"
+							android:layout_height="wrap_content"
+							android:id="@+id/gard_text"
+							android:text="Gardien : " />
+
+					<TextView
+							android:layout_width="wrap_content"
+							android:layout_height="wrap_content"
+							android:id="@+id/user_guard"
+							android:text="Gardien" />
+
+				</LinearLayout>
+
+				<LinearLayout
+						android:orientation="vertical"
+						android:layout_width="match_parent"
+						android:layout_height="wrap_content"
+						android:layout_marginTop="20dp"
+						android:layout_marginHorizontal="15dp">
+
+					<TextView
+							android:layout_width="wrap_content"
+							android:layout_height="wrap_content"
+							android:id="@+id/date_text"
+							android:text="Date planifié : "
+							android:layout_marginEnd="20dp" />
+
+					<TextView
+							android:layout_width="wrap_content"
+							android:layout_height="wrap_content"
+							android:id="@+id/date_gardiennage_attente"
+							android:text="Aucune date sélectionnée" />
+
+				</LinearLayout>
+			</LinearLayout>
 		</LinearLayout>
 
-		<TextView
-				android:id="@+id/date_ajout_choisir_gardiennage_attente"
-				android:layout_width="match_parent"
-				android:layout_height="wrap_content"
-				android:layout_marginHorizontal="15dp"
-				android:layout_marginTop="10dp"
-				android:hint="Date d'ajout"
-				android:inputType="number"
-				android:minHeight="48dp" />
+
 
 		<TextView
 				android:id="@+id/descriptif_choisir_gardiennage_attente"
@@ -67,47 +118,7 @@
 				android:inputType="number"
 				android:minHeight="48dp" />
 
-		<LinearLayout
-				android:orientation="horizontal"
-				android:layout_width="match_parent"
-				android:layout_height="55dp"
-				android:gravity="center">
 
-			<TextView
-					android:layout_width="wrap_content"
-					android:layout_height="wrap_content"
-					android:id="@+id/date_text"
-					android:text="Date planifié : "
-					android:layout_marginEnd="20dp" />
-
-			<TextView
-					android:layout_width="wrap_content"
-					android:layout_height="wrap_content"
-					android:id="@+id/date_gardiennage_attente"
-					android:text="Aucune date sélectionnée" />
-
-		</LinearLayout>
-
-		<LinearLayout
-				android:orientation="horizontal"
-				android:layout_width="match_parent"
-				android:layout_height="55dp"
-				android:gravity="center">
-
-			<TextView
-					android:layout_width="wrap_content"
-					android:layout_height="wrap_content"
-					android:id="@+id/gard_text"
-					android:text="Gardien : "
-					android:layout_marginEnd="20dp" />
-
-			<TextView
-					android:layout_width="wrap_content"
-					android:layout_height="wrap_content"
-					android:id="@+id/user_guard"
-					android:text="Gardien" />
-
-		</LinearLayout>
 
 		<LinearLayout
 				android:orientation="horizontal"

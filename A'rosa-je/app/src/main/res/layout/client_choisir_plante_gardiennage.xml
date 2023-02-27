@@ -10,52 +10,65 @@
 	<LinearLayout
 			android:layout_width="match_parent"
 			android:layout_height="match_parent"
-			android:orientation="vertical">
-
-		<ImageView
-				android:layout_width="225dp"
-				android:layout_height="300dp"
-				android:layout_gravity="center"
-				android:layout_marginTop="15dp"
-				android:id="@+id/image_profil"
-				android:scaleType="centerCrop"/>
+			android:orientation="vertical"
+			android:paddingHorizontal="10dp">
 
 		<LinearLayout
 				android:layout_width="match_parent"
-				android:layout_height="80dp"
-				android:gravity="center"
-				android:orientation="horizontal">
+				android:layout_height="wrap_content">
+			<ImageView
+					android:layout_width="225dp"
+					android:layout_height="300dp"
+					android:layout_gravity="center"
+					android:layout_marginTop="15dp"
+					android:id="@+id/image_profil"
+					android:scaleType="centerCrop"/>
 
-			<TextView
-					android:id="@+id/nom_choisir"
-					android:layout_width="175dp"
+			<LinearLayout
+					android:layout_width="match_parent"
 					android:layout_height="wrap_content"
-					android:layout_marginHorizontal="15dp"
-					android:layout_marginTop="20dp"
-					android:hint="Nom"
-					android:inputType="number"
-					android:minHeight="48dp" />
+					android:gravity="center"
+					android:orientation="vertical">
 
-			<TextView
-					android:id="@+id/espece_choisir"
-					android:layout_width="175dp"
-					android:layout_height="wrap_content"
-					android:layout_marginHorizontal="15dp"
-					android:layout_marginTop="20dp"
-					android:hint="Espèce"
-					android:inputType="number"
-					android:minHeight="48dp" />
+				<TextView
+						android:id="@+id/nom_choisir"
+						android:layout_width="match_parent"
+						android:layout_height="wrap_content"
+						android:layout_marginHorizontal="15dp"
+						android:layout_marginTop="20dp"
+						android:hint="Nom"
+						android:inputType="number"
+						android:minHeight="48dp" />
+
+				<TextView
+						android:id="@+id/espece_choisir"
+						android:layout_width="match_parent"
+						android:layout_height="match_parent"
+						android:layout_marginHorizontal="15dp"
+						android:layout_marginTop="20dp"
+						android:hint="Espèce"
+						android:inputType="number"
+						android:minHeight="48dp" />
+
+				<TextView
+						android:id="@+id/date_ajout_choisir"
+						android:layout_width="match_parent"
+						android:layout_height="wrap_content"
+						android:layout_marginHorizontal="15dp"
+						android:layout_marginTop="20dp"
+						android:hint="Date d'ajout"
+						android:inputType="number"
+						android:minHeight="48dp" />
+
+				<Button
+				android:id="@+id/btn_gardienner_choix"
+				android:layout_width="150dp"
+				android:layout_height="55dp"
+				android:text="Faire garder ma plante" />
+			</LinearLayout>
 		</LinearLayout>
 
-		<TextView
-				android:id="@+id/date_ajout_choisir"
-				android:layout_width="match_parent"
-				android:layout_height="wrap_content"
-				android:layout_marginHorizontal="15dp"
-				android:layout_marginTop="10dp"
-				android:hint="Date d'ajout"
-				android:inputType="number"
-				android:minHeight="48dp" />
+
 
 		<TextView
 				android:id="@+id/descriptif_choisir"
@@ -67,12 +80,6 @@
 				android:inputType="number"
 				android:minHeight="48dp" />
 
-		<Button
-				android:id="@+id/btn_gardienner_choix"
-				android:layout_width="150dp"
-				android:layout_height="55dp"
-				android:layout_marginLeft="20dp"
-				android:text="Faire garder ma plante" />
 
 	<LinearLayout
 			android:orientation="horizontal"
