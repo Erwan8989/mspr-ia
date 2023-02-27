@@ -70,13 +70,10 @@ public class Client_create_gardiennage extends AppCompatActivity {
             public void onClick(View v2) {
                 try {
                     JSONObject respObj = new JSONObject();
+                    respObj.put("plantId", Integer.valueOf(id));
                     respObj.put("title", String.valueOf(title.getText()));
                     respObj.put("description", String.valueOf(message.getText()));
-                    respObj.put("date", String.valueOf(date_range_text.getText()));
-
-                    if(ImageManager.getRemoteImg() != null) {
-                        respObj.put("photo", ImageManager.getRemoteImg());
-                    }
+                    respObj.put("date_rdv", String.valueOf(date_range_text.getText()));
 
                     Log.d("RES", "onSuccess: " + respObj);
 
@@ -94,7 +91,7 @@ public class Client_create_gardiennage extends AppCompatActivity {
     }
 
     public void redirect() {
-        Intent intentBack = new Intent(this, ClientChoixArticleProfil.class);
+        Intent intentBack = new Intent(this, ClientProfil.class);
         startActivity(intentBack);
     }
 }
