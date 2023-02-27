@@ -125,4 +125,29 @@ public class VolleySingleton {
             e.printStackTrace();
         }
     }
+
+    public void patchData(String route, JSONObject data, Response.Listener<JSONObject> onSuccess) {
+        try {
+            JsonObjectRequest request = new JsonObjectRequest(Request.Method.PATCH, baseUrl + route, data, onSuccess,  error -> {
+                Toast.makeText(ctx, "Fail to get response = " + error, Toast.LENGTH_SHORT).show();
+                Log.e("ERROR", "onErrorResponse: " + error);
+            }) {
+                @Override
+                public Map<String, String> getHeaders() {
+                    Map<String, String> headers = new HashMap<>();
+                    if (AuthManager.getToken() != null)
+                        headers.put("Cookie", AuthManager.getToken()); // on le set dans les cookies
+                    return headers;
+                }
+
+                @Override
+                protected Response<JSONObject> parseNetworkResponse(NetworkResponse response) {
+                    return super.parseNetworkResponse(response);
+                }
+            };
+            addToRequestQueue(request);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 }
