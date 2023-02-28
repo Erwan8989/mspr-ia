@@ -40,13 +40,14 @@ public class GardiennageAdapter3 extends
             if (position != RecyclerView.NO_POSITION) { // Check if an item was deleted, but the user clicked it before the UI removed it
                 info_gardiennage infogardiennage = mInfogardiennages.get(position);
                 final Intent intent;
-                intent = new Intent(context, BotanisteChoixArticle.class);
+                intent = new Intent(context, ClientChoixArticleGardiennageEnAttente.class);
                 intent.putExtra("nom", infogardiennage.getName());
                 intent.putExtra("espece", infogardiennage.getEspece());
                 intent.putExtra("description", infogardiennage.getDescription());
                 intent.putExtra("date", infogardiennage.getDate());
                 intent.putExtra("id", infogardiennage.getId());
                 try {
+                    intent.putExtra("date_gardiennage", infogardiennage.getDateGard());
                     intent.putExtra("url_photo", infogardiennage.getUrlPhoto());
                 } catch (JSONException e) {
                     throw new RuntimeException(e);
@@ -70,7 +71,7 @@ public class GardiennageAdapter3 extends
         LayoutInflater inflater = LayoutInflater.from(context);
 
         // Inflate the custom layout
-        View gardiennageView = inflater.inflate(R.layout.client_choisir_demande_attente, parent, false);
+        View gardiennageView = inflater.inflate(R.layout.list_card_gardiennage, parent, false);
 
         // Return a new holder instance
         ViewHolder viewHolder = new ViewHolder(gardiennageView);
@@ -83,12 +84,18 @@ public class GardiennageAdapter3 extends
         info_gardiennage infogardiennage = mInfogardiennages.get(position);
 
         // Set item views based on your views and data model
-        TextView textView = holder.title;
-        textView.setText(infogardiennage.getName());
-        /*TextView username = holder.username;
-        username.setText(infogardiennage.getUsername());*/
-        TextView date_gard = holder.date_gard;
-        date_gard.setText(infogardiennage.getDate());
+        try {
+            TextView title = holder.title;
+            title.setText(infogardiennage.getTitleGard());
+
+            TextView username = holder.username;
+            username.setText(infogardiennage.getNameGard());
+
+            TextView date_gard = holder.date_gard;
+            date_gard.setText(infogardiennage.getDateGard());
+        } catch (JSONException e) {
+            throw new RuntimeException(e);
+        }
 
         try {
             if (infogardiennage.getUrlPhoto() != null)
