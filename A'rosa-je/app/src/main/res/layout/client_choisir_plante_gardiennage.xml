@@ -68,8 +68,6 @@
 			</LinearLayout>
 		</LinearLayout>
 
-
-
 		<TextView
 				android:id="@+id/descriptif_choisir"
 				android:layout_width="match_parent"

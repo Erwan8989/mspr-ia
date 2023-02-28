@@ -2,6 +2,7 @@ package com.mspr.arosaje.img;
 
 import android.content.Context;
 import android.net.Uri;
+import android.util.Log;
 
 import com.cloudinary.android.MediaManager;
 import com.cloudinary.android.callback.ErrorInfo;
@@ -48,7 +49,6 @@ public class CloudinaryManager {
                 .callback(new UploadCallback() {
                     @Override
                     public void onStart(String requestId) {
-
                     }
 
                     @Override
@@ -59,11 +59,12 @@ public class CloudinaryManager {
                     @Override
                     public void onSuccess(String requestId, Map resultData) {
                         ImageManager.setRemoteImg((String) resultData.get("url"));
+                        Log.d("test", "test");
                     }
 
                     @Override
                     public void onError(String requestId, ErrorInfo error) {
-
+                        Log.d("IMG", "onSuccess: " + error.getDescription());
                     }
 
                     @Override

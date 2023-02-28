@@ -62,7 +62,7 @@ public class ClientAjouterPlante extends AppCompatActivity {
                         respObj.put("photo", ImageManager.getRemoteImg());
                     }
 
-                    Log.d("RES", "onSuccess: " + respObj);
+                    Log.d("RES", "onSuccess: " + ImageManager.getRemoteImg());
 
                     VolleySingleton
                             .getInstance(ClientAjouterPlante.this)

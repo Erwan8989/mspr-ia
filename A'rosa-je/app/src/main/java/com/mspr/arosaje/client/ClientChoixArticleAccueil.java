@@ -46,6 +46,8 @@ public class ClientChoixArticleAccueil extends AppCompatActivity {
         String url_photo = intent.getStringExtra("url_photo");
         String id = intent.getStringExtra("id");
         String date_rdv_accueil = intent.getStringExtra("date");
+        String id_gard = intent.getStringExtra("id_gard");
+        Log.e("gard", id_gard);
 
         textView_nom = (TextView) findViewById(R.id.nom_choisir);
         textView_espece = (TextView) findViewById(R.id.espece_choisir);
@@ -87,7 +89,12 @@ public class ClientChoixArticleAccueil extends AppCompatActivity {
             @Override
             public void onClick(View v2) {
                 try {
-                    // to do
+                    VolleySingleton
+                            .getInstance(ClientChoixArticleAccueil.this)
+                            .postData("/gard/" + id_gard, null, response -> Toast
+                                    .makeText(ClientChoixArticleAccueil.this, "Demande acceptée", Toast.LENGTH_SHORT)
+                                    .show());
+                    redirect();
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
@@ -117,6 +124,11 @@ public class ClientChoixArticleAccueil extends AppCompatActivity {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    public void redirect() {
+        Intent intentBack = new Intent(this, ClientAccueil.class);
+        startActivity(intentBack);
     }
 
     public void refresh(String nom, String espece, String description, String date, String url, String id) {

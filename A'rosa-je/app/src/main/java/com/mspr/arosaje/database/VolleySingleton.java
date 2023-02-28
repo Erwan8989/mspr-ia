@@ -28,7 +28,7 @@ public class VolleySingleton {
     private final Context ctx;
 
     // ********** METTRE SYSTEMATIQUEMENT SA PROPRE IP **********
-    private final String baseUrl = "http://172.20.10.3:8000";
+    private final String baseUrl = "http://192.168.1.136:8000";
 
     private static final String TAG = "VolleySingleton";
 
@@ -120,31 +120,6 @@ public class VolleySingleton {
                 }
             };
 //            Log.d("REQ", "postData: " + request.getHeaders());
-            addToRequestQueue(request);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
-    public void patchData(String route, JSONObject data, Response.Listener<JSONObject> onSuccess) {
-        try {
-            JsonObjectRequest request = new JsonObjectRequest(Request.Method.PATCH, baseUrl + route, data, onSuccess,  error -> {
-                Toast.makeText(ctx, "Fail to get response = " + error, Toast.LENGTH_SHORT).show();
-                Log.e("ERROR", "onErrorResponse: " + error);
-            }) {
-                @Override
-                public Map<String, String> getHeaders() {
-                    Map<String, String> headers = new HashMap<>();
-                    if (AuthManager.getToken() != null)
-                        headers.put("Cookie", AuthManager.getToken()); // on le set dans les cookies
-                    return headers;
-                }
-
-                @Override
-                protected Response<JSONObject> parseNetworkResponse(NetworkResponse response) {
-                    return super.parseNetworkResponse(response);
-                }
-            };
             addToRequestQueue(request);
         } catch (Exception e) {
             e.printStackTrace();
