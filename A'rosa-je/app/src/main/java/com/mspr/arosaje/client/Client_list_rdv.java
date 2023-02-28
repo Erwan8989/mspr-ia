@@ -109,7 +109,7 @@ public class Client_list_rdv extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        Intent intentBack = new Intent(this, ClientProfil.class);
+        Intent intentBack = new Intent(this, ClientAccueil.class);
         startActivity(intentBack);
     }
 
