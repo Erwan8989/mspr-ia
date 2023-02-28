@@ -45,7 +45,7 @@ public class ClientChoixArticleGardiennagePlanifie extends AppCompatActivity {
         String url_photo = intent.getStringExtra("url_photo");
         String id = intent.getStringExtra("id");
         String get_date_gardiennage = intent.getStringExtra("date_gardiennage");
-        String get_guard = intent.getStringExtra("guard");
+        String get_guard = intent.getStringExtra("gardien");
 
         textView_nom = (TextView) findViewById(R.id.nom_choisir_gardiennage);
         textView_espece = (TextView) findViewById(R.id.espece_choisir_gardiennage_attente);
@@ -77,7 +77,7 @@ public class ClientChoixArticleGardiennagePlanifie extends AppCompatActivity {
                             .postData("/plant/" + id + "/comment", respObj, response -> Toast
                                     .makeText(ClientChoixArticleGardiennagePlanifie.this, "Commentaire ajouté", Toast.LENGTH_SHORT)
                                     .show());
-                    refresh(nom, espece, description, date, url_photo, id, get_date_gardiennage);
+                    refresh(nom, espece, description, date, url_photo, id, get_date_gardiennage, get_guard);
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
@@ -109,7 +109,7 @@ public class ClientChoixArticleGardiennagePlanifie extends AppCompatActivity {
         }
     }
 
-    public void refresh(String nom, String espece, String description, String date, String url, String id, String date_gardiennage) {
+    public void refresh(String nom, String espece, String description, String date, String url, String id, String date_gardiennage, String guard) {
         Intent intent = new Intent(this, ClientChoixArticleGardiennagePlanifie.class);
         intent.putExtra("nom", nom);
         intent.putExtra("espece", espece);
@@ -118,6 +118,7 @@ public class ClientChoixArticleGardiennagePlanifie extends AppCompatActivity {
         intent.putExtra("url_photo", url);
         intent.putExtra("id", id);
         intent.putExtra("date_gardiennage", date_gardiennage);
+        intent.putExtra("gardien", guard);
         startActivity(intent);
     }
 

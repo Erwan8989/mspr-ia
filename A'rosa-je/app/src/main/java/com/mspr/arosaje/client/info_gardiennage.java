@@ -9,6 +9,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.Map;
 
 public class info_gardiennage extends AppCompatActivity {
     private String mId, mName, mDescription, mEspece, mDate;
@@ -76,12 +77,9 @@ public class info_gardiennage extends AppCompatActivity {
         return songsArray.getString(2);
     }
 
-    /*public String getGuardian() throws JSONException {
-        JSONArray songsArray = gard_id.toJSONArray(gard_id.names());
-        JSONArray songArray2 = songsArray.getJSONArray(3);
-        songArray2.getString(2);
-        return songArray2.getString(2);
-    }*/
+    public String getGuardian() throws JSONException {
+        return gard_id.getJSONObject("botanist").getString("firstname");
+    }
 
     public static ArrayList<info_gardiennage> createList(JSONArray arrayList) throws JSONException {
         ArrayList<info_gardiennage> infoplants = new ArrayList<info_gardiennage>();

@@ -48,6 +48,7 @@ public class GardiennageAdapter2 extends
                 intent.putExtra("id", infogardiennage.getId());
                 try {
                     intent.putExtra("date_gardiennage", infogardiennage.getDateGard());
+                    intent.putExtra("gardien", infogardiennage.getGuardian());
                     intent.putExtra("url_photo", infogardiennage.getUrlPhoto());
                 } catch (JSONException e) {
                     throw new RuntimeException(e);
