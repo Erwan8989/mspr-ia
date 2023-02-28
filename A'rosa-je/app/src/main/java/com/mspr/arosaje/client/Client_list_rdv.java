@@ -44,7 +44,7 @@ public class Client_list_rdv extends AppCompatActivity {
         try {
             VolleySingleton
                     .getInstance(Client_list_rdv.this)
-                    .getData("/plant/me", response -> {
+                    .getData("/plant/pendingGard", response -> {
                         try {
                             // Initialize infoplants
                             ArrayList<info_gardiennage> infogardiennages = info_gardiennage.createList(response);
@@ -62,7 +62,7 @@ public class Client_list_rdv extends AppCompatActivity {
             e.printStackTrace();
         }
 
-        // Gardiennages planifiés
+        /*// Gardiennages planifiés
         try {
             VolleySingleton
                     .getInstance(Client_list_rdv.this)
@@ -104,7 +104,7 @@ public class Client_list_rdv extends AppCompatActivity {
                     });
         } catch (Exception e) {
             e.printStackTrace();
-        }
+        }*/
     }
 
     @Override

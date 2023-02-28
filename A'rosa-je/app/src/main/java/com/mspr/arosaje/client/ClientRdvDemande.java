@@ -1,3 +1,4 @@
+/*
 package com.mspr.arosaje.client;
 
 import android.content.Intent;
@@ -25,17 +26,17 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
-public class ClientChoixArticleGardiennageEnAttente extends AppCompatActivity {
-    TextView textView_nom, textView_espece, textView_date_ajout, textView_description, date_gardiennage;
+public class ClientRdvDemande extends AppCompatActivity {
+    TextView textView_nom, textView_espece, textView_date_ajout, textView_description;
     ImageView img_view;
 
     EditText commentaire;
 
-    Button btn_ajout_commentaire;
+    Button btn_ajout_commentaire, btn_gardienner;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.client_choisir_demande_attente);
+        setContentView(R.layout.client_choisir_article_profil);
 
         Intent intent = getIntent();
         String nom = intent.getStringExtra("nom");
@@ -44,22 +45,20 @@ public class ClientChoixArticleGardiennageEnAttente extends AppCompatActivity {
         String date = intent.getStringExtra("date");
         String url_photo = intent.getStringExtra("url_photo");
         String id = intent.getStringExtra("id");
-        String get_date_gardiennage = intent.getStringExtra("date_gardiennage");
 
-        textView_nom = (TextView) findViewById(R.id.nom_choisir_gardiennage);
-        textView_espece = (TextView) findViewById(R.id.espece_choisir_gardiennage_attente);
-        textView_date_ajout = (TextView) findViewById(R.id.date_ajout_choisir_gardiennage_attente);
-        textView_description = (TextView) findViewById(R.id.descriptif_choisir_gardiennage_attente);
-        img_view = (ImageView) findViewById(R.id.image_gardiennage_attente);
-        btn_ajout_commentaire = (Button) findViewById(R.id.btn_ajout_commentaire_gardiennage_attente);
-        commentaire = findViewById(R.id.champ_commentaire_gardiennage_attente);
-        date_gardiennage = findViewById(R.id.date_gardiennage_attente);
+        textView_nom = (TextView) findViewById(R.id.nom_choisir);
+        textView_espece = (TextView) findViewById(R.id.espece_choisir);
+        textView_date_ajout = (TextView) findViewById(R.id.date_ajout_choisir);
+        textView_description = (TextView) findViewById(R.id.descriptif_choisir);
+        img_view = (ImageView) findViewById(R.id.image_profil);
+        btn_ajout_commentaire = (Button) findViewById(R.id.btn_ajout_commentaire);
+        commentaire = findViewById(R.id.champ_commentaire);
+        btn_gardienner = findViewById(R.id.btn_gardienner_choix);
 
         textView_nom.setText(nom);
         textView_espece.setText(espece);
         textView_date_ajout.setText(date);
         textView_description.setText(description);
-        date_gardiennage.setText(get_date_gardiennage);
         Glide.with(this).load(url_photo).into(img_view);
 
         btn_ajout_commentaire.setOnClickListener(new View.OnClickListener() {
@@ -70,11 +69,11 @@ public class ClientChoixArticleGardiennageEnAttente extends AppCompatActivity {
                     respObj.put("text", String.valueOf(commentaire.getText()));
 
                     VolleySingleton
-                            .getInstance(ClientChoixArticleGardiennageEnAttente.this)
+                            .getInstance(ClientChoixArticleProfil.this)
                             .postData("/plant/" + id + "/comment", respObj, response -> Toast
-                                    .makeText(ClientChoixArticleGardiennageEnAttente.this, "Commentaire ajouté", Toast.LENGTH_SHORT)
+                                    .makeText(ClientChoixArticleProfil.this, "Commentaire ajouté", Toast.LENGTH_SHORT)
                                     .show());
-                    refresh(nom, espece, description, date, url_photo, id, get_date_gardiennage);
+                    refresh(nom, espece, description, date, url_photo, id);
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
@@ -85,7 +84,7 @@ public class ClientChoixArticleGardiennageEnAttente extends AppCompatActivity {
 
         try {
             VolleySingleton
-                    .getInstance(ClientChoixArticleGardiennageEnAttente.this)
+                    .getInstance(ClientChoixArticleProfil.this)
                     .getData("/plant/" + id + "/comment", response -> {
                         try {
                             Log.e("response", String.valueOf(response));
@@ -104,25 +103,40 @@ public class ClientChoixArticleGardiennageEnAttente extends AppCompatActivity {
         } catch (Exception e) {
             e.printStackTrace();
         }
+
+        btn_gardienner.setOnClickListener(v2 -> openActivityGardienner(nom, espece, description, date, url_photo, id));
     }
 
-    public void refresh(String nom, String espece, String description, String date, String url, String id, String get_date_gardiennage) {
-        Intent intent = new Intent(this, ClientChoixArticleGardiennageEnAttente.class);
+    public void refresh(String nom, String espece, String description, String date, String url, String id) {
+        Intent intent = new Intent(this, ClientChoixArticleProfil.class);
         intent.putExtra("nom", nom);
         intent.putExtra("espece", espece);
         intent.putExtra("description", description);
         intent.putExtra("date", date);
         intent.putExtra("url_photo", url);
         intent.putExtra("id", id);
-        intent.putExtra("date_gardiennage", get_date_gardiennage);
         startActivity(intent);
     }
 
-    /*Bouton retour*/
+    */
+/*Bouton retour*//*
+
     @Override
     public void onBackPressed() {
-        Intent intentBack = new Intent(this, Client_list_rdv.class);
+        Intent intentBack = new Intent(this, ClientProfil.class);
         startActivity(intentBack);
+    }
+
+    public void openActivityGardienner(String nom, String espece, String description, String date, String url, String id) {
+        Intent gardienner = new Intent(this, Client_create_gardiennage.class);
+        gardienner.putExtra("nom", nom);
+        gardienner.putExtra("espece", espece);
+        gardienner.putExtra("description", description);
+        gardienner.putExtra("date", date);
+        gardienner.putExtra("url_photo", url);
+        gardienner.putExtra("id", id);
+        startActivity(gardienner);
+        finish();
     }
 
     // ********** App bar **********
@@ -144,5 +158,5 @@ public class ClientChoixArticleGardiennageEnAttente extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
-
 }
+*/
