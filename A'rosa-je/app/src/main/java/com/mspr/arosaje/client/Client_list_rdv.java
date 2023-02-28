@@ -38,6 +38,8 @@ public class Client_list_rdv extends AppCompatActivity {
 
         // Lookup the recyclerview in activity layout
         RecyclerView rvPlants = (RecyclerView) findViewById(R.id.vertical_recycle_view_list_rdv_attente);
+        RecyclerView rvPlants2 = (RecyclerView) findViewById(R.id.vertical_recycle_view_list_rdv_accepte);
+        RecyclerView rvPlants3 = (RecyclerView) findViewById(R.id.vertical_recycle_view_list_rdv_a_garder);
 
 
         // Demandes en attentes
@@ -62,20 +64,20 @@ public class Client_list_rdv extends AppCompatActivity {
             e.printStackTrace();
         }
 
-        /*// Gardiennages planifiés
+        // Gardiennages planifiés
         try {
             VolleySingleton
                     .getInstance(Client_list_rdv.this)
-                    .getData("/plant/me", response -> {
+                    .getData("/plant/inProgressGard", response -> {
                         try {
                             // Initialize infoplants
                             ArrayList<info_gardiennage> infogardiennages = info_gardiennage.createList(response);
                             // Create adapter passing in the sample plant data
                             GardiennageAdapter2 adapter = new GardiennageAdapter2(infogardiennages);
                             // Attach the adapter to the recyclerview to populate items
-                            rvPlants.setAdapter(adapter);
+                            rvPlants2.setAdapter(adapter);
                             // Set layout manager to position the items
-                            rvPlants.setLayoutManager(new LinearLayoutManager(this));
+                            rvPlants2.setLayoutManager(new LinearLayoutManager(this));
                         } catch (JSONException e) {
                             throw new RuntimeException(e);
                         }
@@ -83,7 +85,7 @@ public class Client_list_rdv extends AppCompatActivity {
         } catch (Exception e) {
             e.printStackTrace();
         }
-
+/*
         // Plante à faire garder
         try {
             VolleySingleton
@@ -95,9 +97,9 @@ public class Client_list_rdv extends AppCompatActivity {
                             // Create adapter passing in the sample plant data
                             GardiennageAdapter3 adapter = new GardiennageAdapter3(infogardiennages);
                             // Attach the adapter to the recyclerview to populate items
-                            rvPlants.setAdapter(adapter);
+                            rvPlants3.setAdapter(adapter);
                             // Set layout manager to position the items
-                            rvPlants.setLayoutManager(new LinearLayoutManager(this));
+                            rvPlants3.setLayoutManager(new LinearLayoutManager(this));
                         } catch (JSONException e) {
                             throw new RuntimeException(e);
                         }

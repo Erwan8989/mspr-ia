@@ -31,7 +31,7 @@ public class ClientChoixArticleGardiennagePlanifie extends AppCompatActivity {
 
     EditText commentaire;
 
-    Button btn_ajout_commentaire, btn_gardienner;
+    Button btn_ajout_commentaire;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -61,7 +61,7 @@ public class ClientChoixArticleGardiennagePlanifie extends AppCompatActivity {
         textView_espece.setText(espece);
         textView_date_ajout.setText(date);
         textView_description.setText(description);
-        date_gardiennage.setText(description);
+        date_gardiennage.setText(get_date_gardiennage);
         guard.setText(get_guard);
         Glide.with(this).load(url_photo).into(img_view);
 
@@ -77,7 +77,7 @@ public class ClientChoixArticleGardiennagePlanifie extends AppCompatActivity {
                             .postData("/plant/" + id + "/comment", respObj, response -> Toast
                                     .makeText(ClientChoixArticleGardiennagePlanifie.this, "Commentaire ajouté", Toast.LENGTH_SHORT)
                                     .show());
-                    refresh(nom, espece, description, date, url_photo, id);
+                    refresh(nom, espece, description, date, url_photo, id, get_date_gardiennage);
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
@@ -107,11 +107,9 @@ public class ClientChoixArticleGardiennagePlanifie extends AppCompatActivity {
         } catch (Exception e) {
             e.printStackTrace();
         }
-
-        btn_gardienner.setOnClickListener(v2 -> openActivityGardienner(nom, espece, description, date, url_photo, id));
     }
 
-    public void refresh(String nom, String espece, String description, String date, String url, String id) {
+    public void refresh(String nom, String espece, String description, String date, String url, String id, String date_gardiennage) {
         Intent intent = new Intent(this, ClientChoixArticleGardiennagePlanifie.class);
         intent.putExtra("nom", nom);
         intent.putExtra("espece", espece);
@@ -119,26 +117,15 @@ public class ClientChoixArticleGardiennagePlanifie extends AppCompatActivity {
         intent.putExtra("date", date);
         intent.putExtra("url_photo", url);
         intent.putExtra("id", id);
+        intent.putExtra("date_gardiennage", date_gardiennage);
         startActivity(intent);
     }
 
     /*Bouton retour*/
     @Override
     public void onBackPressed() {
-        Intent intentBack = new Intent(this, ClientProfil.class);
+        Intent intentBack = new Intent(this, Client_list_rdv.class);
         startActivity(intentBack);
-    }
-
-    public void openActivityGardienner(String nom, String espece, String description, String date, String url, String id) {
-        Intent gardienner = new Intent(this, Client_create_gardiennage.class);
-        gardienner.putExtra("nom", nom);
-        gardienner.putExtra("espece", espece);
-        gardienner.putExtra("description", description);
-        gardienner.putExtra("date", date);
-        gardienner.putExtra("url_photo", url);
-        gardienner.putExtra("id", id);
-        startActivity(gardienner);
-        finish();
     }
 
     // ********** App bar **********

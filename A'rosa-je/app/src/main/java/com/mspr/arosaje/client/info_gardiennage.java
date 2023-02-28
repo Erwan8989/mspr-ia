@@ -62,19 +62,26 @@ public class info_gardiennage extends AppCompatActivity {
 
     public String getTitleGard() throws JSONException {
         JSONArray songsArray = gard_id.toJSONArray(gard_id.names());
-        Log.e("ttt", songsArray.getString(4));
-        return songsArray.getString(4);
+        Log.e("ttt", songsArray.getString(5));
+        return songsArray.getString(5);
     }
 
     public String getDateGard() throws JSONException {
         JSONArray songsArray = gard_id.toJSONArray(gard_id.names());
-        return songsArray.getString(3);
+        return songsArray.getString(4);
     }
 
     public String getNameGard() throws JSONException {
         JSONArray songsArray = owner_info.toJSONArray(owner_info.names());
         return songsArray.getString(2);
     }
+
+    /*public String getGuardian() throws JSONException {
+        JSONArray songsArray = gard_id.toJSONArray(gard_id.names());
+        JSONArray songArray2 = songsArray.getJSONArray(3);
+        songArray2.getString(2);
+        return songArray2.getString(2);
+    }*/
 
     public static ArrayList<info_gardiennage> createList(JSONArray arrayList) throws JSONException {
         ArrayList<info_gardiennage> infoplants = new ArrayList<info_gardiennage>();
