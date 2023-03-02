@@ -81,7 +81,7 @@
 
 				<EditText
 						android:id="@+id/prenom_insc"
-						android:layout_width="170dp"
+						android:layout_width="160dp"
 						android:layout_height="wrap_content"
 						android:hint="Prénom"
 						android:inputType="text"
@@ -119,7 +119,7 @@
 
 				<EditText
 						android:id="@+id/adress_postal"
-						android:layout_width="270dp"
+						android:layout_width="160dp"
 						android:layout_height="wrap_content"
 						android:hint="Adresse Postal"
 						android:inputType="text"
