@@ -57,6 +57,11 @@ public class info_plant extends AppCompatActivity {
         return songsArray.getString(0);
     }
 
+    public String getDateGard() throws JSONException {
+        JSONArray songsArray = gard_id.toJSONArray(gard_id.names());
+        return songsArray.getString(4);
+    }
+
     public static ArrayList<info_plant> createList(JSONArray arrayList) throws JSONException {
         ArrayList<info_plant> infoplants = new ArrayList<info_plant>();
 

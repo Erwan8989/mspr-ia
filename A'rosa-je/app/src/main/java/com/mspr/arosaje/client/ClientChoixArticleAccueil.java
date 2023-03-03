@@ -45,7 +45,7 @@ public class ClientChoixArticleAccueil extends AppCompatActivity {
         String date = intent.getStringExtra("date");
         String url_photo = intent.getStringExtra("url_photo");
         String id = intent.getStringExtra("id");
-        String date_rdv_accueil = intent.getStringExtra("date");
+        String date_rdv_accueil = intent.getStringExtra("date_gard");
         String id_gard = intent.getStringExtra("id_gard");
         Log.e("gard", id_gard);
 

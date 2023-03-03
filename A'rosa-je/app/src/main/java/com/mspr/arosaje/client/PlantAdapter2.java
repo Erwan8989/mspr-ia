@@ -46,6 +46,7 @@ public class PlantAdapter2 extends
                 intent.putExtra("date", infoplant.getDate());
                 intent.putExtra("id", infoplant.getId());
                 try {
+                    intent.putExtra("date_gard", infoplant.getDateGard());
                     intent.putExtra("id_gard", infoplant.getidGard());
                     intent.putExtra("url_photo", infoplant.getUrlPhoto());
                 } catch (JSONException e) {
