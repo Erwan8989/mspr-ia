@@ -36,7 +36,7 @@ public class AuthManager {
             respObj.put("password", pwd);
 
             this.db
-                    .postData("/login", respObj, onSuccess);
+                    .postData("/api/login", respObj, onSuccess);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -45,7 +45,7 @@ public class AuthManager {
     public void register(JSONObject respObj, String type, Response.Listener<JSONObject> onSuccess) {
         try {
             this.db
-                    .postData("/register" + type, respObj, onSuccess);
+                    .postData("/api/register" + type, respObj, onSuccess);
         } catch (Exception e) {
             e.printStackTrace();
         }

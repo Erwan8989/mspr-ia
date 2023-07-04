@@ -71,7 +71,7 @@ public class ClientChoixArticleGardiennageEnAttente extends AppCompatActivity {
 
                     VolleySingleton
                             .getInstance(ClientChoixArticleGardiennageEnAttente.this)
-                            .postData("/plant/" + id + "/comment", respObj, response -> Toast
+                            .postData("/api/plant/" + id + "/comment", respObj, response -> Toast
                                     .makeText(ClientChoixArticleGardiennageEnAttente.this, "Commentaire ajouté", Toast.LENGTH_SHORT)
                                     .show());
                     refresh(nom, espece, description, date, url_photo, id, get_date_gardiennage);
@@ -86,7 +86,7 @@ public class ClientChoixArticleGardiennageEnAttente extends AppCompatActivity {
         try {
             VolleySingleton
                     .getInstance(ClientChoixArticleGardiennageEnAttente.this)
-                    .getData("/plant/" + id + "/comment", response -> {
+                    .getData("/api/plant/" + id + "/comment", response -> {
                         try {
                             Log.e("response", String.valueOf(response));
                             // Initialize infoplants

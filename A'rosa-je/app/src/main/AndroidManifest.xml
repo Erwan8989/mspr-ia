@@ -77,6 +77,34 @@
 		</activity>
 
 		<activity
+				android:name=".common.sendMessage"
+				android:exported="true"
+				tools:ignore="Instantiatable"
+				android:label="Mon profil">
+		</activity>
+
+		<activity
+				android:name=".common.get_messages"
+				android:exported="true"
+				tools:ignore="Instantiatable"
+				android:label="Mon profil">
+		</activity>
+
+		<activity
+				android:name=".common.choixMessage"
+				android:exported="true"
+				tools:ignore="Instantiatable"
+				android:label="Mon profil">
+		</activity>
+
+		<activity
+				android:name=".common.info_messages"
+				android:exported="true"
+				tools:ignore="Instantiatable"
+				android:label="Mon profil">
+		</activity>
+
+		<activity
 				android:name=".client.ClientChoixArticleGardiennagePlanifie"
 				android:exported="true"
 				tools:ignore="Instantiatable"

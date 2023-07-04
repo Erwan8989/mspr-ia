@@ -36,7 +36,7 @@ public class ClientAccueil extends AppCompatActivity {
         try {
             VolleySingleton
                     .getInstance(ClientAccueil.this)
-                    .getData("/plant/notInGard", response -> {
+                    .getData("/api/plant/notInGard", response -> {
                         try {
                             // Initialize infoplants
                             ArrayList<info_plant> infoplants = info_plant.createList(response);

@@ -5,10 +5,46 @@
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content">
 
+	<LinearLayout
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:layout_weight="1"
+			android:orientation="vertical">
+
+		<LinearLayout
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:layout_weight="1"
+				android:gravity="center"
+				android:orientation="horizontal">
+
+			<Button
+					android:id="@+id/btn_messagerie"
+					android:layout_width="0dp"
+					android:layout_height="wrap_content"
+					android:layout_marginStart="5dp"
+					android:layout_weight="1"
+					android:backgroundTint="@color/teal_700"
+					android:gravity="center"
+					android:text="Messagerie" />
+
+			<Button
+					android:id="@+id/btn_ecrire_message"
+					android:layout_width="0dp"
+					android:layout_height="wrap_content"
+					android:layout_marginHorizontal="5dp"
+					android:layout_weight="1"
+					android:gravity="center"
+					android:text="Écrire un message" />
+
+		</LinearLayout>
+
+	</LinearLayout>
 
 	<androidx.recyclerview.widget.RecyclerView
 			android:layout_width="match_parent"
 			android:layout_height="match_parent"
+			android:layout_marginTop="50dp"
 			android:id="@+id/vertical_recycle_view"
 			android:orientation="vertical"
 			app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />

@@ -46,7 +46,7 @@ public class Client_list_rdv extends AppCompatActivity {
         try {
             VolleySingleton
                     .getInstance(Client_list_rdv.this)
-                    .getData("/plant/pendingGard", response -> {
+                    .getData("/api/plant/pendingGard", response -> {
                         try {
                             // Initialize infoplants
                             ArrayList<info_gardiennage> infogardiennages = info_gardiennage.createList(response);
@@ -68,7 +68,7 @@ public class Client_list_rdv extends AppCompatActivity {
         try {
             VolleySingleton
                     .getInstance(Client_list_rdv.this)
-                    .getData("/plant/inProgressGard", response -> {
+                    .getData("/api/plant/inProgressGard", response -> {
                         try {
                             // Initialize infoplants
                             ArrayList<info_gardiennage> infogardiennages = info_gardiennage.createList(response);
@@ -90,7 +90,7 @@ public class Client_list_rdv extends AppCompatActivity {
         try {
             VolleySingleton
                     .getInstance(Client_list_rdv.this)
-                    .getData("/plant/myGards", response -> {
+                    .getData("/api/plant/myGards", response -> {
                         try {
                             // Initialize infoplants
                             ArrayList<info_gardiennage> infogardiennages = info_gardiennage.createList(response);

@@ -66,7 +66,7 @@ public class ClientAjouterPlante extends AppCompatActivity {
 
                     VolleySingleton
                             .getInstance(ClientAjouterPlante.this)
-                            .postData("/plant", respObj, response -> Toast
+                            .postData("/api/plant", respObj, response -> Toast
                                     .makeText(ClientAjouterPlante.this, "Plante ajoutée", Toast.LENGTH_SHORT)
                                     .show());
                     redirect();

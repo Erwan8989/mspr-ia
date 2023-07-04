@@ -6,12 +6,15 @@ import android.content.Intent;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.mspr.arosaje.R;
+import com.mspr.arosaje.common.get_messages;
+import com.mspr.arosaje.common.sendMessage;
 import com.mspr.arosaje.database.VolleySingleton;
 
 import org.json.JSONException;
@@ -20,10 +23,15 @@ import java.util.ArrayList;
 
 public class ClientProfil extends AppCompatActivity {
 
+    Button write_message, getmessages;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.client_profil);
+
+        write_message = findViewById(R.id.btn_ecrire_message);
+        getmessages = findViewById(R.id.btn_messagerie);
 
         // Lookup the recyclerview in activity layout
         RecyclerView rvPlants = (RecyclerView) findViewById(R.id.vertical_recycle_view);
@@ -31,7 +39,7 @@ public class ClientProfil extends AppCompatActivity {
         try {
             VolleySingleton
                     .getInstance(ClientProfil.this)
-                    .getData("/plant/me", response -> {
+                    .getData("/api/plant/me", response -> {
                         try {
                             // Initialize infoplants
                             ArrayList<info_plant> infoplants = info_plant.createList(response);
@@ -48,6 +56,24 @@ public class ClientProfil extends AppCompatActivity {
         } catch (Exception e) {
             e.printStackTrace();
         }
+
+        // ***************** Changement de page au clic *****************
+
+        write_message.setOnClickListener(v2 -> openActivityWriteMessages());
+
+        getmessages.setOnClickListener(v2 -> openActivityGetMessages());
+    }
+
+    public void openActivityWriteMessages() {
+        Intent writeMessage = new Intent(this, sendMessage.class);
+        startActivity(writeMessage);
+        finish();
+    }
+
+    public void openActivityGetMessages() {
+        Intent getMessages = new Intent(this, get_messages.class);
+        startActivity(getMessages);
+        finish();
     }
 
     @Override

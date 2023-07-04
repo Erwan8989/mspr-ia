@@ -69,7 +69,7 @@ public class ClientChoixArticleProfil extends AppCompatActivity {
 
                     VolleySingleton
                             .getInstance(ClientChoixArticleProfil.this)
-                            .postData("/plant/" + id + "/comment", respObj, response -> Toast
+                            .postData("/api/plant/" + id + "/comment", respObj, response -> Toast
                                     .makeText(ClientChoixArticleProfil.this, "Commentaire ajouté", Toast.LENGTH_SHORT)
                                     .show());
                     refresh(nom, espece, description, date, url_photo, id);
@@ -84,7 +84,7 @@ public class ClientChoixArticleProfil extends AppCompatActivity {
         try {
             VolleySingleton
                     .getInstance(ClientChoixArticleProfil.this)
-                    .getData("/plant/" + id + "/comment", response -> {
+                    .getData("/api/plant/" + id + "/comment", response -> {
                         try {
                             Log.e("response", String.valueOf(response));
                             // Initialize infoplants

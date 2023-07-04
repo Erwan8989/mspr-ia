@@ -33,7 +33,7 @@ public class BotanisteAccueil extends AppCompatActivity {
         try {
             VolleySingleton
                     .getInstance(BotanisteAccueil.this)
-                    .getData("/plantAll", response -> {
+                    .getData("/api/plantAll", response -> {
                         try {
                             // Initialize infoplants
                             ArrayList<info_plant> infoplants = info_plant.createList(response);

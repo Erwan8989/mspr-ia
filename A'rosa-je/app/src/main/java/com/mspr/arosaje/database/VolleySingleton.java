@@ -28,7 +28,7 @@ public class VolleySingleton {
     private final Context ctx;
 
     // ********** METTRE SYSTEMATIQUEMENT SA PROPRE IP **********
-    private final String baseUrl = "http://192.168.1.136:8000";
+    private final String baseUrl = "http://172.17.48.1:8000";
 
     private static final String TAG = "VolleySingleton";
 
@@ -64,7 +64,8 @@ public class VolleySingleton {
                     onSuccess,
                     error -> {
                         Toast.makeText(ctx, "Fail to get response = " + error, Toast.LENGTH_SHORT).show();
-                        Log.e("ERROR", "onErrorResponse: " + error);
+                        Log.e("ERROR1", "onErrorResponse: " + error);
+                        Log.e("ERROR2", baseUrl + route);
                     }) {
                 @Override
                 public Map<String, String> getHeaders() {
@@ -94,6 +95,7 @@ public class VolleySingleton {
 
             addToRequestQueue(request);
         } catch (Exception e) {
+            Log.e("ERROR3", String.valueOf(e));
             e.printStackTrace();
         }
     }

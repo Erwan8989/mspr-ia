@@ -79,7 +79,7 @@ public class Client_create_gardiennage extends AppCompatActivity {
 
                     VolleySingleton
                             .getInstance(Client_create_gardiennage.this)
-                            .postData("/gard", respObj, response -> Toast
+                            .postData("/api/gard", respObj, response -> Toast
                                     .makeText(Client_create_gardiennage.this, "Demande de gardiennage effectuée", Toast.LENGTH_SHORT)
                                     .show());
                     redirect();

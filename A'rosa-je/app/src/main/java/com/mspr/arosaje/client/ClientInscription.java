@@ -65,6 +65,7 @@ public class ClientInscription extends AppCompatActivity {
                         finish();
                     });
                 } catch (Exception e) {
+                    System.out.println(e);
                     e.printStackTrace();
                 }
             }
